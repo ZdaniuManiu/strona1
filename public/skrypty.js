@@ -1,5 +1,6 @@
+const element = (identyfikator) => document.getElementById(identyfikator);
 function SprawdzPierwszyPrzycisk(){
-    if(document.getElementById("PierwszaAplikacja").style.display=="block"){;
+    if(element("PierwszaAplikacja").style.display=="block"){;
         PokazPierwszaAplikacja(1);
     }else{
         PokazPierwszaAplikacja(0);
@@ -7,8 +8,38 @@ function SprawdzPierwszyPrzycisk(){
 }
 function PokazPierwszaAplikacja(stan){
     if(stan==1){
-        document.getElementById("PierwszaAplikacja").style.display="none";
+        element("PierwszaAplikacja").style.display="none";
     }else{
-        document.getElementById("PierwszaAplikacja").style.display="block";
+        element("PierwszaAplikacja").style.display="block";
+    }
+}
+
+function SprawdzDrugiPrzycisk(){
+    if(element("DrugaAplikacja").style.display=="block"){;
+        PokazDrugaAplikacje(1);
+    }else{
+        PokazDrugaAplikacje(0);
+}
+}
+function PokazDrugaAplikacje(stan){
+    if(stan==1){
+        element("DrugaAplikacja").style.display="none";
+    }else{
+        element("DrugaAplikacja").style.display="block";
+    }
+}
+
+function SprawdzTrzeciPrzycisk(){
+    if(element("TrzeciaAplikacja").style.display=="block"){;
+        PokazTrzeciaAplikacje(1);
+    }else{
+        PokazTrzeciaAplikacje(0);
+}
+}
+function PokazTrzeciaAplikacje(stan){
+    if(stan==1){
+        element("TrzeciaAplikacja").style.display="none";
+    }else{
+        element("TrzeciaAplikacja").style.display="block";
     }
 }
