@@ -6,11 +6,27 @@ function SprawdzPierwszyPrzycisk(){
         PokazPierwszaAplikacja(0);
 }
 }
+
+
+
+
+
+
+
+
+
+
+
 function PokazPierwszaAplikacja(stan){
     if(stan==1){
         element("PierwszaAplikacja").style.display="none";
+        element("przyciski").classList.add("aktywny");
+        element("przyciski1").classList.remove("aktywny");
     }else{
         element("PierwszaAplikacja").style.display="block";
+        element("przyciski1").classList.add("aktywny");
+        element("przyciski").classList.remove("aktywny");
+        
     }
 }
 
@@ -24,8 +40,12 @@ function SprawdzDrugiPrzycisk(){
 function PokazDrugaAplikacje(stan){
     if(stan==1){
         element("DrugaAplikacja").style.display="none";
+        element("przyciski2").classList.add("aktywny");
+        element("przyciski22").classList.remove("aktywny");
     }else{
         element("DrugaAplikacja").style.display="block";
+        element("przyciski22").classList.add("aktywny");
+        element("przyciski2").classList.remove("aktywny");
     }
 }
 
@@ -39,7 +59,11 @@ function SprawdzTrzeciPrzycisk(){
 function PokazTrzeciaAplikacje(stan){
     if(stan==1){
         element("TrzeciaAplikacja").style.display="none";
+        element("przyciski3").classList.add("aktywny");
+        element("przyciski33").classList.remove("aktywny");
     }else{
         element("TrzeciaAplikacja").style.display="block";
+        element("przyciski33").classList.add("aktywny");
+        element("przyciski3").classList.remove("aktywny");
     }
 }

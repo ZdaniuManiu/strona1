@@ -10,7 +10,7 @@
 body{
     background: linear-gradient(135deg, #3b508f, #2d9ed6, #4182539b,#0a3eda);
     background-size: 400% 400%;
-    animation: gradientShift 12s ease infinite;
+    animation: gradientShift 60s ease infinite;
     height: 100%;
     width: 100vw;
     height: 100em;
@@ -55,11 +55,15 @@ body{
     justify-items: center;
 }   
 .page-header ul{
+    background: radial-gradient(circle, transparent,rgb(76, 158, 185),transparent);
+    border: 2px solid black;
+    border-radius: 25px;
     list-style: none;
     display:inline-flex;
     justify-content: center;
     gap: 160px;
-    width: 1000px;
+    width: 800px;
+    padding: 15px 15px;
 }
 .page-header p{
     width: 50vw;
@@ -67,19 +71,7 @@ body{
     font-size: 30px;
     margin-bottom: 7vh;
 }
-.page-header button{
-    background: rgb(106, 255, 0);
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 25px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-.page-header button:hover{
-    background-color: transparent;
-    transform: scale(1.1);
-}
+
 #PierwszaAplikacja ,#DrugaAplikacja ,#TrzeciaAplikacja {
     text-align: center;
     display: none;
@@ -109,8 +101,9 @@ body{
      border-collapse: collapse; /* usuwa przestrzenie między komórkami*/
      
     }
-#PierwszaAplikacja h1{
+#PierwszaAplikacja h1,h2{
         margin-top: 0px;
+        text-align:center;
     }
 #PierwszaAplikacja th, td { /* ustawia styl dla nagłówków i komórek w tabeli */
      border: 1px solid #ddd; /* dodaje obramowania do tabeli */
@@ -124,19 +117,70 @@ body{
 #PierwszaAplikacja td{
      background-color:rgb(121, 189, 201) ; /* ustawia kolor tła dla komórek w tabeli */
 }
-#DrugaAplikacja{
-    display: block;
+#DrugaAplikacja,#TrzeciaAplikacja{
     text-align: center;
     font-size: 35px;
     margin-top: 30px;
 }
-#TrzeciaAplikacja{
-    display: block;
-    text-align: center;
-    font-size: 35px;
-    margin-top: 30px;
+#przyciski button{
+    background:  rgb(210, 49, 17);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 25px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+}
+#przyciski1.aktywny{
+    background: rgb(106, 255, 0);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 25px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+#przyciski button:hover{
+    transform: scale(1.1);
 }
 
+#przyciski2 button{
+    background:  rgb(210, 49, 17);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 25px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+}
+#przyciski22.aktywny{
+    background: rgb(106, 255, 0);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 25px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+#przyciski3 button{
+    background:  rgb(210, 49, 17);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 25px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+}
+#przyciski33.aktywny{
+    background: rgb(106, 255, 0);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 25px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
     </style>
 </head>
 <body>
@@ -147,9 +191,9 @@ body{
        <header class="page-header">
         <p> Poniżej znajdują sie przyciski które wyświetlają aplikacje jakie wykonałem do tej pory.</p>
         <ul>
-            <li><button id="PierwszyPrzycisk" onclick="SprawdzPierwszyPrzycisk()">1</button></li>
-            <li><button id="DrugiPrzycisk" onclick="SprawdzDrugiPrzycisk()">2</button></li>
-            <li><button id="TrzeciPrzycisk" onclick="SprawdzTrzeciPrzycisk()">3</button></li>
+            <li id="przyciski"><button id="przyciski1" onclick="SprawdzPierwszyPrzycisk()">1</button></li>
+            <li id="przyciski2"><button id="przyciski22" onclick="SprawdzDrugiPrzycisk()">2</button></li>
+            <li id="przyciski3"><button id="przyciski33" onclick="SprawdzTrzeciPrzycisk()">3</button></li>
         </ul>   
     
     </header>
@@ -158,7 +202,7 @@ body{
     <div>
         <h1>Zespół Szkół Licealnych i Zawodowych</h1>
         <h6>Jakub Z. 3INF</h6>
-        <h2 style="text-align: center;"> PLAN LEKCJI</h2>
+        <h2> PLAN LEKCJI</h2>
         <table>
             <thead>
                 <tr>
