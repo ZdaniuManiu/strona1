@@ -271,9 +271,10 @@ body{
 
     #PierwszaAplikacja table { /* ustawianie stylu dla tabeli */
         margin: 0.1em; /* w tym przypadku poszerza obszar tabeli o 20 pikseli w dół oraz automatycznie ją środkuje  */
-        width: 1em; /* powoduje że tabela bedzie rozciągnieta po całości elementu */
+        width: 100%; /* powoduje że tabela bedzie rozciągnieta po całości elementu */
         border-collapse: collapse; /* usuwa przestrzenie między komórkami*/
-        overflow: scroll;
+        overflow-x: auto;
+        display: block;
     }
     #PierwszaAplikacja h1,h2{
         margin-top: 0px;
