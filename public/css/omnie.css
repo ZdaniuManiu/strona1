@@ -31,3 +31,8 @@ body{
     font-size: 45px;
     width: 90%;
 }
+@media (max-width:700px){
+    .page-header p{
+        width: 98vw;
+    }
+}
