@@ -26,14 +26,10 @@ body{
   }
 }
 
-.return-button {
-    position: absolute;  /* Używamy absolute, żeby "przykleić" do lewego górnego rogu */
-    top: 10px;  /* Odsunięcie od góry (dostosuj według potrzeb) */
-    left: 10px;  /* Odsunięcie od lewej (dostosuj według potrzeb) */
-    margin: 0;
+.return-button{
+    margin-left:0.3em;
+    float: left;
 }
-
-
 .return-button a{
     display: block;
     background-color: rgb(92, 255, 151);
@@ -99,20 +95,36 @@ label{
   cursor: not-allowed;
   opacity: 0.6;
 }
-@media (max-width: 1200px), (max-height: 1000px) {
-  .return-button {
-    display: flex;
-    justify-content: center;
-    margin: 1em auto;
-  }
+@media (max-width: 1000px) {
+    .return-button {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px; /* Odstęp od góry */
+        float: none; /* Usuwamy float */
+    }
 
-  .return-button a {
-    padding: 20px 50px;
-    font-size: 1rem;
-    margin: 0 auto;
-  }
+    .return-button a {
+        margin: 0 auto;
+        padding: 15px 40px; /* Mniejsze przyciski na telefonie */
+        width: 5em;
+    }
+
+    .page-header {
+        margin: 0 auto;
+        width: 90%; /* Zwiększamy szerokość formularza na telefonach */
+    }
+    .page-header p{
+        margin: 15px auto;
+        margin-left: 25px;
+    }
+
+    .page-header input, .page-header textarea {
+        width: 100%; /* Szerokość pól w formularzu dostosowana do telefonu */
+    }
+    .page-header textarea{
+        height: 20vh;
+    }
 }
-
     </style>
 </head>
 <body> 
