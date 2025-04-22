@@ -104,19 +104,19 @@ label{
     .return-button {
         width: 100%;
         text-align: center;
-        margin-top: 20px; /* Odstęp od góry */
-        float: none; /* Usuwamy float */
+        margin-top: 20px; 
+        float: none; 
     }
 
     .return-button a {
         margin: 0 auto;
-        padding: 15px 40px; /* Mniejsze przyciski na telefonie */
+        padding: 15px 40px;
         width: 5em;
     }
 
     .page-header {
         margin: 0 auto;
-        width: 90%; /* Zwiększamy szerokość formularza na telefonach */
+        width: 90%; 
     }
     .page-header p{
         margin: 15px auto;
@@ -124,12 +124,24 @@ label{
     }
 
     .page-header input, .page-header textarea {
-        width: 100%; /* Szerokość pól w formularzu dostosowana do telefonu */
+        width: 100%; 
     }
     .page-header textarea{
         height: 20vh;
     }
 }
+@media (max-width: 389px) {
+    .page-header p{
+        text-align: center;
+        width: 100%;
+        margin: 15px auto;
+        margin-left: 0;
+    }
+    #required{
+        margin-left: 0;
+    }
+}
+
     </style>
 </head>
 <body> 
