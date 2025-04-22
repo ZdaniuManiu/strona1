@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="PL-pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/kontakt.css">
+    <script src="skrypty.js"></script>
+    <style>
+body{
+    background: linear-gradient(315deg, #0399df,#0668d8,#07cdaf ,#00f8e8,#04c7ee);
+    background-size: 200% 400%;
+    animation: gradientoweTlo 120s linear infinite;
+    width: 95vw;
+    height: 100em;
+}
+@keyframes gradientoweTlo {
+  0% {
+    background-position: 0% 50%;
+  }    
+  50%{
+    background-position: 100% 50% ;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
+}
+
+.return-button{
+    margin-left:0.3em;
+    float: left;
+}
+.return-button a{
+    display: block;
+    background-color: rgb(92, 255, 151);
+    margin-top: 0px;
+    border-radius: 15px;
+    border: 2px solid black;
+    padding: 25px 65px;
+    color: black;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+.return-button a:hover{
+    background-color: rgb(83, 187, 174);
+    transform: scale(1.1);
+}
+.page-header{
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    justify-items: center;
+    margin: 0 auto;
+}
+.page-header input{
+    margin: 0 auto;
+    width: 150px;
+    margin-bottom: 25px ;
+    border: 2px solid rgb(181, 211, 11);
+    border-radius: 3px;
+}
+.page-header textarea{
+    margin: 0 auto;
+    width: 250px;
+    height: 350px;
+    border: 2px solid rgb(11, 144, 211);
+    border-radius: 3px;
+}
+.page-header button{
+    background-color: rgb(8, 236, 103);
+    margin: 15px auto;
+    width: 90px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+.page-header button:hover{
+    border: 2px solid rgba(0, 0, 0, 0.52);
+    background-color: rgba(8, 236, 103, 0.541);
+    transform: scale(1.1);
+}
+#required{
+    color: red;
+    margin-left: 20px;
+}
+    </style>
+</head>
+<body> 
+    <div class="return-button">
+        <a href="index.html">Powrót</a>
+    </div>
+    <header class="page-header">
+        <p>Wypełnij formularz, aby wysłać mi wiadomość. <span id="required"> WSZYSTKIE POLA SĄ <b>WYMAGANE</b></span></p>
+        <input name="imie" type="text" placeholder="imie">
+        <textarea name="wiadomosc" id="wiadomosc" placeholder="Wpisz swoja wiadomosc"></textarea>
+        <button onclick=Wyslij()>Wyślij</button>
+    </header>
+</body>
+</html>

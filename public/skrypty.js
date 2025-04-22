@@ -20,12 +20,12 @@ function SprawdzPierwszyPrzycisk(){
 function PokazPierwszaAplikacja(stan){
     if(stan==1){
         element("PierwszaAplikacja").style.display="none";
-        element("przyciski").classList.add("aktywny");
-        element("przyciski1").classList.remove("aktywny");
+        element("przyciski1").classList.add("aktywny");
+        element("przyciski11").classList.remove("aktywny");
     }else{
         element("PierwszaAplikacja").style.display="block";
-        element("przyciski1").classList.add("aktywny");
-        element("przyciski").classList.remove("aktywny");
+        element("przyciski11").classList.add("aktywny");
+        element("przyciski1").classList.remove("aktywny");
         
     }
 }

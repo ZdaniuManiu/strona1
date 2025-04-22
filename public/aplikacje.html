@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="css/aplikacje.css">
     <style>
 body{
-    background: linear-gradient(135deg, #3b508f, #2d9ed6, #4182539b,#0a3eda, red, green);
-    background-size: 400% 400%;
-    animation: gradientShift 2s ease infinite;
-    height: 100%;
-    width: 100vw;
+    background: linear-gradient(135deg, #3b508f, #2d9ed6, #4182539b,#0ac2da);
+    background-size: 400% 400%; /*  POMOC  */
+    animation: gradientShift 60s linear infinite; /*  POMOC  */ 
+    width: 98vw;
     height: 100em;
 }
-@keyframes gradientShift {
+@keyframes gradientShift { /*  POMOC  */
   0% {
     background-position: 0% 50%;
   }
@@ -42,7 +41,7 @@ body{
     border: 2px solid black;
     border-radius: 5px;
     padding: 25px 55px 25px 55px;  
-    transition: 0.5s;
+    transition: 0.4s;
 }
 .page-div a:hover{
     background-color: rgb(83, 187, 174);
@@ -122,23 +121,23 @@ body{
     font-size: 35px;
     margin-top: 30px;
 }
-#przyciski button{
+#przyciski1 button{
     background:  rgb(210, 49, 17);
     border: 2px solid black;
     border-radius: 50px;
     padding: 25px 50px;
     font-size: 20px;
     cursor: pointer;
-    transition: all 1s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
-#przyciski1.aktywny{
+#przyciski11.aktywny{
     background: rgb(106, 255, 0);
     border: 2px solid black;
     border-radius: 50px;
     padding: 25px 50px;
     font-size: 20px;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 #przyciski button:hover{
     transform: scale(1.1);
@@ -151,7 +150,7 @@ body{
     padding: 25px 50px;
     font-size: 20px;
     cursor: pointer;
-    transition: all 1s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 #przyciski22.aktywny{
     background: rgb(106, 255, 0);
@@ -160,7 +159,7 @@ body{
     padding: 25px 50px;
     font-size: 20px;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 #przyciski3 button{
@@ -170,7 +169,7 @@ body{
     padding: 25px 50px;
     font-size: 20px;
     cursor: pointer;
-    transition: all 1s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 #przyciski33.aktywny{
     background: rgb(106, 255, 0);
@@ -179,7 +178,7 @@ body{
     padding: 25px 50px;
     font-size: 20px;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
     </style>
 </head>
@@ -191,9 +190,9 @@ body{
        <header class="page-header">
         <p> Poniżej znajdują sie przyciski które wyświetlają aplikacje jakie wykonałem do tej pory.</p>
         <ul>
-            <li id="przyciski"><button id="przyciski1" onclick="SprawdzPierwszyPrzycisk()">1</button></li>
-            <li id="przyciski2"><button id="przyciski22" onclick="SprawdzDrugiPrzycisk()">2</button></li>
-            <li id="przyciski3"><button id="przyciski33" onclick="SprawdzTrzeciPrzycisk()">3</button></li>
+            <li id="przyciski1"><button id="przyciski11" onclick="setTimeout (SprawdzPierwszyPrzycisk,150)">1</button></li>
+            <li id="przyciski2"><button id="przyciski22" onclick="setTimeout (SprawdzDrugiPrzycisk,150)">2</button></li>
+            <li id="przyciski3"><button id="przyciski33" onclick="setTimeout (SprawdzTrzeciPrzycisk,150)">3</button></li>
         </ul>   
     
     </header>

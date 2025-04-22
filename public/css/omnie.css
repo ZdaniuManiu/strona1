@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(197, 228, 238);
+    background-color: rgb(99, 196, 228);
 }
 .page-header{
     text-align: center;
@@ -22,8 +22,11 @@ body{
     transform: scale(1.1);
 }
 .page-header p{
+    background: linear-gradient(to right, rgb(13, 13, 216), rgb(219, 60, 12)); /*  POMOC  */
+    background-clip: text; /*  POMOC  */
+    -webkit-text-fill-color: transparent; /*  POMOC  */
     display: inline-block;
     margin: 5px 15px;
-    font-size: 60px;
+    font-size: 45px;
     width: 90%;
 }
