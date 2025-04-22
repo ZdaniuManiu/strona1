@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/kontakt.css">
-    <script src="kontakt.js"></script>
+
     <style>
 body{
     background: linear-gradient(315deg, #0399df,#0668d8,#07cdaf ,#00f8e8,#04c7ee);
@@ -86,17 +86,33 @@ body{
     color: red;
     margin-left: 20px;
 }
+label{
+    margin: 0 auto;
+}
+ button:disabled {
+  background-color: gray;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
     </style>
 </head>
 <body> 
     <div class="return-button">
         <a href="index.html">Powrót</a>
     </div>
-    <header class="page-header">
-        <p>Wypełnij formularz, aby wysłać mi wiadomość. <span id="required"> WSZYSTKIE POLA SĄ <b>WYMAGANE</b></span></p>
-        <input id="imie" name="imie" type="text" placeholder="imie">
-        <textarea  name="wiadomosc" id="wiadomosc" placeholder="Wpisz swoja wiadomosc"></textarea>
-        <button id="button" onclick="wyslij()">Wyślij</button>
-    </header>
+    <form id="formularz" action="https://formspree.io/f/xovdqqwl" method="POST">
+        <header class="page-header">
+            <p>Wypełnij formularz, aby wysłać mi wiadomość. <span id="required"> WSZYSTKIE POLA SĄ <b>WYMAGANE</b></span></p>
+            <label>
+                <input id="imie" name="email" type="email" placeholder="Email" required>
+            </label>
+            <label>
+                <textarea name="message" id="wiadomosc" placeholder="Wpisz swoją wiadomość" required></textarea>
+            </label>
+            <button id="button" type="submit" disabled>Wyślij</button>
+        </header>
+    </form>
+    <script src="kontakt.js"></script>
 </body>
 </html>
