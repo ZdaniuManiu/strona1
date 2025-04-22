@@ -183,17 +183,157 @@ body{
 }
 @media (max-width:1000px) {
     body{
-    background: linear-gradient(135deg,#2d9ed6, #3b508f,  #4182539b);
-    background-size: 400% 400%; /*  POMOC  */
-    animation:unset; /*  POMOC  */ 
-    width: 1600px;
-    height: 1600px;
+        background: linear-gradient(135deg,#2d9ed6, #3b508f,  #4182539b);
+        background-size: 400% 400%; /*  POMOC  */
+        animation:unset; /*  POMOC  */ 
     }
     .page-header p{
-    width: 100%;
-    height: 5vh;
-    font-size: 30px;
-    margin-bottom: 2em;
+        width: 13em;
+        height: 4em;
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+    .page-div{
+        float: unset;
+        text-align: center;
+        width: 10em;
+        height: 5em;
+    }
+.page-div a{
+    display: block;
+    width: 3em;
+    height: 1em;
+    margin: 0 auto;
+}
+.page-div a:hover{
+    background-color: rgb(83, 187, 174);
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.567) 5px 5px 10px;
+}
+.page-header{
+   
+    flex-direction: column;
+    margin-left: 0;
+    width: 25em;
+    height: 50em;
+    position: relative;
+    top: 1em;
+    left: 1em;
+}   
+.page-header ul{
+    background: radial-gradient(circle, transparent,rgb(76, 158, 185),transparent);
+    border: 2px solid black;
+    border-radius: 25px;
+    list-style: none;
+    justify-content: left;
+    gap: 3em;
+    width: 20em;
+    padding: 15px 15px;
+    margin-top: 100px;
+}
+    #przyciski1 button{
+    background:  rgb(210, 49, 17);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+#przyciski11.aktywny{
+    background: rgb(106, 255, 0);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+#przyciski button:hover{
+    transform: scale(1.1);
+}
+
+#przyciski2 button{
+    background:  rgb(210, 49, 17);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+#przyciski22.aktywny{
+    background: rgb(106, 255, 0);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+#przyciski3 button{
+    background:  rgb(210, 49, 17);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+#przyciski33.aktywny{
+    background: rgb(106, 255, 0);
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 0.5em 1em;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+    #PierwszaAplikacja ,#DrugaAplikacja ,#TrzeciaAplikacja {
+        text-align: center;
+        display: none;
+        margin-top:0px;
+        border: 3px solid black;
+        border-radius: 25px;
+        background: linear-gradient(to right,rgb(101, 203, 120),rgb(22, 232, 208),rgb(22, 183, 232),rgb(22, 232, 208),rgb(157, 176, 90));
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    #PierwszaAplikacja hr,#DrugaAplikacja hr,#TrzeciaAplikacja hr{
+        height: 20px;
+        background: linear-gradient(to right,rgba(8, 16, 235, 0.453)10%,transparent 30%,rgba(8, 16, 235, 0.453)60%,transparent 90%,rgba(8, 16, 235, 0.453)100%);
+        border: 2px solid rgb(10, 146, 231) ;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        margin: 0;
+    }
+    #PierwszaAplikacja p,#DrugaAplikacja p,#TrzeciaAplikacja p{
+        margin: 0;
+        padding: 0;
+    }
+
+    #PierwszaAplikacja table { /* ustawianie stylu dla tabeli */
+        margin: 20px 0px 0px 0px; /* w tym przypadku poszerza obszar tabeli o 20 pikseli w dół oraz automatycznie ją środkuje  */
+        width: 100%; /* powoduje że tabela bedzie rozciągnieta po całości elementu */
+        border-collapse: collapse; /* usuwa przestrzenie między komórkami*/
+     
+    }
+    #PierwszaAplikacja h1,h2{
+        margin-top: 0px;
+        text-align:center;
+    }
+    #PierwszaAplikacja th, td { /* ustawia styl dla nagłówków i komórek w tabeli */
+        border: 1px solid #ddd; /* dodaje obramowania do tabeli */
+        padding: 15px; /* dodaje 15pikseli z każdej strony (gora dol prawo lewo) dla komórek powodując że są one wieksze */
+        text-align: center; /*środkuje tekst*/
+    }
+    /* Styl dla nagłówków tabeli */
+    #PierwszaAplikacja th {
+        background-color: rgb(100, 132, 192); /* ustawia kolor tła dla nagłówków w tabeli */
+    }
+    #PierwszaAplikacja td{
+        background-color:rgb(121, 189, 201) ; /* ustawia kolor tła dla komórek w tabeli */
     }
 }
     </style>
