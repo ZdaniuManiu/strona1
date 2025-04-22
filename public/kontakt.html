@@ -82,9 +82,14 @@ body{
     transform: scale(1.1);
     box-shadow: rgba(0, 0, 0, 0.344) 3px 3px 10px;
 }
+#text{
+    margin-top: 16px;
+    margin-bottom: 2px;
+}
 #required{
     color: red;
     margin-left: 20px;
+    margin-top: 0;
 }
 label{
     margin: 0 auto;
@@ -133,7 +138,8 @@ label{
     </div>
     <form id="formularz" action="https://formspree.io/f/xovdqqwl" method="POST">
         <header class="page-header">
-            <p>Wypełnij formularz, aby wysłać mi wiadomość. <span id="required"> WSZYSTKIE POLA SĄ <b>WYMAGANE</b></span></p>
+            <p id="text">Wypełnij formularz, aby wysłać mi wiadomość.</p> 
+            <p id="required"> WSZYSTKIE POLA SĄ <b>WYMAGANE</b> </p>
             <label>
                 <input id="imie" name="email" type="email" placeholder="Email" required>
             </label>
