@@ -242,8 +242,8 @@ body{
 #przyciski33.aktywny{
     padding: 0.5em 1em;/**/
 }
-    #PierwszaAplikacja ,#DrugaAplikacja ,#TrzeciaAplikacja {
-        text-align: center;
+
+    #PierwszaAplikacja ,#DrugaAplikacja ,#TrzeciaAplikacja { 
         display: none;
         margin-top:0px;
         border: 3px solid black;
@@ -252,6 +252,9 @@ body{
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
     }
+    #PierwszaAplikacja{
+    display: block;
+}
     #PierwszaAplikacja hr,#DrugaAplikacja hr,#TrzeciaAplikacja hr{
         height: 20px;
         background: linear-gradient(to right,rgba(8, 16, 235, 0.453)10%,transparent 30%,rgba(8, 16, 235, 0.453)60%,transparent 90%,rgba(8, 16, 235, 0.453)100%);
@@ -266,19 +269,20 @@ body{
     }
 
     #PierwszaAplikacja table { /* ustawianie stylu dla tabeli */
-        margin: 20px 0px 0px 0px; /* w tym przypadku poszerza obszar tabeli o 20 pikseli w dół oraz automatycznie ją środkuje  */
-        width: 100%; /* powoduje że tabela bedzie rozciągnieta po całości elementu */
+        margin: 0.1em; /* w tym przypadku poszerza obszar tabeli o 20 pikseli w dół oraz automatycznie ją środkuje  */
+        width: 1em; /* powoduje że tabela bedzie rozciągnieta po całości elementu */
         border-collapse: collapse; /* usuwa przestrzenie między komórkami*/
-     
+        overflow: scroll;
     }
     #PierwszaAplikacja h1,h2{
         margin-top: 0px;
         text-align:center;
     }
     #PierwszaAplikacja th, td { /* ustawia styl dla nagłówków i komórek w tabeli */
-        border: 1px solid #ddd; /* dodaje obramowania do tabeli */
-        padding: 15px; /* dodaje 15pikseli z każdej strony (gora dol prawo lewo) dla komórek powodując że są one wieksze */
+        border: 0.1em solid #ddd; /* dodaje obramowania do tabeli */
+        padding: 0.05em 0px; /* dodaje 15pikseli z każdej strony (gora dol prawo lewo) dla komórek powodując że są one wieksze */
         text-align: center; /*środkuje tekst*/
+        font-size: .668em;
     }
     /* Styl dla nagłówków tabeli */
     #PierwszaAplikacja th {
