@@ -20,6 +20,7 @@ body{
 .page-header a:hover{
     background-color: rgb(83, 187, 174);
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.567) 5px 5px 10px;
 }
 .page-header p{
     background: linear-gradient(to right, rgb(13, 13, 216), rgb(219, 60, 12)); /*  POMOC  */
