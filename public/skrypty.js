@@ -6,17 +6,6 @@ function SprawdzPierwszyPrzycisk(){
         PokazPierwszaAplikacja(0);
 }
 }
-
-
-
-
-
-
-
-
-
-
-
 function PokazPierwszaAplikacja(stan){
     if(stan==1){
         element("PierwszaAplikacja").style.display="none";
@@ -67,3 +56,4 @@ function PokazTrzeciaAplikacje(stan){
         element("przyciski3").classList.remove("aktywny");
     }
 }
+

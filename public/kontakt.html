@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/kontakt.css">
-    <script src="skrypty.js"></script>
+    <script src="kontakt.js"></script>
     <style>
 body{
     background: linear-gradient(315deg, #0399df,#0668d8,#07cdaf ,#00f8e8,#04c7ee);
@@ -94,9 +94,9 @@ body{
     </div>
     <header class="page-header">
         <p>Wypełnij formularz, aby wysłać mi wiadomość. <span id="required"> WSZYSTKIE POLA SĄ <b>WYMAGANE</b></span></p>
-        <input name="imie" type="text" placeholder="imie">
-        <textarea name="wiadomosc" id="wiadomosc" placeholder="Wpisz swoja wiadomosc"></textarea>
-        <button onclick=Wyslij()>Wyślij</button>
+        <input id="imie" name="imie" type="text" placeholder="imie">
+        <textarea  name="wiadomosc" id="wiadomosc" placeholder="Wpisz swoja wiadomosc"></textarea>
+        <button id="button" onclick="wyslij()">Wyślij</button>
     </header>
 </body>
 </html>
