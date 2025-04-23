@@ -34,6 +34,17 @@ function reset(){
     PolaKolka=[];
     PolaKrzyzyka=[];
     KolorPlanszy(1);
+    WinningLine();
+}
+function WinningLine(){
+    document.getElementById("LewySkos").style.display="none";
+    document.getElementById("PrawySkos").style.display="none";
+    document.getElementById("GoraPoziom").style.display="none";
+    document.getElementById("SrodekPoziom").style.display="none";
+    document.getElementById("DolPoziom").style.display="none";
+    document.getElementById("LewoPion").style.display="none";
+    document.getElementById("SrodekPion").style.display="none";
+    document.getElementById("PrawoPion").style.display="none";
 }
 function KolorPlanszy(kolor){
     if(kolor == 1){
@@ -353,7 +364,7 @@ function wygrana(){
         (PolaKolka.includes(-4) && PolaKolka.includes(-5) && PolaKolka.includes(-6)) ||
         (PolaKolka.includes(-7) && PolaKolka.includes(-8) && PolaKolka.includes(-9))){     
             GoraPoziom();
-            setTimeout(()=> {alert("Wygrana dla kółka");reset();},10000);
+            setTimeout(()=> {alert("Wygrana dla kółka");reset();},500);
     }else{
     if( (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(2) && PolaKrzyzyka.includes(3)) ||
         (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(7)) ||
@@ -364,7 +375,7 @@ function wygrana(){
         (PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(6)) ||
         (PolaKrzyzyka.includes(7) && PolaKrzyzyka.includes(8) && PolaKrzyzyka.includes(9))){
             GoraPoziom();
-            setTimeout(()=> {alert("Wygrana dla krzyżyka");reset();},10000 );   
+            setTimeout(()=> {alert("Wygrana dla krzyżyka");reset();},500 );   
         } 
         else{
             remis();
