@@ -29,6 +29,8 @@ function reset(){
     WyborGraczaKolko.disabled=false;
     gracz = "";
     WlaczPlansze(0);
+    PolaKolka=[];
+    PolaKrzyzyka=[];
 }
 
 //SEKCJA ODPOWIEDZIALNA ZA WYŁĄCZENIE PLANSZY
@@ -85,7 +87,127 @@ function Test(gracz){
     alert(gracz);
 }
 
-
+let PolaKolka =[];
+let PolaKrzyzyka =[];
 //SEKCJA ODPOWIEDZIALNA ZA PRZEBIEG GRY
-let PolaKolka; 
-let PolaKrzyzyka;
+function WykonajRuch1(){ //                                 PIERWSZY RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-1);
+        przycisk1.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(1);
+        przycisk1.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function WykonajRuch2(){ //                                 DRUGI RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-2);
+        przycisk2.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(2);
+        przycisk2.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+        
+    }
+}
+function WykonajRuch3(){ //                                 TRZECI RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-3);
+        przycisk3.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(3);
+        przycisk3.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function WykonajRuch4(){ //                                 CZWARTY RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-4);
+        przycisk4.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(4);
+        przycisk4.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function WykonajRuch5(){ //                                 PIATY RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-5);
+        przycisk5.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(5);
+        przycisk5.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function WykonajRuch6(){ //                                 SZOSTY RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-6);
+        przycisk6.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(6);
+        przycisk6.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function WykonajRuch7(){ //                                 SIODMY RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-7);
+        przycisk7.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(7);
+        przycisk7.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function WykonajRuch8(){ //                                 OSMY RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-8);
+        przycisk8.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(8);
+        przycisk8.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function WykonajRuch9(){ //                                 DZIEWIATY RUCH
+    if(gracz="kolko"){
+        PolaKolka.push(-9);
+        przycisk9.disabled=true;
+        TestPolKolka(PolaKolka);
+        wygrana(PolaKolka);
+    }else{
+        PolaKrzyzyka.push(9);
+        przycisk9.disabled=true;
+        TestPolKrzyzyka(PolaKrzyzyka);
+    }
+}
+function TestPolKolka(){
+    alert(PolaKolka);
+}
+function TestPolKrzyzyka(){
+    alert(PolaKrzyzyka);
+}// SPRAWDZANIE WYGRANEJ
+function wygrana(){
+    if(PolaKolka.includes(-1) && PolaKolka.includes(-2) && PolaKolka.includes(-3)){
+        alert("Wygrana dla kółka");
+        reset();
+    }
+}
