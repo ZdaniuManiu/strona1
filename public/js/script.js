@@ -352,8 +352,8 @@ function wygrana(){
         (PolaKolka.includes(-3) && PolaKolka.includes(-5) && PolaKolka.includes(-7)) ||
         (PolaKolka.includes(-4) && PolaKolka.includes(-5) && PolaKolka.includes(-6)) ||
         (PolaKolka.includes(-7) && PolaKolka.includes(-8) && PolaKolka.includes(-9))){     
-        
-            setTimeout(()=> {alert("Wygrana dla kółka");reset();},1000);
+            GoraPoziom();
+            setTimeout(()=> {alert("Wygrana dla kółka");reset();},10000);
     }else{
     if( (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(2) && PolaKrzyzyka.includes(3)) ||
         (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(7)) ||
@@ -363,7 +363,8 @@ function wygrana(){
         (PolaKrzyzyka.includes(3) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(7)) ||
         (PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(6)) ||
         (PolaKrzyzyka.includes(7) && PolaKrzyzyka.includes(8) && PolaKrzyzyka.includes(9))){
-            setTimeout(()=> {alert("Wygrana dla krzyżyka");reset();},1000 );   
+            GoraPoziom();
+            setTimeout(()=> {alert("Wygrana dla krzyżyka");reset();},10000 );   
         } 
         else{
             remis();
@@ -375,5 +376,67 @@ function remis(){
         && przycisk7.style.backgroundImage !=="unset" && przycisk8.style.backgroundImage !=="unset" && przycisk9.style.backgroundImage !=="unset")
         {
         setTimeout(()=> {alert("REMIS");reset();},1000 ); 
+    }
+}
+function GoraPoziom(){
+    if((PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(2) && PolaKrzyzyka.includes(3)) ||
+        (PolaKolka.includes(-1) && PolaKolka.includes(-2) && PolaKolka.includes(-3))){
+            document.getElementById("GoraPoziom").style.display="block";
+        }else{
+            LewoPion();
+        }
+}
+function LewoPion(){
+    if((PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(7))||
+    (PolaKolka.includes(-1) && PolaKolka.includes(-4) && PolaKolka.includes(-7))){
+        document.getElementById("LewoPion").style.display="block";
+    }else{
+        LewySkos();
+    }
+}
+function LewySkos(){
+    if((PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(9))||
+    (PolaKolka.includes(-1) && PolaKolka.includes(-5) && PolaKolka.includes(-9))){
+        document.getElementById("LewySkos").style.display="block";
+    }else{
+        SrodekPion();
+    }
+}
+function SrodekPion(){
+    if((PolaKrzyzyka.includes(2) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(8))||
+    (PolaKolka.includes(-2) && PolaKolka.includes(-5) && PolaKolka.includes(-8)) ){
+        document.getElementById("SrodekPion").style.display="block";
+    }else{
+        PrawoPion();
+    }
+}
+function PrawoPion(){
+    if((PolaKrzyzyka.includes(3) && PolaKrzyzyka.includes(6) && PolaKrzyzyka.includes(9)) ||
+    (PolaKolka.includes(-3) && PolaKolka.includes(-6) && PolaKolka.includes(-9))){
+        document.getElementById("PrawoPion").style.display="block";
+    }else{
+        PrawySkos();
+    }
+}
+function PrawySkos(){
+    if((PolaKrzyzyka.includes(3) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(7)) ||
+    (PolaKolka.includes(-3) && PolaKolka.includes(-5) && PolaKolka.includes(-7))){
+        document.getElementById("PrawySkos").style.display="block";
+    }else{
+        SrodekPoziom();
+    }
+}
+function SrodekPoziom(){
+    if((PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(6)) ||
+    (PolaKolka.includes(-4) && PolaKolka.includes(-5) && PolaKolka.includes(-6)) ){
+        document.getElementById("SrodekPoziom").style.display="block";        
+    }else{
+        DolPoziom();
+    }
+}
+function DolPoziom(){
+    if((PolaKrzyzyka.includes(7) && PolaKrzyzyka.includes(8) && PolaKrzyzyka.includes(9))||
+    (PolaKolka.includes(-7) && PolaKolka.includes(-8) && PolaKolka.includes(-9))){
+        document.getElementById("DolPoziom").style.display="block";
     }
 }
