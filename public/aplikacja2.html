@@ -6,7 +6,7 @@
     
     <title>Document</title>
     <style>
-        a{
+    a{
     font-weight:normal;
     font-size: 25px;
     float: left;
@@ -19,21 +19,30 @@
     border-radius: 5px;
     padding: 25px 55px 25px 55px;  
     transition: 0.4s;
-}
-a:hover{
+    }
+    a:hover{
     background-color: rgb(83, 187, 174);
     transform: scale(1.1);
     box-shadow: rgba(0, 0, 0, 0.567) 5px 5px 10px;
-}
-        body{
+    }
+    body{
             background-color: rgb(0, 170, 255);
-            width: 100vw;
-        }
+    }
+    #tabela{
+        position: absolute;
+     left:59em;
+     top: 8em;
+    }
     table { /* ustawianie stylu dla tabeli */
       /* w tym przypadku poszerza obszar tabeli o 20 pikseli w dół oraz automatycznie ją środkuje  */ /* powoduje że tabela bedzie rozciągnieta po całości elementu */
-     border-collapse:collapse; /* usuwa przestrzenie między komórkami*/
+     position: absolute;
+     left:53em;
+     top: 24em;
+     
+      border-collapse:collapse; /* usuwa przestrzenie między komórkami*/
      border: 2px solid black;
     }
+
     h1{
         margin-top: 0px;
     }
@@ -42,7 +51,6 @@ a:hover{
      padding: 90px; /* dodaje 15pikseli z każdej strony (gora dol prawo lewo) dla komórek powodując że są one wieksze */
      text-align: center; /*środkuje tekst*/
     }
-
     td,th{
     color: white;
     font-size: 40px;
@@ -50,12 +58,11 @@ a:hover{
      background-color:rgb(68, 63, 63) ; /* ustawia kolor tła dla komórek w tabeli */
 
     }
-    
     hr{ 
         padding-bottom: 20px;
         background-color: rgb(0, 252, 13);
         box-shadow: 0 4px 8px rgb(0, 0, 0, 0.6);
-        border: none;
+        border: block;
     } 
     .gracze button{
         display: flex;
@@ -114,7 +121,7 @@ a:hover{
         position: absolute;
         rotate: 45.7deg;
         top: 50.3em;
-        left: 47em;
+        left: 47.8em;
         width: 1000px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -125,7 +132,7 @@ a:hover{
         position: absolute;
         rotate: 134.3deg;
         top: 50.3em;
-        left: 49em;
+        left: 46.5em;
         width: 1000px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -135,8 +142,8 @@ a:hover{
         display:none;
         position: absolute;
         rotate: 180deg;
-        top: 33.8em;
-        left: 56em;
+        top: 32.2em;
+        left: 55em;
         width: 750px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -146,8 +153,8 @@ a:hover{
         display:none;
         position: absolute;
         rotate: 180deg;
-        top: 51.4em;
-        left: 56em;
+        top: 49.7em;
+        left: 55em;
         width: 750px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -157,8 +164,8 @@ a:hover{
         display:none;
         position: absolute;
         rotate: 180deg;
-        top: 68.9em;
-        left: 56em;
+        top: 67em;
+        left: 55em;
         width: 750px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -168,8 +175,8 @@ a:hover{
         display:none;
         position: absolute;
         rotate: 90deg;
-        top: 51em;
-        left: 38.7em;
+        top: 50em;
+        left: 38em;
         width: 750px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -179,8 +186,8 @@ a:hover{
         display:none;
         position: absolute;
         rotate: 90deg;
-        top: 51em;
-        left: 55.8em;
+        top: 50em;
+        left: 55em;
         width: 750px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -190,8 +197,8 @@ a:hover{
         display:none;
         position: absolute;
         rotate: 90deg;
-        top: 51em;
-        left: 72.9em;   
+        top: 50em;
+        left: 72em;   
         width: 750px;
         height: 20px;
         background-color: rgb(9, 9, 239);
@@ -214,14 +221,14 @@ a:hover{
 </header>
     <div id="plansza">
         <div class="page-div">
-        <table>            
+        <table id="tabela">            
             <tr class="gracze">
                 <th><button id="GraczKolko" onclick="WyborKolko()">KÓŁKO</button></th>
                 <th><button id="GraczKrzyzyk" onclick="WyborKrzyzyk()">KRZYŻYK</button></th>
             </tr>
         </table>
         </div>    
-    <table class="gra" id="granie">
+    <table class="gra">
         <thead >
             <tr>
                 <th><button id="przycisk1" onclick="WykonajRuch1()">1</button></th>
