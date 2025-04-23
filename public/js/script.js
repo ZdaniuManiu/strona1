@@ -31,6 +31,30 @@ function reset(){
     WlaczPlansze(0);
     PolaKolka=[];
     PolaKrzyzyka=[];
+    KolorPlanszy(1);
+}
+function KolorPlanszy(kolor){
+    if(kolor == 1){
+        przycisk1.style.backgroundColor="red";
+        przycisk2.style.backgroundColor="red";
+        przycisk3.style.backgroundColor="red";
+        przycisk4.style.backgroundColor="red";
+        przycisk5.style.backgroundColor="red";
+        przycisk6.style.backgroundColor="red";
+        przycisk7.style.backgroundColor="red";
+        przycisk8.style.backgroundColor="red";
+        przycisk9.style.backgroundColor="red";
+    }else{
+        przycisk1.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk2.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk3.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk4.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk5.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk6.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk7.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk8.style.backgroundColor="rgb(12, 207, 12)";
+        przycisk9.style.backgroundColor="rgb(12, 207, 12)";
+    }
 }
 
 //SEKCJA ODPOWIEDZIALNA ZA WYŁĄCZENIE PLANSZY
@@ -69,19 +93,22 @@ function WlaczPlansze(plansza){ // funkcja WlaczPlansze posiadajaca wartosc z po
 }
 //SEKCJA ODPOWIEDZIALNA ZA WYBÓR GRACZA 
 
-function WyborKolko(){ // pozwala wybrac pierwszego gracza jako kolko
+function WyborKolko(){ //
+// wygrana(PolaKolka); pozwala wybrac pierwszego gracza jako kolko
     gracz="kolko";
     WyborGraczaKolko.disabled=true;
     WyborGraczaKrzyzyk.disabled=true;
     Test(gracz);
     WlaczPlansze(plansza);
+    KolorPlanszy(0);
 }
 function WyborKrzyzyk(){ // pozwala wybrac pierwszego gracza jako krzyzyk
     gracz="krzyzyk";
-    WyborGraczaKrzyzyk.disabled=true;
     WyborGraczaKolko.disabled=true;
+    WyborGraczaKrzyzyk.disabled=true;
     Test(gracz);
     WlaczPlansze(plansza);
+    KolorPlanszy(0);
 }
 function Test(gracz){
     alert(gracz);
@@ -91,112 +118,156 @@ let PolaKolka =[];
 let PolaKrzyzyka =[];
 //SEKCJA ODPOWIEDZIALNA ZA PRZEBIEG GRY
 function WykonajRuch1(){ //                                 PIERWSZY RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-1);
         przycisk1.disabled=true;
+        przycisk1.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(1);
         przycisk1.disabled=true;
+        przycisk1.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch2(){ //                                 DRUGI RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-2);
         przycisk2.disabled=true;
+        przycisk2.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(2);
         przycisk2.disabled=true;
+        przycisk2.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
-        
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch3(){ //                                 TRZECI RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-3);
         przycisk3.disabled=true;
+        przycisk3.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(3);
         przycisk3.disabled=true;
+        przycisk3.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch4(){ //                                 CZWARTY RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-4);
         przycisk4.disabled=true;
+        przycisk4.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(4);
         przycisk4.disabled=true;
+        przycisk4.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch5(){ //                                 PIATY RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-5);
         przycisk5.disabled=true;
+        przycisk5.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(5);
         przycisk5.disabled=true;
+        przycisk5.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch6(){ //                                 SZOSTY RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-6);
         przycisk6.disabled=true;
+        przycisk6.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(6);
         przycisk6.disabled=true;
+        przycisk6.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch7(){ //                                 SIODMY RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-7);
         przycisk7.disabled=true;
+        przycisk7.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(7);
         przycisk7.disabled=true;
+        przycisk7.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch8(){ //                                 OSMY RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-8);
         przycisk8.disabled=true;
+        przycisk8.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(8);
         przycisk8.disabled=true;
+        przycisk8.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function WykonajRuch9(){ //                                 DZIEWIATY RUCH
-    if(gracz="kolko"){
+    if(gracz=="kolko"){
         PolaKolka.push(-9);
         przycisk9.disabled=true;
+        przycisk9.style.backgroundColor="blue";
         TestPolKolka(PolaKolka);
         wygrana(PolaKolka);
+        gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(9);
         przycisk9.disabled=true;
+        przycisk9.style.backgroundColor="red";
         TestPolKrzyzyka(PolaKrzyzyka);
+        wygrana(PolaKolka);
+        gracz="kolko";
     }
 }
 function TestPolKolka(){
@@ -206,8 +277,27 @@ function TestPolKrzyzyka(){
     alert(PolaKrzyzyka);
 }// SPRAWDZANIE WYGRANEJ
 function wygrana(){
-    if(PolaKolka.includes(-1) && PolaKolka.includes(-2) && PolaKolka.includes(-3)){
+    if( (PolaKolka.includes(-1) && PolaKolka.includes(-2) && PolaKolka.includes(-3)) ||
+        (PolaKolka.includes(-1) && PolaKolka.includes(-4) && PolaKolka.includes(-7)) ||
+        (PolaKolka.includes(-1) && PolaKolka.includes(-5) && PolaKolka.includes(-9)) ||
+        (PolaKolka.includes(-2) && PolaKolka.includes(-5) && PolaKolka.includes(-8)) ||
+        (PolaKolka.includes(-3) && PolaKolka.includes(-6) && PolaKolka.includes(-9)) ||
+        (PolaKolka.includes(-3) && PolaKolka.includes(-5) && PolaKolka.includes(-7)) ||
+        (PolaKolka.includes(-4) && PolaKolka.includes(-5) && PolaKolka.includes(-6)) ||
+        (PolaKolka.includes(-7) && PolaKolka.includes(-8) && PolaKolka.includes(-9))){     
         alert("Wygrana dla kółka");
         reset();
-    }
+    }else{
+    if( (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(2) && PolaKrzyzyka.includes(3)) ||
+        (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(7)) ||
+        (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(9)) ||
+        (PolaKrzyzyka.includes(2) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(8)) ||
+        (PolaKrzyzyka.includes(3) && PolaKrzyzyka.includes(6) && PolaKrzyzyka.includes(9)) ||
+        (PolaKrzyzyka.includes(3) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(7)) ||
+        (PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(5) && PolaKrzyzyka.includes(6)) ||
+        (PolaKrzyzyka.includes(7) && PolaKrzyzyka.includes(8) && PolaKrzyzyka.includes(9))){
+            alert("Wygrana dla krzyzyka");
+            reset();
+        } 
+    }   
 }

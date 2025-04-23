@@ -56,7 +56,7 @@ a:hover{
         box-shadow: 0 4px 8px rgb(0, 0, 0, 0.6);
         border: none;
     } 
-    button{
+    .gracze button{
         display: flex;
         
         padding: 40px;
@@ -64,9 +64,21 @@ a:hover{
         border-radius: 19px;
         cursor: pointer;
     }
-    button:disabled{
+    .gracze button:disabled{
         cursor:not-allowed;
         background-color: rgb(255, 0, 0);
+    }
+    .gra button{
+        display: flex;
+        
+        padding: 40px;
+        background-color: rgb(12, 207, 12);
+        border-radius: 19px;
+        cursor: pointer;
+    }
+    .gra button:disabled{
+        cursor:not-allowed;
+        background-color: red;
     }
     #plansza{
         margin: 20px auto;
@@ -88,7 +100,6 @@ a:hover{
         cursor: pointer;
         margin-left: 250px;
     }
-    
     </style>
 </head>
 <body>
@@ -98,13 +109,13 @@ a:hover{
 </header>
     <div id="plansza">
     <table>            
-        <tr>
+        <tr class="gracze">
             <th><button id="GraczKolko" onclick="WyborKolko()">KÓŁKO</button></th>
             <th><button id="GraczKrzyzyk" onclick="WyborKrzyzyk()">KRZYŻYK</button></th>
         </tr>
     </table>    
-    <table>
-        <thead>
+    <table class="gra" id="granie">
+        <thead >
             <tr>
                 <th><button id="przycisk1" onclick="WykonajRuch1()">1</button></th>
                 <th><button id="przycisk2" onclick="WykonajRuch2()">2</button></th>
