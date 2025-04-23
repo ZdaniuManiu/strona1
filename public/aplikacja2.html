@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <style>
+        a{
+    font-weight:normal;
+    font-size: 25px;
+    float: left;
+    margin-top: 0rem;
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(92, 255, 151);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 25px 55px 25px 55px;  
+    transition: 0.4s;
+}
+a:hover{
+    background-color: rgb(83, 187, 174);
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.567) 5px 5px 10px;
+}
+        body{
+            background-color: rgb(0, 170, 255);
+        }
+    table { /* ustawianie stylu dla tabeli */
+      /* w tym przypadku poszerza obszar tabeli o 20 pikseli w dół oraz automatycznie ją środkuje  */ /* powoduje że tabela bedzie rozciągnieta po całości elementu */
+     border-collapse:collapse; /* usuwa przestrzenie między komórkami*/
+     border: 2px solid black;
+    }
+    h1{
+        margin-top: 0px;
+    }
+    th, td { /* ustawia styl dla nagłówków i komórek w tabeli */
+     border: 1px solid #ddd; /* dodaje obramowania do tabeli */
+     padding: 90px; /* dodaje 15pikseli z każdej strony (gora dol prawo lewo) dla komórek powodując że są one wieksze */
+     text-align: center; /*środkuje tekst*/
+    }
+
+    td,th{
+    color: white;
+    font-size: 40px;
+    font-weight: bolder ;
+     background-color:rgb(68, 63, 63) ; /* ustawia kolor tła dla komórek w tabeli */
+
+    }
+    
+    hr{ 
+        padding-bottom: 20px;
+        background-color: rgb(0, 252, 13);
+        box-shadow: 0 4px 8px rgb(0, 0, 0, 0.6);
+        border: none;
+    } 
+    button{
+        display: flex;
+        
+        padding: 40px;
+        background-color: rgb(65, 194, 192);
+        border-radius: 19px;
+        cursor: pointer;
+    }
+    button:disabled{
+        cursor:not-allowed
+    }
+    #plansza{
+        margin: 20px auto;
+        justify-items: center;
+    }
+    #kolko1 th{
+        width: 50%;
+    }
+    header{
+        justify-content:left;
+        display: inline;
+
+    }
+    .reset1{
+        display: block;
+        padding: 40px;
+        background-color: rgb(65, 194, 192);
+        border-radius: 19px;
+        cursor: pointer;
+        margin-left: 250px;
+    }
+    
+    </style>
+</head>
+<body>
+    <header>
+    <a href="aplikacje.html">Powrót</a>
+    <button class="reset1" id="reset" onclick="reset()">RESET</button>
+</header>
+    <div id="plansza">
+    <table>            
+        <tr>
+            <th><button id="GraczKolko" onclick="WyborKolko()">KÓŁKO</button></th>
+            <th><button id="GraczKrzyzyk" onclick="WyborKrzyzyk()">KRZYŻYK</button></th>
+        </tr>
+    </table>    
+    <table>
+        <thead>
+            <tr>
+                <th><button id="przycisk1" onclick="WykonajRuch1()">1</button></th>
+                <th><button id="przycisk2" onclick="WykonajRuch2()">2</button></th>
+                <th><button id="przycisk3" onclick="WykonajRuch3()">3</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><button id="przycisk4" onclick="WykonajRuch4()">4</button></th>
+                <td><button id="przycisk5" onclick="WykonajRuch5()">5</button></td>
+                <td><button id="przycisk6" onclick="WykonajRuch6()">6</button></td>
+            </tr>
+            <tr>
+                <th><button id="przycisk7" onclick="WykonajRuch7()">7</button></th>
+                <td><button id="przycisk8" onclick="WykonajRuch8()">8</button></td>
+                <td><button id="przycisk9" onclick="WykonajRuch9()">9</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
