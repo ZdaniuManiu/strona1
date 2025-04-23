@@ -140,7 +140,7 @@ function WykonajRuch1(){ //                                 PIERWSZY RUCH
         PolaKolka.push(-1);
         przycisk1.disabled=true;
         przycisk1.style.backgroundImage="url(kolko.jpg)";
-        przycisk1.style.backgroundSize="cover";
+        przycisk1.style.backgroundSize="110% 108%";
         przycisk1.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -149,7 +149,7 @@ function WykonajRuch1(){ //                                 PIERWSZY RUCH
         PolaKrzyzyka.push(1);
         przycisk1.disabled=true;
         przycisk1.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk1.style.backgroundSize="cover";
+        przycisk1.style.backgroundSize="110% 108%";
         przycisk1.style.backgroundPosition="center";
         gracz="kolko";
         wygrana(PolaKolka);
@@ -161,7 +161,7 @@ function WykonajRuch2(){ //                                 DRUGI RUCH
         PolaKolka.push(-2);
         przycisk2.disabled=true;
         przycisk2.style.backgroundImage="url(kolko.jpg)";
-        przycisk2.style.backgroundSize="cover";
+        przycisk2.style.backgroundSize="110% 108%";
         przycisk2.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -170,7 +170,7 @@ function WykonajRuch2(){ //                                 DRUGI RUCH
         PolaKrzyzyka.push(2);
         przycisk2.disabled=true;
         przycisk2.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk2.style.backgroundSize="cover";
+        przycisk2.style.backgroundSize="110% 108%";
         przycisk2.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -182,7 +182,7 @@ function WykonajRuch3(){ //                                 TRZECI RUCH
         PolaKolka.push(-3);
         przycisk3.disabled=true;
         przycisk3.style.backgroundImage="url(kolko.jpg)";
-        przycisk3.style.backgroundSize="cover";
+        przycisk3.style.backgroundSize="110% 108%";
         przycisk3.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -191,7 +191,7 @@ function WykonajRuch3(){ //                                 TRZECI RUCH
         PolaKrzyzyka.push(3);
         przycisk3.disabled=true;
         przycisk3.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk3.style.backgroundSize="cover";
+        przycisk3.style.backgroundSize="110% 108%";
         przycisk3.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -203,7 +203,7 @@ function WykonajRuch4(){ //                                 CZWARTY RUCH
         PolaKolka.push(-4);
         przycisk4.disabled=true;
         przycisk4.style.backgroundImage="url(kolko.jpg)";
-        przycisk4.style.backgroundSize="cover";
+        przycisk4.style.backgroundSize="110% 108%";
         przycisk4.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -212,7 +212,7 @@ function WykonajRuch4(){ //                                 CZWARTY RUCH
         PolaKrzyzyka.push(4);
         przycisk4.disabled=true;
         przycisk4.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk4.style.backgroundSize="cover";
+        przycisk4.style.backgroundSize="110% 108%";
         przycisk4.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -224,7 +224,7 @@ function WykonajRuch5(){ //                                 PIATY RUCH
         PolaKolka.push(-5);
         przycisk5.disabled=true;
         przycisk5.style.backgroundImage="url(kolko.jpg)";
-        przycisk5.style.backgroundSize="cover";
+        przycisk5.style.backgroundSize="110% 108%";
         przycisk5.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -233,7 +233,7 @@ function WykonajRuch5(){ //                                 PIATY RUCH
         PolaKrzyzyka.push(5);
         przycisk5.disabled=true;
         przycisk5.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk5.style.backgroundSize="cover";
+        przycisk5.style.backgroundSize="110% 108%";
         przycisk5.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -245,7 +245,7 @@ function WykonajRuch6(){ //                                 SZOSTY RUCH
         PolaKolka.push(-6);
         przycisk6.disabled=true;
         przycisk6.style.backgroundImage="url(kolko.jpg)";
-        przycisk6.style.backgroundSize="cover";
+        przycisk6.style.backgroundSize="110% 108%";
         przycisk6.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -254,7 +254,7 @@ function WykonajRuch6(){ //                                 SZOSTY RUCH
         PolaKrzyzyka.push(6);
         przycisk6.disabled=true;
         przycisk6.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk6.style.backgroundSize="cover";
+        przycisk6.style.backgroundSize="110% 108%";
         przycisk6.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -266,7 +266,7 @@ function WykonajRuch7(){ //                                 SIODMY RUCH
         PolaKolka.push(-7);
         przycisk7.disabled=true;
         przycisk7.style.backgroundImage="url(kolko.jpg)";
-        przycisk7.style.backgroundSize="cover";
+        przycisk7.style.backgroundSize="110% 108%";
         przycisk7.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -275,7 +275,7 @@ function WykonajRuch7(){ //                                 SIODMY RUCH
         PolaKrzyzyka.push(7);
         przycisk7.disabled=true;
         przycisk7.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk7.style.backgroundSize="cover";
+        przycisk7.style.backgroundSize="110% 108%";
         przycisk7.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -287,7 +287,7 @@ function WykonajRuch8(){ //                                 OSMY RUCH
         PolaKolka.push(-8);
         przycisk8.disabled=true;
         przycisk8.style.backgroundImage="url(kolko.jpg)";
-        przycisk8.style.backgroundSize="cover";
+        przycisk8.style.backgroundSize="110% 108%";
         przycisk8.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -296,7 +296,7 @@ function WykonajRuch8(){ //                                 OSMY RUCH
         PolaKrzyzyka.push(8);
         przycisk8.disabled=true;
         przycisk8.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk8.style.backgroundSize="cover";
+        przycisk8.style.backgroundSize="110% 108%";
         przycisk8.style.backgroundPosition="center";
         
         wygrana(PolaKolka);
@@ -308,17 +308,18 @@ function WykonajRuch9(){ //                                 DZIEWIATY RUCH
         PolaKolka.push(-9);
         przycisk9.disabled=true;
         przycisk9.style.backgroundImage="url(kolko.jpg)";
-        przycisk9.style.backgroundSize="cover";
+        przycisk9.style.backgroundSize="110% 108%";
         przycisk9.style.backgroundPosition="center";
-        
+        przycisk9.style.backgroundRepeat="no-repeat";
         wygrana(PolaKolka);
         gracz="krzyzyk";
     }else{
         PolaKrzyzyka.push(9);
         przycisk9.disabled=true;
         przycisk9.style.backgroundImage="url(krzyzyk.jpg)";
-        przycisk9.style.backgroundSize="cover";
+        przycisk9.style.backgroundSize="110% 108%";
         przycisk9.style.backgroundPosition="center";
+        przycisk9.style.backgroundRepeat="no-repeat";
         
         wygrana(PolaKolka);
         gracz="kolko";
@@ -340,7 +341,7 @@ function wygrana(){
         (PolaKolka.includes(-4) && PolaKolka.includes(-5) && PolaKolka.includes(-6)) ||
         (PolaKolka.includes(-7) && PolaKolka.includes(-8) && PolaKolka.includes(-9))){     
         
-            setTimeout(()=> {alert("Wygrana dla krzyżyka");reset();},1000);
+            setTimeout(()=> {alert("Wygrana dla kółka");reset();},1000);
     }else{
     if( (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(2) && PolaKrzyzyka.includes(3)) ||
         (PolaKrzyzyka.includes(1) && PolaKrzyzyka.includes(4) && PolaKrzyzyka.includes(7)) ||
