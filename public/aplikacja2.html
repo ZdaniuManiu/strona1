@@ -101,6 +101,13 @@ a:hover{
         cursor: pointer;
         margin-left: 250px;
     }
+    .page-div{
+        justify-items: center;
+        text-align: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: 150px;
+    }
     </style>
 </head>
 <body>
@@ -109,12 +116,14 @@ a:hover{
     <button class="reset1" id="reset" onclick="reset()">RESET</button>
 </header>
     <div id="plansza">
-    <table>            
-        <tr class="gracze">
-            <th><button id="GraczKolko" onclick="WyborKolko()">KÓŁKO</button></th>
-            <th><button id="GraczKrzyzyk" onclick="WyborKrzyzyk()">KRZYŻYK</button></th>
-        </tr>
-    </table>    
+        <div class="page-div">
+        <table>            
+            <tr class="gracze">
+                <th><button id="GraczKolko" onclick="WyborKolko()">KÓŁKO</button></th>
+                <th><button id="GraczKrzyzyk" onclick="WyborKrzyzyk()">KRZYŻYK</button></th>
+            </tr>
+        </table>
+        </div>    
     <table class="gra" id="granie">
         <thead >
             <tr>
