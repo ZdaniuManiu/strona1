@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Plan lekcji</title>
+  
+  <style>
+    body {
+      width: 99%;
+      height: 100vh;
+    }
+    .div-planu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .div-planu table, td, th {
+    border-collapse: collapse;
+    border: 2px solid black;
+    text-align: center;
+    }
+    .div-planu th {
+      font-size: 18px;
+      padding: 0 1vw;
+      width: 7vw;
+      min-width: 100px;
+      background-color: rgb(78, 190, 203);
+      border-right: 3px solid black;
+    }
+    .div-planu td{
+      background-color: rgb(215, 209, 209);
+      max-height: 20px;
+      font-size: 15px;
+    }
+    .div-planu select{
+      text-align: center;
+        justify-self: center;
+        width: 90% ;
+        font-size: 10px;
+        padding: 8px;
+        margin: 10px;
+    }
+    p{
+      display: block;
+    }
+    select{
+      display: none;
+    }
+    #p1{
+      display: none;
+    }
+    .div-zmiany{
+        position: absolute;
+        top: 50px;
+    }
+    .dni{
+      border-bottom: 5px solid black;
+      border-right: unset;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="div-planu">
+    <div>
+    <table id="plan-lekcji">
+      <thead>
+        <tr class="dni">
+            <th>Godziny Lekcyjne</th>
+            <th>Poniedziałek</th>
+            <th>Wtorek</th>
+            <th>Środa</th>
+            <th>Czwartek</th>
+            <th>Piątek</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+    <div><p id="p1" style="display: block;"></p></div>
+    <div class="div-zmiany">
+        <button id="zmianaplanu" onclick="zmienplan()"> Zmien Plan lekcji</button>
+    </div>
+  </div>
+  <script>
+    const godziny = ["8:00 - 8:45","8:50 - 9:35","9:40 - 10:25","10:35 - 11:20","11:25 - 12:10","12:15 - 13:00","13:05 - 13:50","13:55 - 14:40"]//CONST
+    const przedmioty = ["-- Wybór Lekcji --", "Matematyka", "Polski","Biologia","Angielski","Informatyka","Chemia","Wychowanie Fizyczne","Geografia","Historia","Projektowanie Stron Internetowych"];//CONST
+    const dniTygodnia = 5;//CONST
+    const tbody = document.querySelector("#plan-lekcji tbody");//CONST
+for (let i = 0; i < godziny.length; i++) { // liczy ilosc wartosci w godziny, czyli 8, dodaje komórki z godzina[i- to odpowiednia kazdej kolejnej wartosci wraz z kolejnmi komorkami]
+      const tr = document.createElement("tr");
+      const thGodzina = document.createElement("th");
+      thGodzina.textContent = godziny[i];
+      tr.appendChild(thGodzina); // dodaje komorki do strony
+
+      for (let j = 0; j < dniTygodnia; j++) { // dodaje selecty z idkami do komórek zgodnie z ilosci dni w tygodniu
+        const td = document.createElement("td");
+        const select = document.createElement("select");
+        const lekcja = document.createElement("p")
+        select.name = `lekcja${i + 1}_dzien${j + 1}`;
+        lekcja.id = `wybrana-lekcja${i + 1}_dzien${j + 1}`
+        lekcja.textContent = ""
+
+        przedmioty.forEach((nazwa, index) => { //dla kazdego przedmiotu do wyboru z tablicy przedmioty dodaje index, matematyka = 1, itd..
+          const opcja = document.createElement("option");
+          opcja.textContent  = nazwa; // wartosc komorki to jeden przedmiot czyli jedna wartosc nazwa 
+          opcja.value = index; // to samo tylko z indexem
+          select.appendChild(opcja); // dodaje opcje do selecta
+          if (index === 0){ // jezeli index =0 czyli opcja 1sza czyli domyslne -- wybierz lekcje -- to go wylacza i wybiera  
+            opcja.disabled = true;
+            opcja.selected = true;
+          }
+          select.appendChild(opcja) // dodaje sa opcje do selecta
+        });
+       
+        td.appendChild(lekcja);
+        td.appendChild(select);
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+
+    const p1 = document.getElementById("p1"); //CONST
+    const p2 = document.querySelectorAll("p");//CONST
+    const selected = document.querySelectorAll("select");//CONST
+
+
+function zmienplan(){
+    if(p1.style.display == "block"){
+      PokazPlan(1);
+    }else{
+      PokazPlan(0);
+  }
+}
+
+function PokazPlan(stan){
+    if (stan == 1){
+      selected.forEach(select => {select.style.display="block";}); // POKAZUJE WYBOR
+      p2.forEach(p => {p.style.display="none";});
+      p1.style.display="none";   
+    }else{
+      p2.forEach(p => {p.style.display="block";});
+      selected.forEach(select => {select.style.display="none"}); // CHOWA WYBOR
+      p1.style.display="block";
+  }
+};
+
+  const opcja = document.querySelectorAll('select');
+
+opcja.forEach(select => {
+  select.addEventListener("change", () => { 
+    const WybranaOpcja = select.options[select.selectedIndex];
+    const WybranyPrzedmiot = WybranaOpcja.textContent;
+    const WartoscOpcji = WybranaOpcja.value;
+    if(WartoscOpcji != 0){
+      const IdSelecta = select.name;
+      const IdParagrafu = "wybrana-" + IdSelecta;
+      const Paragraf = document.getElementById(IdParagrafu);
+
+      Paragraf.textContent=WybranyPrzedmiot;
+    }
+  });
+});
+
+
+  </script>
+</body>
+</html>
+
+th - NAGŁÓWEK W TABELI
+tr - WIERSZ
+td - KOMÓRKA
