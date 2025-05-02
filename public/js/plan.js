@@ -8,7 +8,7 @@ for (let i = 0; i < godziny.length; i++) { // liczy ilosc wartosci w godziny, cz
   const tr = document.createElement("tr");
   const thGodzina = document.createElement("th");
 
-  thGodzina.id = `godzina${i+1}` // Kazda godzina ma swoje id 
+  thGodzina.id = `godzina${i+1}`; // Kazda godzina ma swoje id 
   
   thGodzina.textContent = godziny[i];//Wpisuje godziny w komorki
   tr.appendChild(thGodzina); // dodaje komorki do strony
@@ -19,7 +19,7 @@ for (let i = 0; i < godziny.length; i++) { // liczy ilosc wartosci w godziny, cz
     const lekcja = document.createElement("p")
 
 
-    select.name = `lekcja${i + 1}_dzien${j + 1}`; /. // kazdy //select ma swoja nazwe
+    select.name = `lekcja${i + 1}_dzien${j + 1}`;  // kazdy //select ma swoja nazwe
     lekcja.id = `wybrana-lekcja${i + 1}_dzien${j + 1}`;  //kazda lekcja ma swoja nazwe
     lekcja.textContent = ""; // kazda lekcja jest poczatkowo pusta
 
@@ -85,4 +85,3 @@ if(WartoscOpcji != 0){
 }
 });
 });
-

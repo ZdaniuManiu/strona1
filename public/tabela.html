@@ -56,6 +56,23 @@
       border-bottom: 5px solid black;
       border-right: unset;
     }
+        /* Ukryj domyślny element input */
+    input[type="file"] {
+        display: none;
+    }
+    
+    /* Stylizuj niestandardowy przycisk */
+    .custom-file-upload label {
+        display: flex;
+        width: 88px ;
+        position: absolute;
+        top: 60%;
+      z-index: 1000;
+        color: transparent;
+        cursor: pointer;
+        font-size: 14px;
+        text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -79,6 +96,7 @@
     <div><p id="p1" style="display: block;"></p></div>
     <div class="div-zmiany">
         <button id="zmianaplanu" onclick="zmienplan()"> Zmien Plan lekcji</button>
+          </div>
     </div>
   </div>
   <script src="js/plan.js"></script>
