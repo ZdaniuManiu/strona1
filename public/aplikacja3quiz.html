@@ -36,27 +36,12 @@
             border-radius: 20px;
         }
 
-        .confirm-btn-container button:hover {
-            background-color: rgb(0, 244, 102);
-        }
-
-        .deny-btn-container button:hover {
-            background-color: red;
-            color: white;
-        }
-
         .quiz-container {
             display: none;
             margin-top: 50px;
             justify-content: center;
             height: 40vh;
             width: 600px;
-            flex-wrap: wrap;
-        }
-
-        .menu-header {
-            display: flex;
-            width: inherit;
             flex-wrap: wrap;
         }
 
@@ -97,6 +82,17 @@
             margin-bottom: 20px;
         }
 
+        .option input::selection {
+            color: blue;
+            size: 20px;
+        }
+
+        input[type="radio"]:checked {
+           color: white;
+        }
+        .option label:hover{
+            background-color: rgb(120, 194, 210);
+        }
         .option label {
             display: flex;
             width: fit-content;
@@ -121,20 +117,6 @@
             font-size: large;
         }
 
-        .show-bnt-container {
-            display: block;
-        }
-
-        #confirm-btn {
-            left: 52.5%;
-            top: 6%;
-        }
-
-        #deny-btn {
-            left: 49%;
-            top: 6%;
-        }
-
         #next-btn {
             display: inline-flex;
         }
@@ -143,7 +125,8 @@
             display: none;
             margin: 20%;
         }
-        #check-btn{
+
+        #check-btn {
             display: none;
         }
     </style>
@@ -202,7 +185,7 @@
             </div>
         </div>
     </div>
-    <h1 class="score" id="score">TWÓJ WYNIK TO:</h1>
+    <h1 class="score" id="score">TWÓJ WYNIK TO: </h1>
     <script>
         const pytania = [{
             pytanie: "Co oznacza skrót HTML?",
@@ -222,20 +205,12 @@
         },
 
         ];
-
-
-
-
         const $ = document.getElementById.bind(document);
         const next = $("next-btn");
         const start = $("start-btn")
         const quiz = $("quiz-container")
         const wynik = $("score")
         const sprawdz = $("check-btn")
-
-
-        //let wybranaOpcja = document.querySelector('input[name="wybor"]:checked');
-
         let i = 1 // "PYTANIE NR.1,2,3,4"
         let score = 0
         let j = 0 // NUMER PYTANIA
@@ -244,12 +219,19 @@
 
         start.addEventListener('click', function () {
 
-
-            start.textContent = "Rozpocznij quiz"
-            next.textContent = "Kolejne pytanie"
             start.disabled = true
+            start.style.cursor = "not-allowed"
+            start.textContent = "Rozpocznij quiz"
+
+            next.textContent = "Kolejne pytanie"
+            next.style.display = 'inline-flex'
+
+            sprawdz.style.display = 'none'
             quiz.style.display = 'flex'
             wynik.style.display = 'none'
+
+
+
             for (ii = 0; ii < 4; ii++) {
                 document.getElementById("answer" + ii).textContent = pytania[0].answer[ii];
             }
@@ -261,48 +243,57 @@
 
 
         next.addEventListener('click', function pytanie() {
-            console.log("i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
-            i++
-            j++
-            const zaznaczone = document.querySelector('input[name="wybor"]:checked');
-            if (zaznaczone) {
 
+            const zaznaczone = document.querySelector('input[name="wybor"]:checked');
+
+            if (zaznaczone) {
+                console.log("i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
+                i++
+                j++
                 const wybranaOdp = parseInt(zaznaczone.value);
                 if (wybranaOdp === pytania[j - 1].correct) {
                     score++;
                 }
-            }
-            if (k < pytania.length) {
-                document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i
-                document.getElementById("pytanie").textContent = pytania[0 + j].pytanie;
 
-                for (ii = 0; ii < 4; ii++) {
-                    document.getElementById("answer" + ii).textContent = pytania[0 + j].answer[ii];
-                }
-                ii = 0
-                k++
-                console.log("i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
+                if (k < pytania.length) {
+                    document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i
+                    document.getElementById("pytanie").textContent = pytania[0 + j].pytanie;
 
-                if (k == pytania.length) {
-                    next.textContent = "Zakończ QUIZ"
+                    for (ii = 0; ii < 4; ii++) {
+                        document.getElementById("answer" + ii).textContent = pytania[0 + j].answer[ii];
+                        document.getElementById("wybor" + (ii + 1)).checked = false
+                    }
+
+                    ii = 0
+                    k++
+                    console.log("i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
+
+                    if (k == pytania.length) {
+                        next.textContent = "Zakończ QUIZ"
+                    }
+                } else {
+                    start.textContent = "Powtórz quiz"
+                    start.style.cursor = "pointer"
+                    start.disabled = false
+
+                    wynik.style.display = 'block'
+                    wynik.textContent = "Twój wynik to: " + score + "/" + pytania.length;
+
+
+                    quiz.style.display = 'none'
+                    next.style.display = 'none'
+                    sprawdz.style.display = 'flex'
+                    k = 1
+                    i = 1
+                    j = 0
+                    ii = 0
+                    score = 0
                 }
             } else {
-                quiz.style.display = 'none'
-                next.style.display = 'none'
-                start.textContent = "Powtórz quiz"
-                sprawdz.style.display = 'flex'
-                start.disabled = false
-                wynik.style.display = 'block'
-                wynik.textContent = "Twój wynik to:" + score + "/" + pytania.length;
-                k = 1
-                i = 1
-                j = 0
-                ii = 0
-                score = 0
+                alert("Wybierz odpowiedz!")
+                return;
             }
         });
-
-
     </script>
 </body>
 
