@@ -173,17 +173,26 @@
                 left: 80%;
                 top: 2%;
                 /*transform: translate(-80%,10%);*/
-                float: right;
+
             }
             #poprzednia-odp{
                 position: absolute;
-                left: 10%;
+                left: 16%;
                 top: 2%;
                 /*transform: translate(-80%,10%);*/
                 width: 100px;
             }
         }
-
+        @media(min-width:1080px){
+            #wyswietl-odp{
+                position: absolute;
+                left: 68%;
+            }
+            #poprzednia-odp{
+                position: absolute;
+                left: 36.5%;
+            }
+        }
         @media (prefers-color-scheme: light) {
             #next-btn {
                 background-color: white;
@@ -211,7 +220,7 @@
         <button id="start-btn">Rozpocznij quiz</button>
         <button id="repeat-btn" hidden> Powtórz quiz</button>
         <button id="wyswietl-odp" hidden>Sprawdź odpowiedzi</button>
-        <button id="poprzednia-odp" style="left: 36.5%" hidden>Zobacz poprzednia odpowiedz</button>
+        <button id="poprzednia-odp" hidden>Zobacz poprzednia odpowiedz</button>
     </div>
     <div class="quiz-container" id="quiz-container">
         <div class="hide-quiz-container" id="hide-quiz-container">
@@ -346,7 +355,7 @@
                     wyniki.push(wybranaOdp)
                     odpowiedzPytanie.push(j - 1)
                 }
-                for (let iv = 1; iv < (pytania.length + 1); iv++) {                             // usuwanie zaznaczonych opcji z poprzedniego pytania
+                for (let iv = 1; iv < (pytania.length + 2); iv++) {                             // usuwanie zaznaczonych opcji z poprzedniego pytania
                     document.getElementById("wybor" + iv).checked = false
                 }
                 if (k < pytania.length) { // jezeli k jest krotsze od ilosci pytan 
@@ -368,7 +377,7 @@
                     start.style.cursor = "pointer"
                     start.disabled = false
                     start.hidden = true
-
+                    wyswietlOdp.textContent='Sprawdź odpowiedzi'
                     wynik.style.display = 'block'
                     wynik.textContent = "Twój wynik to: " + score + "/" + pytania.length;
 
@@ -401,9 +410,8 @@
             repeatTest.hidden = false
             poprzedniaOdp.hidden = false
             poprzedniaOdp.disabled = true
-            wyswietlOdp.textContent = "Zobacz następna ddpowiedź"
-            wyswietlOdp.style.left = " 80%"
-            poprzedniaOdp.style.left= '16%'
+            wyswietlOdp.textContent = "Zobacz następna odpowiedź"
+
             quiz.style.display = "flex" // pokazuje quiz
             wynik.style.display = 'none' // chowa wynik
             i++ // ustawia na pytanie nr 2 do naprawienia w kodzie
