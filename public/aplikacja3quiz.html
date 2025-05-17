@@ -32,7 +32,7 @@
 
         .start-btn-container button:hover {
             background-color: rgb(0, 244, 102);
-            border-radius: 20px;
+            border-radius: 10px;
         }
 
         .start-btn-container button:hover:disabled {
@@ -135,7 +135,7 @@
 
         @media (max-width:1000px) {
             body {
-                
+
                 width: 80%;
             }
 
@@ -146,9 +146,11 @@
                 margin-left: 15px;
                 font-size: large;
             }
-            .hide-quiz-container{
+
+            .hide-quiz-container {
                 width: 300px;
             }
+
             .start-btn-container button:hover {
                 background-color: grey;
                 border-radius: 5px;
@@ -188,55 +190,57 @@
 <body>
     <div class="start-btn-container">
         <button id="start-btn">Rozpocznij quiz</button>
-        <!-- <button id="wyswietl-odp" style="left: 64%;">Sprawdź odpowiedzi</button>-->
+        <button id="repeat-btn" hidden> Powtórz quiz</button>
+        <button id="wyswietl-odp" style="left: 64%;" hidden>Sprawdź odpowiedzi</button>
+        <button id="poprzednia-odp" style="left: 36.5%" hidden>Zobacz poprzednia odpowiedz</button>
     </div>
     <div class="quiz-container" id="quiz-container">
         <div class="hide-quiz-container" id="hide-quiz-container">
             <div class=" question-container">
-            <p id="nr-pytania"></p>
-            <p id="pytanie"></p>
-        </div>
+                <p id="nr-pytania"></p>
+                <p id="pytanie"></p>
+            </div>
 
-        <div class="input-container1">
-            <div class="input-container">
-                <div class="option">
+            <div class="input-container1">
+                <div class="input-container">
+                    <div class="option">
 
-                    <input name="wybor" type="radio" value="0" id="wybor1">
+                        <input name="wybor" type="radio" value="0" id="wybor1">
 
-                    <label for="wybor1" id="answer0"></label>
-
-
-                </div>
-                <div class="option">
-
-                    <input name="wybor" type="radio" value="1" id="wybor2">
-
-                    <label for="wybor2" id="answer1"></label>
+                        <label for="wybor1" id="answer0"></label>
 
 
-                </div>
-                <div class="option">
+                    </div>
+                    <div class="option">
 
-                    <input name="wybor" type="radio" value="2" id="wybor3">
+                        <input name="wybor" type="radio" value="1" id="wybor2">
 
-                    <label for="wybor3" id="answer2"></label>
+                        <label for="wybor2" id="answer1"></label>
 
 
-                </div>
-                <div class="option">
+                    </div>
+                    <div class="option">
 
-                    <input name="wybor" type="radio" value="3" id="wybor4">
+                        <input name="wybor" type="radio" value="2" id="wybor3">
 
-                    <label for="wybor4" id="answer3"></label>
+                        <label for="wybor3" id="answer2"></label>
+
+
+                    </div>
+                    <div class="option">
+
+                        <input name="wybor" type="radio" value="3" id="wybor4">
+
+                        <label for="wybor4" id="answer3"></label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="bottom-btn-container">
-        <div>
-            <button id="next-btn"> Kolejne pytanie</button>
+        <div class="bottom-btn-container">
+            <div>
+                <button id="next-btn"> Kolejne pytanie</button>
+            </div>
         </div>
-    </div>
     </div>
     <h1 class="score" id="score">TWÓJ WYNIK TO: </h1>
 
@@ -274,13 +278,15 @@
         const quiz = $("quiz-container")
         const wynik = $("score")
         const wyswietlOdp = $("wyswietl-odp")
+        const poprzedniaOdp = $("poprzednia-odp")
+        const repeatTest = $("repeat-btn")
         let i = 1 // "PYTANIE NR.1,2,3,4"
         let score = 0
         let j = 0 // NUMER PYTANIA
         let k = 1 // konczenie quizy
         let ii = 0 // pytania
 
-
+        console.log("i", i, "j", j, "k", k, "ii", ii)
         start.addEventListener('click', function () {
 
             start.disabled = true
@@ -291,6 +297,8 @@
             quiz.style.display = 'flex'
             wynik.style.display = 'none'
 
+            wyswietlOdp.hidden = true
+            poprzedniaOdp.hidden = true
 
 
             for (ii = 0; ii < 4; ii++) {
@@ -344,13 +352,15 @@
                     start.textContent = "Powtórz quiz"
                     start.style.cursor = "pointer"
                     start.disabled = false
+                    start.hidden = true
 
                     wynik.style.display = 'block'
                     wynik.textContent = "Twój wynik to: " + score + "/" + pytania.length;
 
                     quiz.style.display = 'none'
                     next.style.display = 'none'
-
+                    wyswietlOdp.hidden = false
+                    repeatTest.hidden = false
 
 
                     k = 1
@@ -359,6 +369,7 @@
                     ii = 0
                     iv = 0
                     score = 0
+                    console.log("KONIEC QUIZU START -", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
                 }
             } else {
                 alert("Wybierz odpowiedz!")
@@ -368,14 +379,64 @@
 
 
 
-       /* wyswietlOdp.addEventListener('click', function pytanie() {
-            k = 1
-            i = 1
-            j = 0
-            ii = 0
+        wyswietlOdp.addEventListener('click', function () {
+            /* i = 1 // "PYTANIE NR.1,2,3,4"
+             j = 0 // NUMER PYTANIA
+             k = 1 // konczenie quizy
+             ii = 0 // pytania*/
+            repeatTest.hidden = false
+            poprzedniaOdp.hidden = false
+            wyswietlOdp.textContent = "Zobacz następna ddpowiedź"
+            wyswietlOdp.style.left = " 64%"
+            quiz.style.display = "flex" // pokazuje quiz
+            wynik.style.display = 'none' // chowa wynik
 
+            console.log("START SPRAWDZANIA", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
+            k++
+            if (k <= (pytania.length + 1)) { // jezeli k jest krotsze od ilosci pytan (pytania.length = 3, k = 1)
+                i++ // ustawia na pytanie nr 2 do naprawienia w kodzie 
+                j++ // ustawia numer pytania w bazie na 1 (1,2,3) to przydałoby sie naprawić
+                document.getElementById("nr-pytania").textContent = "Pytanie nr. " + (i - 1) // ustawia numer pytania u gory
+                document.getElementById("pytanie").textContent = pytania[j - 1].pytanie; // wyswietla odpowiednie pytanie 
+                // DO TEJ PORY WSZYSTKO DZIAŁA
+                for (ii = 0; ii < pytania[j - 1].answer.length; ii++) { // jezeli ii jest krótsze od ilosci odpowiedzi - 1, to wtedy (\ pytania[i-1].answer.length)
+                    document.getElementById("answer" + ii).textContent = pytania[j - 1].answer[ii]; // wyswietla odpowiedzi z pytaniem o indexie J i odpowiedziami o indexie ii 
+                }
+
+                ii = 0
+
+                console.log("START SPRWDZANIA 2", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
+
+
+            } else {
+
+                next.style.display = 'flex'
+                next.textContent = "Zakończ QUIZ"
+                alert("ELSE KONIEC")
+                return;
+            }
+
+        });
+        repeatTest.addEventListener('click', function () {
+
+            start.hidden = false
+            start.disabled = true
+            start.textContent = "Rozpocznij quiz"
+            repeatTest.hidden = true
+
+            next.textContent = "Kolejne pytanie"
+            next.style.display = 'inline-flex'
             quiz.style.display = 'flex'
             wynik.style.display = 'none'
+
+            wyswietlOdp.hidden = true
+            poprzedniaOdp.hidden = true
+
+            i = 1 // "PYTANIE NR.1,2,3,4"
+            score = 0
+            j = 0 // NUMER PYTANIA
+            k = 1 // konczenie quizy
+            ii = 0 // pytania                
             for (ii = 0; ii < 4; ii++) {
                 document.getElementById("answer" + ii).textContent = pytania[0].answer[ii];
             }
@@ -383,27 +444,7 @@
             document.getElementById("pytanie").textContent = pytania[0 + j].pytanie;
             document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i
             ii = 0
-
-            console.log("i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
-            i++
-            j++
-
-
-            if (k < pytania.length) { // jezeli k jest krotsze od ilosci pytan 
-                document.getElementById("nr-pytania").textContent = "Pytanie nr. " + (i - 1 ) // ustawia numer pytania u gory
-                document.getElementById("pytanie").textContent = pytania[0 + j].pytanie; // wyswietla odpowiednie pytanie
-
-                for (ii = 0; ii < pytania[i - 1].answer.length; ii++) { // jezeli 
-                    document.getElementById("answer" + ii).textContent = pytania[0 + j].answer[ii];
-                }
-                k++
-                ii = 0
-
-            }
-
-        }
-        );*/
-
+        })
     </script>
 </body>
 
