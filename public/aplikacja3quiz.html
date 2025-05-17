@@ -54,6 +54,7 @@
             height: fit-content;
             width: inherit;
             margin-top: 10px;
+            
         }
 
         input {
@@ -132,13 +133,17 @@
             display: none;
             margin: 20%;
         }
+        #wyswietl-odp{
+             left: 80%;
+        }
 
-        @media (max-width:1000px) {
+        @media (max-width:600px) {
             body {
-
                 width: 80%;
             }
-
+            p{
+                margin-left: 15px;
+            }
             .quiz-container {
                 display: none;
                 width: 300px;
@@ -148,7 +153,7 @@
             }
 
             .hide-quiz-container {
-                width: 300px;
+                width: 400px;
             }
 
             .start-btn-container button:hover {
@@ -162,6 +167,20 @@
 
             .bottom-btn-container button:hover {
                 background-color: none;
+            }
+            #wyswietl-odp{
+                position: absolute;
+                left: 80%;
+                top: 2%;
+                /*transform: translate(-80%,10%);*/
+                float: right;
+            }
+            #poprzednia-odp{
+                position: absolute;
+                left: 10%;
+                top: 2%;
+                /*transform: translate(-80%,10%);*/
+                width: 100px;
             }
         }
 
@@ -191,7 +210,7 @@
     <div class="start-btn-container">
         <button id="start-btn">Rozpocznij quiz</button>
         <button id="repeat-btn" hidden> Powtórz quiz</button>
-        <button id="wyswietl-odp" style="left: 64%;" hidden>Sprawdź odpowiedzi</button>
+        <button id="wyswietl-odp" hidden>Sprawdź odpowiedzi</button>
         <button id="poprzednia-odp" style="left: 36.5%" hidden>Zobacz poprzednia odpowiedz</button>
     </div>
     <div class="quiz-container" id="quiz-container">
@@ -285,28 +304,25 @@
         let j = 0 // NUMER PYTANIA
         let k = 1 // konczenie quizy
         let ii = 0 // pytania
+        let l = 0 // kolorowanie 
+
 
         console.log("i", i, "j", j, "k", k, "ii", ii)
         start.addEventListener('click', function () {
 
             start.disabled = true
-            start.textContent = "Rozpocznij quiz"
-
-            next.textContent = "Kolejne pytanie"
             next.style.display = 'inline-flex'
             quiz.style.display = 'flex'
-            wynik.style.display = 'none'
 
             wyswietlOdp.hidden = true
             poprzedniaOdp.hidden = true
-
 
             for (ii = 0; ii < 4; ii++) {
                 document.getElementById("answer" + ii).textContent = pytania[0].answer[ii];
             }
 
             document.getElementById("pytanie").textContent = pytania[0 + j].pytanie;
-            document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i
+            document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i;
             ii = 0
         })
 
@@ -349,7 +365,6 @@
                         next.textContent = "Zakończ QUIZ"
                     }
                 } else {
-                    start.textContent = "Powtórz quiz"
                     start.style.cursor = "pointer"
                     start.disabled = false
                     start.hidden = true
@@ -361,7 +376,6 @@
                     next.style.display = 'none'
                     wyswietlOdp.hidden = false
                     repeatTest.hidden = false
-
 
                     k = 1
                     i = 1
@@ -386,64 +400,108 @@
              ii = 0 // pytania*/
             repeatTest.hidden = false
             poprzedniaOdp.hidden = false
+            poprzedniaOdp.disabled = true
             wyswietlOdp.textContent = "Zobacz następna ddpowiedź"
-            wyswietlOdp.style.left = " 64%"
+            wyswietlOdp.style.left = " 80%"
+            poprzedniaOdp.style.left= '16%'
             quiz.style.display = "flex" // pokazuje quiz
             wynik.style.display = 'none' // chowa wynik
-
+            i++ // ustawia na pytanie nr 2 do naprawienia w kodzie
+            j++ // ustawia numer pytania w bazie na 1 (1,2,3) to przydałoby sie naprawić
             console.log("START SPRAWDZANIA", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
             k++
-            if (k <= (pytania.length + 1)) { // jezeli k jest krotsze od ilosci pytan (pytania.length = 3, k = 1)
-                i++ // ustawia na pytanie nr 2 do naprawienia w kodzie 
-                j++ // ustawia numer pytania w bazie na 1 (1,2,3) to przydałoby sie naprawić
+            if (k <= (pytania.length + 1)) { // jezeli k jest krotsze od ilosci pytan (pytania.length = 3(4), k = 1)
+
                 document.getElementById("nr-pytania").textContent = "Pytanie nr. " + (i - 1) // ustawia numer pytania u gory
                 document.getElementById("pytanie").textContent = pytania[j - 1].pytanie; // wyswietla odpowiednie pytanie 
                 // DO TEJ PORY WSZYSTKO DZIAŁA
                 for (ii = 0; ii < pytania[j - 1].answer.length; ii++) { // jezeli ii jest krótsze od ilosci odpowiedzi - 1, to wtedy (\ pytania[i-1].answer.length)
                     document.getElementById("answer" + ii).textContent = pytania[j - 1].answer[ii]; // wyswietla odpowiedzi z pytaniem o indexie J i odpowiedziami o indexie ii 
+                    document.getElementById("wybor" + (ii + 1)).disabled = true
+                    document.getElementById("answer" + ii).style.backgroundColor = "red"
                 }
-
+                document.getElementById("answer" + pytania[j - 1].correct).style.backgroundColor = "green"
+                document.getElementById("answer" + wyniki[l]).style.backgroundColor = "orange"
+                if (document.getElementById("answer" + pytania[j - 1].correct).style.backgroundColor = "orange") {
+                    document.getElementById("answer" + pytania[j - 1].correct).style.backgroundColor = "green"
+                }
+                l++
                 ii = 0
 
-                console.log("START SPRWDZANIA 2", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
+                console.log("START SPRWDZANIA 2", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii, pytania.length)
+                if (i - 1 < 2) {
+                    poprzedniaOdp.disabled = true
+                } else {
+                    poprzedniaOdp.disabled = false
+                }
+                if (k - 1 == pytania.length) {
+                    wyswietlOdp.disabled = true
+                    return;
+                } else {
+                    wyswietlOdp.disabled = false
+                }
 
-
-            } else {
-
-                next.style.display = 'flex'
-                next.textContent = "Zakończ QUIZ"
-                alert("ELSE KONIEC")
-                return;
             }
 
         });
+
+
         repeatTest.addEventListener('click', function () {
 
             start.hidden = false
-            start.disabled = true
             start.textContent = "Rozpocznij quiz"
             repeatTest.hidden = true
-
             next.textContent = "Kolejne pytanie"
-            next.style.display = 'inline-flex'
-            quiz.style.display = 'flex'
             wynik.style.display = 'none'
-
             wyswietlOdp.hidden = true
-            poprzedniaOdp.hidden = true
+            //poprzedniaOdp.hidden = true
+            for (let a = 0; a <= 3; a++) {
+                console.log(a)
+                document.getElementById("answer" + a).style.backgroundColor = 'transparent'
+            }
+            for (let b = 1; b <= 4; b++) {
+                document.getElementById("wybor" + b).disabled = false
+            }
 
             i = 1 // "PYTANIE NR.1,2,3,4"
             score = 0
             j = 0 // NUMER PYTANIA
             k = 1 // konczenie quizy
             ii = 0 // pytania                
-            for (ii = 0; ii < 4; ii++) {
-                document.getElementById("answer" + ii).textContent = pytania[0].answer[ii];
-            }
+            start.click()
 
-            document.getElementById("pytanie").textContent = pytania[0 + j].pytanie;
-            document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i
-            ii = 0
+
+        })
+        poprzedniaOdp.addEventListener('click', function () {
+            // ustawia na pytanie nr 2 do naprawienia w kodzie
+            // ustawia numer pytania w bazie na 1 (1,2,3) to przydałoby sie naprawić
+            l--
+            j--
+            i--
+            k--
+            console.log("START SPRAWDZANIA", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
+            if (k <= (pytania.length + 1)) { // jezeli k jest krotsze od ilosci pytan (pytania.length = 3(4), k = 1)
+
+                document.getElementById("nr-pytania").textContent = "Pytanie nr. " + (i - 1) // ustawia numer pytania u gory
+                document.getElementById("pytanie").textContent = pytania[j - 1].pytanie; // wyswietla odpowiednie pytanie
+
+                for (ii = 0; ii < pytania[j - 1].answer.length; ii++) { // jezeli ii jest krótsze od ilosci odpowiedzi - 1, to wtedy (\ pytania[i-1].answer.length)
+                    document.getElementById("answer" + ii).textContent = pytania[j - 1].answer[ii]; // wyswietla odpowiedzi z pytaniem o indexie J i odpowiedziami o indexie ii 
+                }
+                console.log("START SPRWDZANIA 2", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii, pytania.length)
+
+            }
+            if (i - 1 < 2) {
+                poprzedniaOdp.disabled = true
+            } else {
+                poprzedniaOdp.disabled = false
+            }
+            if (k - 1 == pytania.length) {
+                wyswietlOdp.disabled = true
+                return;
+            } else {
+                wyswietlOdp.disabled = false
+            }
         })
     </script>
 </body>
