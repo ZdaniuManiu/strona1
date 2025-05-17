@@ -139,6 +139,10 @@
         #wyswietl-odp {
             left: 80%;
         }
+        img{
+            width: 550px; 
+            height: 550px;
+        }
 
         @media (max-width:600px) {
             body {
@@ -196,6 +200,10 @@
 
             .input-container {
                 width: 400px;
+            }
+            img{
+                height: 250px;
+                width: 300px;
             }
 
         }
@@ -284,6 +292,7 @@
             </div>
         </div>
         <div class="bottom-btn-container">
+            <img src="" id="zdjecie" hidden>
             <div>
                 <button id="next-btn"> Kolejne pytanie</button>
             </div>
@@ -309,6 +318,7 @@
             pytanie: "Które z poniższych NIE jest językiem programowania?",
             //          0           1         2       3
             answer: ["JavaScript", "Python", "HTML", "Java"],
+            image: "pytanie2.png",
             correct: 2
         }, {
             pytanie: "Czym jest console.log() w JavaScript?",
@@ -461,12 +471,17 @@
                 }
                 if (k < pytania.length) { // jezeli k jest krotsze od ilosci pytan 
                     document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i + "/" + pytania.length // ustawia numer pytania u gory
-                    document.getElementById("pytanie").textContent = pytania[0 + j].pytanie; // wyswietla odpowiednie pytanie
+                    document.getElementById("pytanie").textContent = pytania[j].pytanie; // wyswietla odpowiednie pytanie
 
                     for (ii = 0; ii < pytania[i - 1].answer.length; ii++) { // jezeli 
                         document.getElementById("answer" + ii).textContent = pytania[0 + j].answer[ii];
                     }
-
+                    if (pytania[j].image){
+                        document.getElementById("zdjecie").src = pytania[j].image
+                        document.getElementById("zdjecie").hidden = false
+                    }else{
+                        document.getElementById("zdjecie").hidden = true
+                    }
                     ii = 0
                     k++
                     console.log("i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
