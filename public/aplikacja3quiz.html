@@ -88,6 +88,7 @@
         .option input {
             align-items: center;
             margin-bottom: 20px;
+            cursor: pointer;
         }
 
         .option input::selection {
@@ -109,6 +110,7 @@
             padding: 1px;
             border: 1px solid rgba(0, 0, 0, 0.074);
             border-radius: 3px;
+            cursor: pointer;
         }
 
         .bottom-btn-container button:hover {
@@ -139,11 +141,27 @@
         #wyswietl-odp {
             left: 80%;
         }
-        img{
-            width: 550px; 
+
+        img {
+            width: 550px;
             height: 550px;
             margin-bottom: 30px;
             margin-left: 40px;
+        }
+
+        #timer {
+            position: absolute;
+            top: 2%;
+            right: 20%;
+            font-size: 20px;
+        }
+
+        #time {
+            position: absolute;
+            top: 5%;
+            right: 20%;
+            font-size: 20px;
+            color: rgb(0, 0, 0);
         }
 
         @media (max-width:600px) {
@@ -203,13 +221,30 @@
             .input-container {
                 width: 400px;
             }
-            img{
+
+            img {
                 height: 250px;
                 width: 300px;
             }
-            #next-btn{
-                margin-bottom: 20px ;
+
+            #next-btn {
+                margin-bottom: 20px;
                 margin-left: 40px;
+            }
+
+            #timer {
+                position: absolute;
+                top: 2%;
+                right: 2%;
+                font-size: 20px;
+            }
+
+            #time {
+                position: absolute;
+                top: 5%;
+                right: 2%;
+                font-size: 20px;
+                color: rgb(0, 0, 0);
             }
         }
 
@@ -253,6 +288,8 @@
         <button id="repeat-btn" hidden> Powtórz quiz</button>
         <button id="wyswietl-odp" hidden>Sprawdź odpowiedzi</button>
         <button id="poprzednia-odp" hidden>Zobacz poprzednia odpowiedz</button>
+        <p id="timer" hidden>Pozostały czas:↓ </p>
+        <p id="time" hidden></p>
     </div>
     <div class="quiz-container" id="quiz-container">
         <div class="hide-quiz-container" id="hide-quiz-container">
@@ -299,6 +336,8 @@
         <div class="bottom-btn-container">
             <img src="" id="zdjecie" hidden>
             <div>
+                <button id="end-btn" style="position: absolute; left: 47.5%;display: none;"
+                    onclick="StopTimer()">Zakończ QUIZ</button>
                 <button id="next-btn"> Kolejne pytanie</button>
             </div>
         </div>
@@ -316,7 +355,7 @@
 
         const pytania = [{
             pytanie: "Co oznacza skrót HTML?",
-            //                              0                               1                     2                  3
+            //                              0                               1              2                  3
             answer: ["Hyper Transfer Machine Learning", "Hyper Text Markup Language", "Hot Mail", "Hyper Tool Modern Language"],
             correct: 1
         }, {
@@ -416,7 +455,9 @@
 
 
 
+
         const $ = document.getElementById.bind(document);
+        const end = $("end-btn")
         const next = $("next-btn");
         const start = $("start-btn")
         const quiz = $("quiz-container")
@@ -424,6 +465,12 @@
         const wyswietlOdp = $("wyswietl-odp")
         const poprzedniaOdp = $("poprzednia-odp")
         const repeatTest = $("repeat-btn")
+
+        const wyniki = []
+
+
+        const timer1 = $("timer")
+        const timer = $("time")
         let i = 1 // "PYTANIE NR.1,2,3,4"
         let score = 0
         let j = 0 // NUMER PYTANIA
@@ -431,13 +478,46 @@
         let ii = 0 // pytania
         let l = 0 // kolorowanie 
 
+        let timerId = null;
+        let time = 60;
+
+        function StartTimer() {
+            if (!timerId) {
+                timer.hidden = false
+                timer1.hidden = false
+                time = 60;
+                timerId = setInterval(() => {
+                    console.log("ta ja timer i działam")
+                    const min = Math.floor(time / 60);
+                    const sec = time % 60;
+                    timer.textContent = `${min}:${sec < 10 ? '0' + sec : sec}`;
+                    time--;
+                    if (time <= 0) {
+                        timerId = null;
+                        clearInterval(timerId);
+                        timer.textContent = "Koniec czasu!"
+                        for (let c = 1; c < 5; c++) {
+                            document.getElementById("wybor" + c).disabled = true
+                        }
+                        next.style.display = 'none'
+                        end.style.display = 'block'
+                        return;
+                    }
+                }, 1000)
+            };
+        }
+        function StopTimer() {
+            clearInterval(timerId)
+        }
 
         console.log("i", i, "j", j, "k", k, "ii", ii)
         start.addEventListener('click', function () {
-
+            StartTimer();
             start.disabled = true
             next.style.display = 'inline-flex'
             quiz.style.display = 'flex'
+
+            end.style.display = 'none'
 
             wyswietlOdp.hidden = true
             poprzedniaOdp.hidden = true
@@ -447,13 +527,12 @@
             }
 
             document.getElementById("pytanie").textContent = pytania[0 + j].pytanie;
-            document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i + "/" + pytania.length ;
+            document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i + "/" + pytania.length;
             ii = 0
         })
 
 
-        const wyniki = []
-        const odpowiedzPytanie = []
+
         next.addEventListener('click', function pytanie() {
 
             const zaznaczone = document.querySelector('input[name="wybor"]:checked');
@@ -466,12 +545,11 @@
                 if (wybranaOdp === pytania[j - 1].correct) {
                     score++;
                     wyniki.push(wybranaOdp)
-                    odpowiedzPytanie.push(j - 1)
+
                 } else {
                     wyniki.push(wybranaOdp)
-                    odpowiedzPytanie.push(j - 1)
                 }
-                for (let iv = 1; iv <= (pytania[1].answer.length); iv++) { //jezeli ostatnia opcja ma sie nie odznaczac nalezy dodac po length - 1// usuwanie zaznaczonych opcji z poprzedniego pytania
+                for (let iv = 1; iv <= (pytania[1].answer.length - 1); iv++) { //jezeli ostatnia opcja ma sie nie odznaczac nalezy dodac po length - 1// usuwanie zaznaczonych opcji z poprzedniego pytania
                     document.getElementById("wybor" + iv).checked = false
                 }
                 if (k < pytania.length) { // jezeli k jest krotsze od ilosci pytan 
@@ -481,10 +559,10 @@
                     for (ii = 0; ii < pytania[i - 1].answer.length; ii++) { // jezeli 
                         document.getElementById("answer" + ii).textContent = pytania[0 + j].answer[ii];
                     }
-                    if (pytania[j].image){
+                    if (pytania[j].image) {
                         document.getElementById("zdjecie").src = pytania[j].image
                         document.getElementById("zdjecie").hidden = false
-                    }else{
+                    } else {
                         document.getElementById("zdjecie").hidden = true
                     }
                     ii = 0
@@ -492,7 +570,10 @@
                     console.log("i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
 
                     if (k == pytania.length) {
+
+
                         next.textContent = "Zakończ QUIZ"
+
                     }
                 } else {
                     start.style.cursor = "pointer"
@@ -507,6 +588,10 @@
                     wyswietlOdp.hidden = false
                     wyswietlOdp.disabled = false
                     repeatTest.hidden = false
+
+                    timer1.hidden = true
+                    timer.hidden = true
+                    clearInterval(timerId);
 
                     k = 1
                     i = 1
@@ -552,6 +637,7 @@
                 }
                 document.getElementById("answer" + pytania[j - 1].correct).style.backgroundColor = "green"
                 document.getElementById("answer" + wyniki[l]).style.backgroundColor = "orange"
+                document.getElementById("answer" + wyniki[l]).textContent += " <-- Twoja odpowiedz "
                 if (document.getElementById("answer" + pytania[j - 1].correct).style.backgroundColor = "orange") {
                     document.getElementById("answer" + pytania[j - 1].correct).style.backgroundColor = "green"
                 }
@@ -578,6 +664,9 @@
 
         repeatTest.addEventListener('click', function () {
 
+            wyniki.length = 0
+            timerId = null;
+            StartTimer();
             start.hidden = false
             start.textContent = "Rozpocznij quiz"
             repeatTest.hidden = true
@@ -592,7 +681,7 @@
             for (let b = 1; b <= 4; b++) {
                 document.getElementById("wybor" + b).disabled = false
             }
-
+            l = 0
             i = 1 // "PYTANIE NR.1,2,3,4"
             score = 0
             j = 0 // NUMER PYTANIA
@@ -632,6 +721,30 @@
             } else {
                 wyswietlOdp.disabled = false
             }
+        })
+        end.addEventListener('click', function () {
+            start.style.cursor = "pointer"
+            start.disabled = false
+            start.hidden = true
+            wyswietlOdp.textContent = 'Sprawdź odpowiedzi'
+            wynik.style.display = 'block'
+            wynik.textContent = "Twój wynik to: " + score + "/" + pytania.length;
+
+            timer.hidden = true
+            timer1.hidden = true
+            quiz.style.display = 'none'
+            next.style.display = 'none'
+            wyswietlOdp.hidden = false
+            wyswietlOdp.disabled = false
+            repeatTest.hidden = false
+
+            k = 1
+            i = 1
+            j = 0
+            ii = 0
+            iv = 0
+            score = 0
+            console.log("KONIEC QUIZU START -", "i=" + i, "k=" + k, "j=" + j, "ii=" + ii)
         })
     </script>
 </body>
