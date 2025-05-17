@@ -15,7 +15,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            overflow-y:scroll;
+            overflow-y: hidden;
             overflow-x: hidden;
         }
 
@@ -56,7 +56,7 @@
             height: fit-content;
             width: inherit;
             margin-top: 10px;
-            
+
         }
 
         input {
@@ -135,17 +135,20 @@
             display: none;
             margin: 20%;
         }
-        #wyswietl-odp{
-             left: 80%;
+
+        #wyswietl-odp {
+            left: 80%;
         }
 
         @media (max-width:600px) {
             body {
                 width: 80%;
             }
-            p{
+
+            p {
                 margin-left: 15px;
             }
+
             .quiz-container {
                 display: none;
                 width: 300px;
@@ -170,38 +173,45 @@
             .bottom-btn-container button:hover {
                 background-color: none;
             }
-            #wyswietl-odp{
+
+            #wyswietl-odp {
                 position: absolute;
                 left: 80%;
                 top: 2%;
                 /*transform: translate(-80%,10%);*/
 
             }
-            #poprzednia-odp{
+
+            #poprzednia-odp {
                 position: absolute;
                 left: 16%;
                 top: 2%;
                 /*transform: translate(-80%,10%);*/
                 width: 100px;
             }
+
             .start-btn-container button {
                 left: 47.4%;
             }
-            .input-container{
+
+            .input-container {
                 width: 400px;
             }
-            
+
         }
-        @media(min-width:1080px){
-            #wyswietl-odp{
+
+        @media(min-width:1080px) {
+            #wyswietl-odp {
                 position: absolute;
                 left: 68%;
             }
-            #poprzednia-odp{
+
+            #poprzednia-odp {
                 position: absolute;
                 left: 36.5%;
             }
         }
+
         @media (prefers-color-scheme: light) {
             #next-btn {
                 background-color: white;
@@ -305,9 +315,91 @@
             //                    0                                   1                                            2                                     3
             answer: ["Funkcją do rysowania w konsoli", "Komendą do tworzenia nowych zmiennych", "Funkcją do debugowania i wypisywania danych", "Poleceniem do czyszczenia strony"],
             correct: 2
-        },
-
+        }, {
+            pytanie: "Która z metod JavaScript służy do dodawania elementu na koniec tablicy?",
+            answer: ['shift()', 'push()', 'pop()', 'unshift()'],
+            correct: 1
+        }, {
+            pytanie: "Jakie rozszerzenie ma plik arkusza stylów?",
+            answer: ['.html', '.js', '.css', '.xml'],
+            correct: 2
+        }, {
+            pytanie: "Który znacznik HTML służy do wstawiania obrazu?",
+            answer: ['<image>', '<img>', '<pic>', '<src>'],
+            correct: 1
+        }, {
+            pytanie: "Jak zadeklarować zmienną w JavaScript?",
+            answer: ['let x = 5;', 'variable x = 5;', 'int x = 5;', 'x := 5;'],
+            correct: 0
+        }, {
+            pytanie: "Czym jest CSS?",
+            answer: ['Językiem programowania', 'Systemem baz danych', 'Językiem stylizacji stron', 'Frameworkiem JavaScript'],
+            correct: 2
+        }, {
+            pytanie: "Która z tych funkcji służy do wypisania czegoś w konsoli?",
+            answer: ['console.log()', 'print()', 'echo()', 'output()'],
+            correct: 0
+        }, {
+            pytanie: "Jak załączyć plik CSS do HTML?",
+            answer: ['<style href="style.css">', '<css src="style.css">', '<link rel="stylesheet" href="style.css">', '<stylesheet link="style.css">'],
+            correct: 2
+        }, {
+            pytanie: "Który z tagów HTML tworzy nagłówek najwyższego poziomu?",
+            answer: ['<head>', '<h6>', '<h1>', '<header>'],
+            correct: 2
+        }, {
+            pytanie: "Jak odwołać się do elementu o id 'main' w CSS?",
+            answer: ['#main', '.main', 'main', '$main'],
+            correct: 0
+        }, {
+            pytanie: "Który operator porównania sprawdza wartość i typ w JS?",
+            answer: ['==', '=', '===', '!='],
+            correct: 2
+        }, {
+            pytanie: "Jakiego typu danych NIE ma w JavaScript?",
+            answer: ['string', 'number', 'character', 'boolean'],
+            correct: 2
+        }, {
+            pytanie: "Co robi metoda `querySelector()`?",
+            answer: ['Zwraca pierwszy pasujący element', 'Usuwa element', 'Tworzy nowy znacznik', 'Przypisuje klasę'],
+            correct: 0
+        }, {
+            pytanie: "Jak napisać komentarz jednoliniowy w JavaScript?",
+            answer: ['<!-- komentarz -->', '# komentarz', '// komentarz', '/* komentarz */'],
+            correct: 2
+        }, {
+            pytanie: "Jaki typ danych zwróci `typeof 123`?",
+            answer: ['number', 'int', 'float', 'digit'],
+            correct: 0
+        }, {
+            pytanie: "Która z metod usuwa ostatni element tablicy?",
+            answer: ['shift()', 'pop()', 'remove()', 'delete()'],
+            correct: 1
+        }, {
+            pytanie: "Które z tych stylów ustawi kolor tekstu?",
+            answer: ['font-color', 'text-style', 'color', 'font-style'],
+            correct: 2
+        }, {
+            pytanie: "Która metoda służy do tworzenia nowego okna alertu?",
+            answer: ['msg()', 'prompt()', 'confirm()', 'alert()'],
+            correct: 3
+        }, {
+            pytanie: "Jak zakończyć instrukcję w JavaScript?",
+            answer: ['kropką', 'dwukropkiem', 'średnikiem', 'przecinkiem'],
+            correct: 2
+        }, {
+            pytanie: "Który z tagów HTML tworzy hiperłącze?",
+            answer: ['<a>', '<link>', '<href>', '<url>'],
+            correct: 0
+        }, {
+            pytanie: "Jak nazywa sie robak?",
+            answer: ['puszek', 'wiktor', 'bartek', 'kacper'],
+            correct: 1
+        }
         ];
+
+
+
 
         const $ = document.getElementById.bind(document);
         const next = $("next-btn");
@@ -364,7 +456,7 @@
                     wyniki.push(wybranaOdp)
                     odpowiedzPytanie.push(j - 1)
                 }
-                for (let iv = 1; iv < (pytania.length + 2); iv++) {                             // usuwanie zaznaczonych opcji z poprzedniego pytania
+                for (let iv = 1; iv <= (pytania[1].answer.length); iv++) { //jezeli ostatnia opcja ma sie nie odznaczac nalezy dodac po length - 1// usuwanie zaznaczonych opcji z poprzedniego pytania
                     document.getElementById("wybor" + iv).checked = false
                 }
                 if (k < pytania.length) { // jezeli k jest krotsze od ilosci pytan 
@@ -386,13 +478,14 @@
                     start.style.cursor = "pointer"
                     start.disabled = false
                     start.hidden = true
-                    wyswietlOdp.textContent='Sprawdź odpowiedzi'
+                    wyswietlOdp.textContent = 'Sprawdź odpowiedzi'
                     wynik.style.display = 'block'
                     wynik.textContent = "Twój wynik to: " + score + "/" + pytania.length;
 
                     quiz.style.display = 'none'
                     next.style.display = 'none'
                     wyswietlOdp.hidden = false
+                    wyswietlOdp.disabled = false
                     repeatTest.hidden = false
 
                     k = 1
