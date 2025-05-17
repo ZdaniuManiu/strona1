@@ -135,18 +135,20 @@
 
         @media (max-width:1000px) {
             body {
-                display: flex;
-                width: 100%;
+                
+                width: 80%;
             }
 
             .quiz-container {
                 display: none;
-                width: 100vw;
+                width: 300px;
                 flex-wrap: wrap;
                 margin-left: 15px;
                 font-size: large;
             }
-
+            .hide-quiz-container{
+                width: 300px;
+            }
             .start-btn-container button:hover {
                 background-color: grey;
                 border-radius: 5px;
@@ -189,7 +191,7 @@
         <!-- <button id="wyswietl-odp" style="left: 64%;">Sprawdź odpowiedzi</button>-->
     </div>
     <div class="quiz-container" id="quiz-container">
-        <div class="hide-quiz-container" id="hide-quiz-container"">
+        <div class="hide-quiz-container" id="hide-quiz-container">
             <div class=" question-container">
             <p id="nr-pytania"></p>
             <p id="pytanie"></p>
