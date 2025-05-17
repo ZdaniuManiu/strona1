@@ -432,7 +432,7 @@
             }
 
             document.getElementById("pytanie").textContent = pytania[0 + j].pytanie;
-            document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i;
+            document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i + "/" + pytania.length ;
             ii = 0
         })
 
@@ -456,11 +456,11 @@
                     wyniki.push(wybranaOdp)
                     odpowiedzPytanie.push(j - 1)
                 }
-                for (let iv = 1; iv <= (pytania[1].answer.length); iv++) { //jezeli ostatnia opcja ma sie nie odznaczac nalezy dodac po length - 1// usuwanie zaznaczonych opcji z poprzedniego pytania
+                for (let iv = 1; iv <= (pytania[1].answer.length -1 ); iv++) { //jezeli ostatnia opcja ma sie nie odznaczac nalezy dodac po length - 1// usuwanie zaznaczonych opcji z poprzedniego pytania
                     document.getElementById("wybor" + iv).checked = false
                 }
                 if (k < pytania.length) { // jezeli k jest krotsze od ilosci pytan 
-                    document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i // ustawia numer pytania u gory
+                    document.getElementById("nr-pytania").textContent = "Pytanie nr. " + i + "/" + pytania.length // ustawia numer pytania u gory
                     document.getElementById("pytanie").textContent = pytania[0 + j].pytanie; // wyswietla odpowiednie pytanie
 
                     for (ii = 0; ii < pytania[i - 1].answer.length; ii++) { // jezeli 
@@ -522,7 +522,7 @@
             k++
             if (k <= (pytania.length + 1)) { // jezeli k jest krotsze od ilosci pytan (pytania.length = 3(4), k = 1)
 
-                document.getElementById("nr-pytania").textContent = "Pytanie nr. " + (i - 1) // ustawia numer pytania u gory
+                document.getElementById("nr-pytania").textContent = "Pytanie nr. " + (i - 1) + "/" + pytania.length // ustawia numer pytania u gory
                 document.getElementById("pytanie").textContent = pytania[j - 1].pytanie; // wyswietla odpowiednie pytanie 
                 // DO TEJ PORY WSZYSTKO DZIAŁA
                 for (ii = 0; ii < pytania[j - 1].answer.length; ii++) { // jezeli ii jest krótsze od ilosci odpowiedzi - 1, to wtedy (\ pytania[i-1].answer.length)
