@@ -456,7 +456,7 @@
                     wyniki.push(wybranaOdp)
                     odpowiedzPytanie.push(j - 1)
                 }
-                for (let iv = 1; iv <= (pytania[1].answer.length -1 ); iv++) { //jezeli ostatnia opcja ma sie nie odznaczac nalezy dodac po length - 1// usuwanie zaznaczonych opcji z poprzedniego pytania
+                for (let iv = 1; iv <= (pytania[1].answer.length); iv++) { //jezeli ostatnia opcja ma sie nie odznaczac nalezy dodac po length - 1// usuwanie zaznaczonych opcji z poprzedniego pytania
                     document.getElementById("wybor" + iv).checked = false
                 }
                 if (k < pytania.length) { // jezeli k jest krotsze od ilosci pytan 
