@@ -481,13 +481,13 @@
         let l = 0 // kolorowanie 
 
         let timerId = null;
-        let time = 60;
+        let time = 120;
 
         function StartTimer() {
             if (!timerId) {
                 timer.hidden = false
                 timer1.hidden = false
-                time = 60;
+                time = 120;
                 timerId = setInterval(() => {
                     console.log("ta ja timer i działam")
                     const min = Math.floor(time / 60);
