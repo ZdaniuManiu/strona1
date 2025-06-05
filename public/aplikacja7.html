@@ -158,6 +158,11 @@
                 display: none;
             }
         }
+        @media (pointer:none), (pointer:coarse) {
+        #eksport{
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -181,19 +186,19 @@
     <button id="eksport">Eksportuj jako plik .txt</button>
     <button id="kopiuj">Kopiuj do schowka</button>
     <script>
-        function dodajSpacjePo30Znakach(text) {
-            return text.replace(/(\S{50})(?=\S)/g, '$1 ');
-        }
         const $ = document.getElementById.bind(document);
         const listaol = $("lista");
         const przyciskAdd = document.getElementById("dodaj");
-        const przyciskDel = document.getElementById("delete")
         const input = document.getElementById('zadanie');
         const lil = document.getElementsByTagName('li')
 
 
         let i = 0
 
+
+        function dodajSpacjePo30Znakach(text) {
+            return text.replace(/(\S{50})(?=\S)/g, '$1 ');
+        }
 
         przyciskAdd.addEventListener('click', function () {
 
@@ -211,10 +216,10 @@
                 li.id = "zadanie_" + i;
                 i++
                 input.value = "";
-                deleteb.id = "delete"
+                deleteb.id = "delete_" + i
                 deleteb.textContent = "Usuń"
 
-                li.addEventListener('click', function chuj() {
+                li.addEventListener('click', function() {
                     if(this.style.textDecoration == 'line-through'){
                         this.style.textDecoration = 'none'
                         this.style.backgroundColor = '#7b707073'
@@ -230,6 +235,12 @@
 
             }
         })
+
+
+
+
+
+
 
 
         const przyciskEksport = document.getElementById('eksport');
@@ -254,6 +265,15 @@
             URL.revokeObjectURL(url);
         })
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
         const przyciskKopiuj = document.getElementById("kopiuj")
         przyciskKopiuj.addEventListener('click', function () {
             const wszystkieLi = document.querySelectorAll('#lista li');
@@ -269,6 +289,19 @@
                 alert("Lista została skopiowana do schowka w telefonie(Po prostu możną ją gdzieś wkleić, przekreślone zadania sa oznaczone '-ZAZNACZONE JAKO GOTOWE;')");
             });
         });
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         input.addEventListener('keydown', function (a) {
             if (a.key === 'Enter') {
                 przyciskAdd.click(); // Udaje kliknięcie przycisku
