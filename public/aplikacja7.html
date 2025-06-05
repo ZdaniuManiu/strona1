@@ -9,12 +9,10 @@
         :root {
             --tlo: #1a1a1a;
             --tlo1: rgb(50, 234, 218);
-
             --tlo2: #372828;
         }
 
-        html,
-        body {
+        html,body {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -63,12 +61,11 @@
             color: rgb(0, 0, 0);
             cursor: pointer;
             transition: 0.1s ease-out;
-
             padding-left: 3px;
             padding-right: 5px;
             padding-bottom: 1px;
             padding-top: 1px;
-          
+
         }
 
         .add-cont button:hover {
@@ -94,11 +91,8 @@
             border: 2px solid rgba(37, 200, 37, 0.413);
             font-size: 25px;
             background-color: #7b707073;
-
             word-break: break-word;
             overflow-wrap: break-word;
-
-
         }
 
         .content-container li:hover {
@@ -106,7 +100,7 @@
             cursor: pointer;
         }
 
-        #delete {
+        .content-container button {
             font-size: 20px;
             margin-top: 5px;
             margin-bottom: 25px;
@@ -115,15 +109,18 @@
             cursor: pointer;
         }
 
-        #delete:hover {
-            background-color: rgb(255, 3, 3);
+        .content-container button:hover {
+            background-color: rgb(254, 102, 0);
         }
 
-        #eksport,
-        #kopiuj {
+        .export-btn {
+            display: flex;
+            gap: 20px;
+        }
+
+        #eksport,#kopiuj {
             font-size: 20px;
             margin-top: 5px;
-            margin-bottom: 25px;
             border-radius: 5px;
             background-color: rgb(0, 255, 234);
             color: black;
@@ -134,8 +131,7 @@
             color: white;
         }
 
- 
-        @media (pointer:none), (pointer:coarse) {
+        @media (pointer:none),(pointer:coarse) {
             body {
                 margin: 0 auto;
                 width: 90vw;
@@ -161,24 +157,24 @@
                 background-color: var(--tlo);
                 margin-left: 10px;
             }
-              #eksport{
+
+            #eksport {
                 display: none;
             }
-            .content-container li{
+
+            .content-container li {
                 margin-top: 20px;
             }
-            .add-cont button{
-                  margin-left: 5px;
+
+            .add-cont button {
+                margin-left: 5px;
             }
         }
-      
-        
     </style>
 </head>
 
 <body>
     <div class="main-container">
-
         <div class="main">
             <div class="add-cont">
                 <label for="zadanie">Wpisz nowe zadanie: </label>
@@ -186,29 +182,30 @@
                 <button id="dodaj">Dodaj</button>
             </div>
             <div class="content-container">
-                <ol id="lista">
-
-                </ol>
+                <ol id="lista"></ol>
             </div>
         </div>
         <p> <strong>*Klikniecie na tekst powoduje przekreślenie zadania* </strong> </p>
     </div>
-    <button id="eksport">Eksportuj jako plik .txt</button>
-    <button id="kopiuj">Kopiuj do schowka</button>
+    <div class="export-btn">
+        <button id="eksport">Eksportuj jako plik .txt</button>
+        <button id="kopiuj">Kopiuj do schowka</button>
+    </div>
+
     <script>
         const $ = document.getElementById.bind(document);
         const listaol = $("lista");
         const przyciskAdd = document.getElementById("dodaj");
         const input = document.getElementById('zadanie');
-        const lil = document.getElementsByTagName('li')
-
-
+        const lil = document.getElementsByTagName('li');
+        const przyciskKopiuj = document.getElementById("kopiuj")
+        const przyciskEksport = document.getElementById('eksport');
         let i = 0
-
 
         function dodajSpacjePo30Znakach(text) {
             return text.replace(/(\S{50})(?=\S)/g, '$1 ');
         }
+
 
         przyciskAdd.addEventListener('click', function () {
 
@@ -218,25 +215,25 @@
 
             if (tresc == "") {
                 alert("Zadanie nie może być puste!")
-            } else {
+            }
+            else {
                 listaol.appendChild(li)
                 listaol.appendChild(deleteb)
-
                 li.textContent = dodajSpacjePo30Znakach(tresc)
                 li.id = "zadanie_" + i;
-                i++
                 input.value = "";
                 deleteb.id = "delete_" + i
+                i++
                 deleteb.textContent = "Usuń"
 
-                li.addEventListener('click', function() {
-                    if(this.style.textDecoration == 'line-through'){
+                li.addEventListener('click', function () {
+                    if (this.style.textDecoration == 'line-through') {
                         this.style.textDecoration = 'none'
                         this.style.backgroundColor = '#7b707073'
-                    }else{
-                    this.style.textDecoration = 'line-through';
-                    this.style.backgroundColor = '#07f21373';
-                }
+                    } else {
+                        this.style.textDecoration = 'line-through';
+                        this.style.backgroundColor = '#07f21373';
+                    }
                 });
                 deleteb.addEventListener('click', function () {
                     li.remove()
@@ -247,21 +244,13 @@
         })
 
 
-
-
-
-
-
-
-        const przyciskEksport = document.getElementById('eksport');
-
         przyciskEksport.addEventListener('click', function () {
             const wszystkieLi = document.querySelectorAll('#lista li');
-            let tekst = '';
+            let tekst = 'LISTA:\n';
 
             wszystkieLi.forEach((li, i) => {
                 const zrobione = li.style.textDecoration === 'line-through';
-                tekst += `${i + 1}. ${li.textContent}${zrobione ? ' - ZAZNACZONE JAKO GOTOWE' : ''}\n`;
+                tekst += `${i + 1}. ${li.textContent}${zrobione ? ' - WYKONANE' : ''}\n`;
             });
 
             const blob = new Blob([tekst], { type: 'text/plain' });
@@ -275,43 +264,23 @@
             URL.revokeObjectURL(url);
         })
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        const przyciskKopiuj = document.getElementById("kopiuj")
+
         przyciskKopiuj.addEventListener('click', function () {
             const wszystkieLi = document.querySelectorAll('#lista li');
-            let tekst = '';
+            let tekst = 'LISTA:\n';
 
             wszystkieLi.forEach((li, i) => {
                 const zrobione = li.style.textDecoration === 'line-through';
-                tekst += `${i + 1}. ${li.textContent}${zrobione ? ' - ZAZNACZONE JAKO GOTOWE' : ''}\n`;
+                tekst += ` ${i + 1}. ${li.textContent}${zrobione ? ' - WYKONANE' : ''}\n`;
             });
 
             // Kopiuj do schowka
             navigator.clipboard.writeText(tekst).then(() => {
-                alert("Lista została skopiowana do schowka w telefonie(Po prostu możną ją gdzieś wkleić, przekreślone zadania sa oznaczone '-ZAZNACZONE JAKO GOTOWE;')");
+                alert("Lista została skopiowana do schowka(Po prostu możną ją gdzieś wkleić, przekreślone zadania sa oznaczone '-WYKONANE;')");
             });
         });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
         input.addEventListener('keydown', function (a) {
             if (a.key === 'Enter') {
                 przyciskAdd.click(); // Udaje kliknięcie przycisku
