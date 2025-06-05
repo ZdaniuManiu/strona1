@@ -118,7 +118,7 @@
             background-color: rgb(255, 3, 3);
         }
 
-        #eksport,#kopiuj {
+        #eksport {
             font-size: 20px;
             margin-top: 5px;
             margin-bottom: 25px;
@@ -174,8 +174,7 @@
         </div>
         <p> <strong>*Klikniecie na tekst powoduje przekreślenie zadania* </strong> </p>
     </div>
-    <button id="eksport">Eksportuj jako plik .txt</button>
-    <button id="kopiuj">Kopiuj do schowka</button>
+    <button id="eksport">eksport</button>
     <script>
         function dodajSpacjePo30Znakach(text) {
             return text.replace(/(\S{50})(?=\S)/g, '$1 ');
@@ -244,23 +243,11 @@
 
             URL.revokeObjectURL(url);
         })
-
-        const przyciskKopiuj = document.getElementById("kopiuj")
-        przyciskKopiuj.addEventListener('click', function () {
-            const wszystkieLi = document.querySelectorAll('#lista li');
-            let tekst = '';
-
-            wszystkieLi.forEach((li, i) => {
-                const zrobione = li.style.textDecoration === 'line-through';
-                tekst += `${i + 1}. ${li.textContent}${zrobione ? ' - ZAZNACZONE JAKO GOTOWE' : ''}\n`;
-            });
-
-            // Kopiuj do schowka
-            navigator.clipboard.writeText(tekst).then(() => {
-                alert("Lista została skopiowana do schowka w telefonie(Po prostu możną ją gdzieś wkleić, przekreślone zadania sa oznaczone '-ZAZNACZONE JAKO GOTOWE;')");
-            });
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                przyciskAdd.click(); // Udaje kliknięcie przycisku
+            }
         });
-
     </script>
 </body>
 
