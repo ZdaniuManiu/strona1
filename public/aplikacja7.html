@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista zadan</title>
+    <style>
+        :root {
+            --tlo: #1a1a1a;
+            --tlo1: rgb(50, 234, 218);
+
+            --tlo2: #372828;
+        }
+
+        html,
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--tlo);
+            color: antiquewhite;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        }
+
+        .main-container {
+            padding: 50px;
+            background-color: var(--tlo2);
+            border-radius: 25px;
+            max-width: 1200px;
+        }
+
+        .main {
+            border: 1px solid rgb(27, 207, 27);
+            border-radius: 10px;
+            padding: 20px;
+            width: 95%;
+            background-color: var(--tlo);
+        }
+
+        .add-cont {
+            display: flex;
+            font-size: 1.2em;
+            justify-content: flex-start;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.614);
+        }
+
+        .add-cont input {
+            width: 250px;
+            height: 20px;
+            margin-left: 5px;
+            margin-right: 5px;
+            background-color: #372828;
+            color: white;
+        }
+
+        .add-cont button {
+            font-size: 1.2em;
+            border-radius: 4px;
+            background-color: #16d252;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            transition: 0.1s ease-out;
+
+            padding-left: 3px;
+            padding-right: 5px;
+            padding-bottom: 1px;
+            padding-top: 1px;
+        }
+
+        .add-cont button:hover {
+            transform: scale(1.05);
+            background-color: #00e5ff;
+            color: black;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .content-container ol {
+            text-align: left;
+        }
+
+        .content-container li {
+            padding: 10px;
+            border: 2px solid rgba(37, 200, 37, 0.413);
+            font-size: 25px;
+            background-color: #7b707073;
+        }
+
+        .content-container li:hover {
+            background-color: #1ae5e851;
+            cursor: pointer;
+        }
+
+        #delete {
+            font-size: 20px;
+            margin-top: 5px;
+            margin-bottom: 25px;
+            background-color: rgb(255, 0, 0);
+            color: white;
+            cursor: pointer;
+        }
+        #delete:hover {
+            background-color: rgb(255, 3, 3);
+        }
+        p{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+
+        <div class="main">
+            <div class="add-cont">
+                <label for="zadanie">Wpisz nowe zadanie: </label>
+                <input type="text" id="zadanie">
+                <button id="dodaj">Dodaj</button>
+            </div>
+            <div class="content-container">
+                <ol id="lista">
+
+                </ol>
+            </div>
+        </div>
+        <p> <strong>*Klikniecie na tekst powoduje przekreślenie zadania* </strong> </p>
+    </div>
+    <script>
+        const $ = document.getElementById.bind(document);
+        const listaol = $("lista");
+        const przyciskAdd = document.getElementById("dodaj");
+        const przyciskDel = document.getElementById("delete")
+        const input = document.getElementById('zadanie');
+        const lil = document.getElementsByTagName('li')
+
+
+        let i = 0
+
+
+        przyciskAdd.addEventListener('click', function () {
+
+            const tresc = document.getElementById('zadanie').value.trim()
+            const li = document.createElement("li");
+            const deleteb = document.createElement("button")
+
+            if (tresc == "") {
+                alert("Zadanie nie może być puste!")
+            } else {
+                listaol.appendChild(li)
+                listaol.appendChild(deleteb)
+
+                li.textContent = tresc
+                li.id = "zadanie_" + i;
+                i++
+                input.value = "";
+                deleteb.id = "delete"
+                deleteb.textContent = "Usuń"
+
+                li.addEventListener('click', function chuj() {
+                    this.style.textDecoration = 'line-through';
+                    this.style.backgroundColor = '#07f21373'
+                });
+                deleteb.addEventListener('click', function () {
+                    li.remove()
+                    deleteb.remove()
+                })
+
+            }
+        })
+    </script>
+</body>
+
+</html>
