@@ -215,8 +215,13 @@
                 deleteb.textContent = "Usuń"
 
                 li.addEventListener('click', function chuj() {
+                    if(this.style.textDecoration == 'line-through'){
+                        this.style.textDecoration = 'none'
+                        this.style.backgroundColor = '#7b707073'
+                    }else{
                     this.style.textDecoration = 'line-through';
-                    this.style.backgroundColor = '#07f21373'
+                    this.style.backgroundColor = '#07f21373';
+                }
                 });
                 deleteb.addEventListener('click', function () {
                     li.remove()
