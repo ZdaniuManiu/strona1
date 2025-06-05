@@ -117,7 +117,8 @@
         #delete:hover {
             background-color: rgb(255, 3, 3);
         }
-        #eksport{
+
+        #eksport,#kopiuj {
             font-size: 20px;
             margin-top: 5px;
             margin-bottom: 25px;
@@ -126,28 +127,32 @@
             color: black;
             cursor: pointer;
         }
+
         p {
             color: white;
         }
-         @media (max-width:500px){
-            body{
+
+        @media (max-width:500px) {
+            body {
                 margin: 0 auto;
                 width: 50vw;
             }
+
             .main-container {
-            padding: 30px;
-            background-color: var(--tlo2);
-            border-radius: 25px;
-            max-width: 380px;
-        }
-        .main {
-            border: 1px solid rgb(27, 207, 27);
-            border-radius: 10px;
-            padding: 20px;
-            width: 85%;
-            background-color: var(--tlo);
-            margin-left: 10px;
-        }
+                padding: 30px;
+                background-color: var(--tlo2);
+                border-radius: 25px;
+                max-width: 380px;
+            }
+
+            .main {
+                border: 1px solid rgb(27, 207, 27);
+                border-radius: 10px;
+                padding: 20px;
+                width: 85%;
+                background-color: var(--tlo);
+                margin-left: 10px;
+            }
         }
     </style>
 </head>
@@ -169,7 +174,8 @@
         </div>
         <p> <strong>*Klikniecie na tekst powoduje przekreślenie zadania* </strong> </p>
     </div>
-    <button id="eksport">eksport</button>
+    <button id="eksport">Eksportuj jako plik .txt</button>
+    <button id="kopiuj">Kopiuj do schowka</button>
     <script>
         function dodajSpacjePo30Znakach(text) {
             return text.replace(/(\S{50})(?=\S)/g, '$1 ');
@@ -219,25 +225,42 @@
 
         const przyciskEksport = document.getElementById('eksport');
 
-przyciskEksport.addEventListener('click', function () {
-    const wszystkieLi = document.querySelectorAll('#lista li');
-    let tekst = '';
+        przyciskEksport.addEventListener('click', function () {
+            const wszystkieLi = document.querySelectorAll('#lista li');
+            let tekst = '';
 
-    wszystkieLi.forEach((li, i) => {
-        const zrobione = li.style.textDecoration === 'line-through';
-        tekst += `${i + 1}. ${li.textContent}${zrobione ? ' - ZAZNACZONE JAKO GOTOWE' : ''}\n`;
-    });
+            wszystkieLi.forEach((li, i) => {
+                const zrobione = li.style.textDecoration === 'line-through';
+                tekst += `${i + 1}. ${li.textContent}${zrobione ? ' - ZAZNACZONE JAKO GOTOWE' : ''}\n`;
+            });
 
-    const blob = new Blob([tekst], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
+            const blob = new Blob([tekst], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'lista_zadan.txt';
-    a.click();
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'lista_zadan.txt';
+            a.click();
 
-    URL.revokeObjectURL(url);
-})
+            URL.revokeObjectURL(url);
+        })
+
+        const przyciskKopiuj = document.getElementById("kopiuj")
+        przyciskKopiuj.addEventListener('click', function () {
+            const wszystkieLi = document.querySelectorAll('#lista li');
+            let tekst = '';
+
+            wszystkieLi.forEach((li, i) => {
+                const zrobione = li.style.textDecoration === 'line-through';
+                tekst += `${i + 1}. ${li.textContent}${zrobione ? ' - ZAZNACZONE JAKO GOTOWE' : ''}\n`;
+            });
+
+            // Kopiuj do schowka
+            navigator.clipboard.writeText(tekst).then(() => {
+                alert("Lista została skopiowana do schowka!\nMożesz wkleić ją w Notatki, Keep albo gdziekolwiek.");
+            });
+        });
+
     </script>
 </body>
 
