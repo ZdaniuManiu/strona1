@@ -108,10 +108,12 @@
             color: white;
             cursor: pointer;
         }
+
         #delete:hover {
             background-color: rgb(255, 3, 3);
         }
-        p{
+
+        p {
             color: white;
         }
     </style>
@@ -135,6 +137,9 @@
         <p> <strong>*Klikniecie na tekst powoduje przekreślenie zadania* </strong> </p>
     </div>
     <script>
+        function dodajSpacjePo30Znakach(text) {
+            return text.replace(/(\S{30})(?=\S)/g, '$1 ');
+        }
         const $ = document.getElementById.bind(document);
         const listaol = $("lista");
         const przyciskAdd = document.getElementById("dodaj");
@@ -158,7 +163,7 @@
                 listaol.appendChild(li)
                 listaol.appendChild(deleteb)
 
-                li.textContent = tresc
+                li.textContent = dodajSpacjePo30Znakach(tresc)
                 li.id = "zadanie_" + i;
                 i++
                 input.value = "";
@@ -176,6 +181,7 @@
 
             }
         })
+
     </script>
 </body>
 
