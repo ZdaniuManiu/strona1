@@ -144,7 +144,8 @@
             margin-right: 10px;
             font-size: 20px;
         }
-        .wynik-cont{
+
+        .wynik-cont {
             display: flex;
             max-width: 650px;
             text-align: center;
@@ -152,6 +153,7 @@
             margin: 0 auto;
             justify-items: stretch;
         }
+
         p {
             color: white;
         }
@@ -206,9 +208,6 @@
                 margin-left: 10px;
             }
 
-            .content-container li {
-                margin-top: 20px;
-            }
 
             .add-cont button {
                 margin-left: 5px;
@@ -219,6 +218,7 @@
                 position: unset;
                 margin-bottom: 20px;
             }
+
         }
     </style>
 </head>
@@ -228,7 +228,6 @@
         <a href="aplikacje.html">Powrót</a>
         <div class="main">
             <div class="add-cont">
-             <!--   <button id="dodaj">Dodaj kolejny produkt</button></li> --> 
             </div>
 
             <div class="content-container">
@@ -245,35 +244,43 @@
                             <option value="6">Masło - zł/kromka (12g) ,zł/100g</option>
                             <option value="7">Szynka - zł/plasterek, zł/100g </option>
                             <option value="8">Inne rzecz - zł/sztuka </option>
-                            <option value="9"> Inne napój - zł/100ml,  zł/Litr</option>
+                            <option value="9"> Inne napój - zł/100ml, zł/Litr</option>
                         </select>
                     </div>
-                    <li>
-                        <label for="cena1" required>Produkt 1 - Cena: </label>
-                        <input type="number" id="cena1" >
-                        <span id="zl">zł</span>
-
-                        <label for="ilosc1" class="typ-label" id="cena1label">Ilość:</label>
-                        <input type="number" id="ilosc1" >
-                        <span id="zl"> lub</span>
-
-                        <label for="waga1">Objętość:</label>
-                        <input type="number" id="waga1"  style="width: 45px;">
-                        <span id="zl">g/ml</span>
+                    <li id="chuj">
+                        <div style="display: block;">
+                            <label for="cena1" required>Produkt 1 - Cena: </label>
+                            <input type="number" id="cena1">
+                            <span id="zl">zł</span>
+                        </div>
+                        <div>
+                            <label for="ilosc1" class="typ-label" id="cena1label">Ilość:</label>
+                            <input type="number" id="ilosc1">
+                            <span id="zl" class="zl1"> lub</span>
+                        </div>
+                        <div>
+                            <label for="waga1">Objętość:</label>
+                            <input type="number" id="waga1" style="width: 45px;">
+                            <span id="zl">g/ml</span>
+                        </div>
 
                     </li>
                     <li>
-                        <label for="cena2">Produkt 2 - Cena: </label>
-                        <input type="number" id="cena2" >
-                        <span id="zl">zł</span>
-
-                        <label for="ilosc2" class="typ-label">Ilość:</label>
-                        <input type="number" id="ilosc2" >
-                        <span id="zl"> lub</span>
-
-                        <label for="waga2">Objętość:</label>
-                        <input type="number" id="waga2" style="width: 45px;">
-                        <span id="zl">g/ml</span>
+                        <div>
+                            <label for="cena2">Produkt 2 - Cena: </label>
+                            <input type="number" id="cena2">
+                            <span id="zl">zł</span>
+                        </div>
+                        <div>
+                            <label for="ilosc2" class="typ-label">Ilość:</label>
+                            <input type="number" id="ilosc2">
+                            <span id="zl" class="zl1">  lub </span>
+                        </div>
+                        <div>
+                            <label for="waga2">Objętość:</label>
+                            <input type="number" id="waga2" style="width: 45px;">
+                            <span id="zl">g/ml</span>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -315,7 +322,7 @@
             const kromka = parseFloat(((cena1 / waga1) * 12).toFixed(2))
             const kromka2 = parseFloat(((cena2 / waga2) * 12).toFixed(2))
 
-            if(isNaN(typ) || isNaN(cena1) || isNaN(cena2) || ( (isNaN(waga1) || isNaN(waga2)) && (isNaN(ilosc1) || isNaN(ilosc2))) ){
+            if (isNaN(typ) || isNaN(cena1) || isNaN(cena2) || ((isNaN(waga1) || isNaN(waga2)) && (isNaN(ilosc1) || isNaN(ilosc2)))) {
                 alert("Podaj wszystkie potrzebne dane lub typ produktu!")
             } else if (typ == 1 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
                 wynik.textContent = 'W pierwszym zestawie, rolka papieru kosztuje ' + sztuka + 'zł'
@@ -323,29 +330,29 @@
             } else if (typ == 2 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
                 wynik.textContent = 'W pierwszym pudełku, jedno jajko kosztuje ' + sztuka + 'zł'
                 wynik2.textContent = 'W drugim pudełku, jedno jajko kosztuje ' + sztuka2 + 'zł'
-            } else if (typ == 3 && (!isNaN(waga2) && !isNaN(waga1)) ) {
+            } else if (typ == 3 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Za pierwsze mleko szklanka kosztuje ' + szklanka1 + 'zł lub ' + na101 + 'zł/100ml'
                 wynik2.textContent = 'Za drugie mleko szklanka kosztuje ' + szklanka2 + 'zł lub ' + na102 + 'zł/100ml'
-            } 
-             else if (typ == 4  && (!isNaN(waga2) && !isNaN(waga1))) {
+            }
+            else if (typ == 4 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsze mięso kosztuje ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugie mięso kosztuje ' + na102 + 'zł/100 gram'
-            } else if (typ == 5  && (!isNaN(waga2) && !isNaN(waga1)) ) {
+            } else if (typ == 5 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwszy ser kosztuje ' + sztuka + 'zł za plasterek lub ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugi ser kosztuje ' + sztuka2 + 'zł za plasterek lub ' + na102 + 'zł/100 gram'
-            } else if (typ == 6  && (!isNaN(waga2) && !isNaN(waga1))) {
+            } else if (typ == 6 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsze masło kosztuje średnio ' + kromka + 'zł za kromke lub ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugie masło kosztuje średnio ' + kromka2 + 'zł za kromke lub ' + na102 + 'zł/100 gram'
-            } else if (typ == 7  && (!isNaN(waga2) && !isNaN(waga1))){
+            } else if (typ == 7 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka + 'zł lub ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka2 + 'zł lub ' + na102 + 'zł/100 gram'
-            } else if (typ == 8  && (!isNaN(ilosc1) && !isNaN(ilosc2)) ){
+            } else if (typ == 8 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
                 wynik.textContent = 'Pierwszy produkt kosztuje ' + sztuka + 'zł/sztuka'
                 wynik2.textContent = 'Drugi produkt kosztuje ' + sztuka2 + 'zł/sztuka'
-            }else if(typ == 9  && (!isNaN(waga2) && !isNaN(waga1)) ){
-                wynik.textContent = 'Pierwszy produkt kosztuje ' + na101 + 'zł/100ml lub ' + (na101*10) + 'zł/litr'
-                wynik2.textContent = 'Drugi produkt kosztuje ' + na102 + 'zł/100ml lub ' + (na102*10) + 'zł/litr'
-            } else(
+            } else if (typ == 9 && (!isNaN(waga2) && !isNaN(waga1))) {
+                wynik.textContent = 'Pierwszy produkt kosztuje ' + na101 + 'zł/100ml lub ' + (na101 * 10) + 'zł/litr'
+                wynik2.textContent = 'Drugi produkt kosztuje ' + na102 + 'zł/100ml lub ' + (na102 * 10) + 'zł/litr'
+            } else (
                 alert('Podaj wszystkie dane lub wybierz typ produktu!')
             )
         })
