@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator ceny</title>
+    <style>
+        :root {
+            --tlo: #1a1a1a;
+            --tlo1: rgb(50, 234, 218);
+            --tlo2: #372828;
+        }
+
+        html,
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--tlo);
+            color: antiquewhite;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        }
+
+        .main-container {
+            padding: 50px;
+            background-color: var(--tlo2);
+            border-radius: 25px;
+            max-width: 1200px;
+        }
+
+        .main {
+            border: 1px solid rgb(27, 207, 27);
+            border-radius: 10px;
+            padding: 20px;
+            width: 95%;
+            background-color: var(--tlo);
+        }
+
+        .add-cont {
+            display: flex;
+            font-size: 1.2em;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.614);
+        }
+
+        .add-cont button,
+        .oblicz-cont button {
+            font-size: 1.2em;
+            border-radius: 4px;
+            background-color: #3cd3d8;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            transition: 0.1s ease-out;
+            padding-left: 3px;
+            padding-right: 5px;
+            padding-bottom: 1px;
+            padding-top: 1px;
+        }
+
+        .oblicz-cont {
+            display: flex;
+            justify-content: center;
+        }
+
+        .add-cont button:hover,
+        .oblicz-cont button:hover {
+            transform: scale(1.05);
+            background-color: #00e5ff;
+            color: black;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content-container ul {
+            text-align: left;
+            list-style: none;
+            overflow-wrap: normal;
+            padding: 0;
+        }
+
+        .content-container li {
+            display: flex;
+            align-items: flex-end;
+            padding: 10px;
+            border: 2px solid rgba(37, 200, 37, 0.413);
+            font-size: 25px;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .select-section {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        #kopiuj {
+            font-size: 20px;
+            margin-top: 5px;
+            border-radius: 5px;
+            background-color: rgb(0, 255, 234);
+            color: black;
+            cursor: pointer;
+        }
+
+        label {
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            width: 40px;
+            margin: 0;
+            margin-left: 5px;
+            margin-right: 5px;
+            height: inherit;
+            background-color: #372828;
+            color: white;
+            height: 20px;
+        }
+
+        select {
+            width: 200px;
+            margin-left: 5px;
+            margin-right: 5px;
+            background-color: #372828;
+            color: white;
+            padding: 2px;
+        }
+
+        #zl {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .wynik-cont{
+            display: flex;
+            max-width: 650px;
+            text-align: center;
+            justify-content: center;
+            margin: 0 auto;
+            justify-items: stretch;
+        }
+        p {
+            color: white;
+        }
+
+        /*PRZYCISK POWRÓTU*/
+        a {
+            text-decoration: none;
+            color: rgb(15, 15, 15);
+            background-color: #529e7f;
+            border: 2px solid black;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 30px;
+            position: fixed;
+            top: 1rem;
+            transition: 0.2s ease-in-out;
+        }
+
+        a:hover {
+            transform: scale(1.1);
+        }
+
+
+
+        @media (pointer:none),
+        (pointer:coarse) {
+            body {
+                margin: 0 auto;
+                width: 90vw;
+                column-width: 400px;
+            }
+
+            .main-container {
+                padding: 30px;
+                background-color: var(--tlo2);
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 25px;
+                border-bottom-right-radius: 25px;
+                max-width: 400px;
+            }
+
+            .main {
+                border: 1px solid rgb(27, 207, 27);
+                border-radius: 10px;
+                padding: 20px;
+                width: 85%;
+                background-color: var(--tlo);
+                margin-left: 10px;
+            }
+
+            .content-container li {
+                margin-top: 20px;
+            }
+
+            .add-cont button {
+                margin-left: 5px;
+            }
+
+            a {
+                display: flex;
+                position: unset;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <a href="aplikacje.html">Powrót</a>
+        <div class="main">
+            <div class="add-cont">
+             <!--   <button id="dodaj">Dodaj kolejny produkt</button></li> --> 
+            </div>
+
+            <div class="content-container">
+                <ul id="lista">
+                    <div class="select-section">
+                        <label for="typ" class="typ-label">Produkt: </label>
+                        <select name="typ" id="typ">
+                            <option value="" disabled selected>-- WYBIERZ PRODUKT -- </option>
+                            <option value="1">Papier toaletowy - zł/rolka</option>
+                            <option value="2">Jajka - zł/jajo</option>
+                            <option value="3">Mleko - zł/Szklanka, zł/100ml</option>
+                            <option value="4">Mięso - zł/100g</option>
+                            <option value="5">Ser - zł/plasterek , zł/100g</option>
+                            <option value="6">Masło - zł/kromka (12g) ,zł/100g</option>
+                            <option value="7">Szynka - zł/plasterek, zł/100g </option>
+                            <option value="8">Inne rzecz - zł/sztuka </option>
+                            <option value="9"> Inne napój - zł/100ml,  zł/Litr</option>
+                        </select>
+                    </div>
+                    <li>
+                        <label for="cena1" required>Produkt 1 - Cena: </label>
+                        <input type="number" id="cena1" >
+                        <span id="zl">zł</span>
+
+                        <label for="ilosc1" class="typ-label" id="cena1label">Ilość:</label>
+                        <input type="number" id="ilosc1" >
+                        <span id="zl"> lub</span>
+
+                        <label for="waga1">Objętość:</label>
+                        <input type="number" id="waga1"  style="width: 45px;">
+                        <span id="zl">g/ml</span>
+
+                    </li>
+                    <li>
+                        <label for="cena2">Produkt 2 - Cena: </label>
+                        <input type="number" id="cena2" >
+                        <span id="zl">zł</span>
+
+                        <label for="ilosc2" class="typ-label">Ilość:</label>
+                        <input type="number" id="ilosc2" >
+                        <span id="zl"> lub</span>
+
+                        <label for="waga2">Objętość:</label>
+                        <input type="number" id="waga2" style="width: 45px;">
+                        <span id="zl">g/ml</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="oblicz-cont">
+                <button id="oblicz">Oblicz</button>
+            </div>
+        </div>
+        <div class="wynik-cont">
+            <h2 id="wynik"></h2>
+            <h2 id="wynik2"></h2>
+        </div>
+    </div>
+    <!-- <div class="export-btn">
+        <button id="kopiuj">Kopiuj do schowka</button>
+    </div>  -->
+
+    <script>
+        const oblicz = document.getElementById("oblicz")
+        const wynik = document.getElementById("wynik")
+        const wynik2 = document.getElementById('wynik2')
+
+        oblicz.addEventListener('click', function () {
+            const cena1 = parseFloat(document.getElementById("cena1").value);
+            const cena2 = parseFloat(document.getElementById("cena2").value);
+            const ilosc1 = parseFloat(document.getElementById('ilosc1').value)
+            const ilosc2 = parseFloat(document.getElementById('ilosc2').value)
+            const waga1 = parseFloat(document.getElementById('waga1').value)
+            const waga2 = parseFloat(document.getElementById('waga2').value)
+            const typ = document.getElementById('typ').value
+
+            const sztuka = parseFloat((cena1 / ilosc1).toFixed(2))
+            const sztuka2 = parseFloat((cena2 / ilosc2).toFixed(2)) //obliczanie zł/sztuka
+
+            const szklanka1 = parseFloat(((cena1 / waga1) * 250).toFixed(2));
+            const szklanka2 = parseFloat(((cena2 / waga2) * 250).toFixed(2))
+            const na101 = parseFloat(((cena1 / waga1) * 100).toFixed(2));
+            const na102 = parseFloat(((cena2 / waga2) * 100).toFixed(2))
+
+            const kromka = parseFloat(((cena1 / waga1) * 12).toFixed(2))
+            const kromka2 = parseFloat(((cena2 / waga2) * 12).toFixed(2))
+
+            if(isNaN(typ) || isNaN(cena1) || isNaN(cena2) || ( (isNaN(waga1) || isNaN(waga2)) && (isNaN(ilosc1) || isNaN(ilosc2))) ){
+                alert("Podaj wszystkie potrzebne dane lub typ produktu!")
+            } else if (typ == 1 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
+                wynik.textContent = 'W pierwszym zestawie, rolka papieru kosztuje ' + sztuka + 'zł'
+                wynik2.textContent = 'W drugim zestawie, rolka papieru kosztuje ' + sztuka2 + 'zł'
+            } else if (typ == 2 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
+                wynik.textContent = 'W pierwszym pudełku, jedno jajko kosztuje ' + sztuka + 'zł'
+                wynik2.textContent = 'W drugim pudełku, jedno jajko kosztuje ' + sztuka2 + 'zł'
+            } else if (typ == 3 && (!isNaN(waga2) && !isNaN(waga1)) ) {
+                wynik.textContent = 'Za pierwsze mleko szklanka kosztuje ' + szklanka1 + 'zł lub ' + na101 + 'zł/100ml'
+                wynik2.textContent = 'Za drugie mleko szklanka kosztuje ' + szklanka2 + 'zł lub ' + na102 + 'zł/100ml'
+            } 
+             else if (typ == 4  && (!isNaN(waga2) && !isNaN(waga1))) {
+                wynik.textContent = 'Pierwsze mięso kosztuje ' + na101 + 'zł/100 gram'
+                wynik2.textContent = 'Drugie mięso kosztuje ' + na102 + 'zł/100 gram'
+            } else if (typ == 5  && (!isNaN(waga2) && !isNaN(waga1)) ) {
+                wynik.textContent = 'Pierwszy ser kosztuje ' + sztuka + 'zł za plasterek lub ' + na101 + 'zł/100 gram'
+                wynik2.textContent = 'Drugi ser kosztuje ' + sztuka2 + 'zł za plasterek lub ' + na102 + 'zł/100 gram'
+            } else if (typ == 6  && (!isNaN(waga2) && !isNaN(waga1))) {
+                wynik.textContent = 'Pierwsze masło kosztuje średnio ' + kromka + 'zł za kromke lub ' + na101 + 'zł/100 gram'
+                wynik2.textContent = 'Drugie masło kosztuje średnio ' + kromka2 + 'zł za kromke lub ' + na102 + 'zł/100 gram'
+            } else if (typ == 7  && (!isNaN(waga2) && !isNaN(waga1))){
+                wynik.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka + 'zł lub ' + na101 + 'zł/100 gram'
+                wynik2.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka2 + 'zł lub ' + na102 + 'zł/100 gram'
+            } else if (typ == 8  && (!isNaN(ilosc1) && !isNaN(ilosc2)) ){
+                wynik.textContent = 'Pierwszy produkt kosztuje ' + sztuka + 'zł/sztuka'
+                wynik2.textContent = 'Drugi produkt kosztuje ' + sztuka2 + 'zł/sztuka'
+            }else if(typ == 9  && (!isNaN(waga2) && !isNaN(waga1)) ){
+                wynik.textContent = 'Pierwszy produkt kosztuje ' + na101 + 'zł/100ml lub ' + (na101*10) + 'zł/litr'
+                wynik2.textContent = 'Drugi produkt kosztuje ' + na102 + 'zł/100ml lub ' + (na102*10) + 'zł/litr'
+            } else(
+                alert('Podaj wszystkie dane lub wybierz typ produktu!')
+            )
+        })
+    </script>
+</body>
+
+</html>
