@@ -218,7 +218,14 @@
                 position: unset;
                 margin-bottom: 20px;
             }
-
+            #li1{
+                justify-items: center;
+                align-items: center;
+                gap: 10px;
+            }
+            #div1,#div2,#div3{
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -247,36 +254,36 @@
                             <option value="9"> Inne napój - zł/100ml, zł/Litr</option>
                         </select>
                     </div>
-                    <li id="chuj">
-                        <div style="display: block;">
-                            <label for="cena1" required>Produkt 1 - Cena: </label>
+                    <li id="li1">
+                        <div id="div1" style="display: block;">
+                            <label for="cena1" required>Produkt 1 Cena: </label>
                             <input type="number" id="cena1">
                             <span id="zl">zł</span>
                         </div>
-                        <div>
+                        <div id="div2">
                             <label for="ilosc1" class="typ-label" id="cena1label">Ilość:</label>
                             <input type="number" id="ilosc1">
                             <span id="zl" class="zl1"> lub</span>
                         </div>
-                        <div>
+                        <div id="div3">
                             <label for="waga1">Objętość:</label>
                             <input type="number" id="waga1" style="width: 45px;">
                             <span id="zl">g/ml</span>
                         </div>
 
                     </li>
-                    <li>
-                        <div>
-                            <label for="cena2">Produkt 2 - Cena: </label>
+                    <li id="li1">
+                        <div id="div1">
+                            <label for="cena2">Produkt 2 Cena: </label>
                             <input type="number" id="cena2">
                             <span id="zl">zł</span>
                         </div>
-                        <div>
+                        <div id="div2">
                             <label for="ilosc2" class="typ-label">Ilość:</label>
                             <input type="number" id="ilosc2">
                             <span id="zl" class="zl1">  lub </span>
                         </div>
-                        <div>
+                        <div id="div3">
                             <label for="waga2">Objętość:</label>
                             <input type="number" id="waga2" style="width: 45px;">
                             <span id="zl">g/ml</span>
