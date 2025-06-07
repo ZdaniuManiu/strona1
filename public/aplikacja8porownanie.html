@@ -251,13 +251,14 @@
                             <option value="" disabled selected>-- WYBIERZ PRODUKT -- </option>
                             <option value="1">Papier toaletowy - zł/rolka</option>
                             <option value="2">Jajka - zł/jajo</option>
-                            <option value="3">Mleko - zł/Szklanka, zł/100ml</option>
-                            <option value="4">Mięso - zł/100g</option>
-                            <option value="5">Ser - zł/plasterek , zł/100g</option>
-                            <option value="6">Masło - zł/kromka (12g) ,zł/100g</option>
-                            <option value="7">Szynka - zł/100g </option>
-                            <option value="8">Inne rzecz - zł/sztuka </option>
-                            <option value="9"> Inne napój - zł/100ml, zł/Litr</option>
+                            <option value="3">Kapsułki do prania - zł/kostke</option>
+                            <option value="4">Mleko - zł/Szklanka, zł/100ml</option>
+                            <option value="5">Mięso - zł/100g</option>
+                            <option value="6">Ser - zł/plasterek , zł/100g</option>
+                            <option value="7">Masło - zł/kromka (12g) ,zł/100g</option>
+                            <option value="8">Szynka - zł/100g </option>
+                            <option value="9">Inne rzecz - zł/sztuka </option>
+                            <option value="10"> Inne napój - zł/100ml, zł/Litr</option>
                         </select>
                     </div>
                     <li id="li1">
@@ -354,7 +355,17 @@
                     wynik.style.color = 'green'
                     wynik2.style.color = 'red'
                 }
-            } else if (typ == 3 && (!isNaN(waga2) && !isNaN(waga1))) {
+            }else if (typ == 3 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
+                wynik.textContent = 'Pierwsze kapsułki kosztują ' + sztuka + 'zł za kostke'
+                wynik2.textContent = 'Drugie kapsułki kosztują ' + sztuka + 'zł za kostke'
+                    if(sztuka>sztuka2){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
+            } else if (typ == 4 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Za pierwsze mleko szklanka kosztuje ' + szklanka1 + 'zł lub ' + na101 + 'zł/100ml'
                 wynik2.textContent = 'Za drugie mleko szklanka kosztuje ' + szklanka2 + 'zł lub ' + na102 + 'zł/100ml'
                     if(na101>na102){
@@ -364,7 +375,7 @@
                     wynik.style.color = 'green'
                     wynik2.style.color = 'red'
                 }
-            } else if (typ == 4 && (!isNaN(waga2) && !isNaN(waga1))) {
+            } else if (typ == 5 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsze mięso kosztuje ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugie mięso kosztuje ' + na102 + 'zł/100 gram'
                     if(na101>na102){
@@ -374,7 +385,7 @@
                     wynik.style.color = 'green'
                     wynik2.style.color = 'red'
                 }
-            } else if (typ == 5 && (!isNaN(waga2) && !isNaN(waga1))) {
+            } else if (typ == 6 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwszy ser kosztuje ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugi ser kosztuje '+ na102 + 'zł/100 gram'
                     if(na101>na102){
@@ -384,7 +395,7 @@
                     wynik.style.color = 'green'
                     wynik2.style.color = 'red'
                 }
-            } else if (typ == 6 && (!isNaN(waga2) && !isNaN(waga1))) {
+            } else if (typ == 7 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsze masło kosztuje średnio ' + kromka + 'zł za kromke lub ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugie masło kosztuje średnio ' + kromka2 + 'zł za kromke lub ' + na102 + 'zł/100 gram'
                  if(na101>na102){
@@ -394,7 +405,7 @@
                     wynik.style.color = 'green'
                     wynik2.style.color = 'red'
                 }
-            } else if (typ == 7 && (!isNaN(waga2) && !isNaN(waga1))) {
+            } else if (typ == 8 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka + 'zł lub ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka2 + 'zł lub ' + na102 + 'zł/100 gram'
                  if(na101>na102){
@@ -404,7 +415,7 @@
                     wynik.style.color = 'green'
                     wynik2.style.color = 'red'
                 }
-            } else if (typ == 8 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
+            } else if (typ == 9 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
                 wynik.textContent = 'Pierwszy produkt kosztuje ' + sztuka + 'zł/sztuka'
                 wynik2.textContent = 'Drugi produkt kosztuje ' + sztuka2 + 'zł/sztuka'
                  if(sztuka>sztuka2){
@@ -414,7 +425,7 @@
                     wynik.style.color = 'green'
                     wynik2.style.color = 'red'
                 }
-            } else if (typ == 9 && (!isNaN(waga2) && !isNaN(waga1))) {
+            } else if (typ == 10 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwszy produkt kosztuje ' + na101 + 'zł/100ml lub ' + (na101 * 10) + 'zł/litr'
                 wynik2.textContent = 'Drugi produkt kosztuje ' + na102 + 'zł/100ml lub ' + (na102 * 10) + 'zł/litr'
                  if(na101>na102){
