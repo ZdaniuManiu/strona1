@@ -89,8 +89,8 @@
 
         .content-container li {
             display: flex;
-            align-items: flex-end;
-            padding: 10px;
+            align-items: flex-start;
+            padding: 20px;
             border: 2px solid rgba(37, 200, 37, 0.413);
             font-size: 25px;
             word-break: break-word;
@@ -129,6 +129,9 @@
             background-color: #372828;
             color: white;
             height: 20px;
+        }
+        #ilosc1,#ilosc2{
+            width: 50px;
         }
 
         select {
@@ -216,6 +219,7 @@
             a {
                 display: flex;
                 position: unset;
+                margin: 0 auto;
                 margin-bottom: 20px;
             }
             #li1{
@@ -239,7 +243,6 @@
         <div class="main">
             <div class="add-cont">
             </div>
-
             <div class="content-container">
                 <ul id="lista">
                     <div class="select-section">
@@ -260,36 +263,33 @@
                     <li id="li1">
                         <div id="div1" style="display: block;">
                             <label for="cena1" required>Cena: </label>
-                            <input type="number" id="cena1">
-                            <span id="zl">zł</span>
+                            <input type="number" id="cena1" placeholder="zł">
                         </div>
                         <div id="div2">
                             <label for="ilosc1" class="typ-label" id="cena1label">Ilość:</label>
-                            <input type="number" id="ilosc1">
-                            <span id="zl" class="zl1"> </span>
+                            <input type="number" id="ilosc1" placeholder="sztuk">
                         </div>
                         <div id="div3">
-                            <label for="waga1">lub Objętość:</label>
-                            <input type="number" id="waga1" style="width: 45px;">
-                            <span id="zl">g/ml</span>
+                            <label for="waga1">Objętość:</label>
+                            <input type="number" id="waga1" style="width: 45px;" placeholder="g/ml">
                         </div>
 
                     </li>
                     <li id="li1">
                         <div id="div1">
                             <label for="cena2">Cena: </label>
-                            <input type="number" id="cena2">
-                            <span id="zl">zł</span>
+                            <input type="number" id="cena2" placeholder="zł">
+
                         </div>
                         <div id="div2">
                             <label for="ilosc2" class="typ-label">Ilość:</label>
-                            <input type="number" id="ilosc2">
-                            <span id="zl" class="zl1">   </span>
+                            <input type="number" id="ilosc2" placeholder="sztuk">
+
                         </div>
                         <div id="div3">
-                            <label for="waga2"> lub Objętość:</label>
-                            <input type="number" id="waga2" style="width: 45px;">
-                            <span id="zl">g/ml</span>
+                            <label for="waga2">Objętość:</label>
+                            <input type="number" id="waga2" style="width: 45px;" placeholder="g/ml">
+
                         </div>
                     </li>
                 </ul>
@@ -337,31 +337,93 @@
             } else if (typ == 1 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
                 wynik.textContent = 'W pierwszym zestawie, rolka papieru kosztuje ' + sztuka + 'zł'
                 wynik2.textContent = 'W drugim zestawie, rolka papieru kosztuje ' + sztuka2 + 'zł'
+                if(sztuka>sztuka2){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else if (typ == 2 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
                 wynik.textContent = 'W pierwszym pudełku, jedno jajko kosztuje ' + sztuka + 'zł'
                 wynik2.textContent = 'W drugim pudełku, jedno jajko kosztuje ' + sztuka2 + 'zł'
+                    if(sztuka>sztuka2){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else if (typ == 3 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Za pierwsze mleko szklanka kosztuje ' + szklanka1 + 'zł lub ' + na101 + 'zł/100ml'
                 wynik2.textContent = 'Za drugie mleko szklanka kosztuje ' + szklanka2 + 'zł lub ' + na102 + 'zł/100ml'
-            }
-            else if (typ == 4 && (!isNaN(waga2) && !isNaN(waga1))) {
+                    if(na101>na102){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
+            } else if (typ == 4 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsze mięso kosztuje ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugie mięso kosztuje ' + na102 + 'zł/100 gram'
+                    if(na101>na102){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else if (typ == 5 && (!isNaN(waga2) && !isNaN(waga1))) {
-                wynik.textContent = 'Pierwszy ser kosztuje ' + sztuka + 'zł za plasterek lub ' + na101 + 'zł/100 gram'
-                wynik2.textContent = 'Drugi ser kosztuje ' + sztuka2 + 'zł za plasterek lub ' + na102 + 'zł/100 gram'
+                wynik.textContent = 'Pierwszy ser kosztuje ' + na101 + 'zł/100 gram'
+                wynik2.textContent = 'Drugi ser kosztuje '+ na102 + 'zł/100 gram'
+                    if(na101>na102){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else if (typ == 6 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsze masło kosztuje średnio ' + kromka + 'zł za kromke lub ' + na101 + 'zł/100 gram'
                 wynik2.textContent = 'Drugie masło kosztuje średnio ' + kromka2 + 'zł za kromke lub ' + na102 + 'zł/100 gram'
+                 if(na101>na102){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else if (typ == 7 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka + 'zł lub ' + na101 + 'zł/100 gram'
-                wynik2.textContent = 'Druga szynka kosztuje za plasterek ' + sztuka2 + 'zł lub ' + na102 + 'zł/100 gram'
+                wynik2.textContent = 'Pierwsza szynka kosztuje za plasterek ' + sztuka2 + 'zł lub ' + na102 + 'zł/100 gram'
+                 if(na101>na102){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else if (typ == 8 && (!isNaN(ilosc1) && !isNaN(ilosc2))) {
                 wynik.textContent = 'Pierwszy produkt kosztuje ' + sztuka + 'zł/sztuka'
                 wynik2.textContent = 'Drugi produkt kosztuje ' + sztuka2 + 'zł/sztuka'
+                 if(sztuka>sztuka2){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else if (typ == 9 && (!isNaN(waga2) && !isNaN(waga1))) {
                 wynik.textContent = 'Pierwszy produkt kosztuje ' + na101 + 'zł/100ml lub ' + (na101 * 10) + 'zł/litr'
                 wynik2.textContent = 'Drugi produkt kosztuje ' + na102 + 'zł/100ml lub ' + (na102 * 10) + 'zł/litr'
+                 if(na101>na102){
+                    wynik.style.color = "red"
+                    wynik2.style.color = "green"
+                }else{
+                    wynik.style.color = 'green'
+                    wynik2.style.color = 'red'
+                }
             } else (
                 alert('Podaj wszystkie dane lub wybierz typ produktu!')
             )
