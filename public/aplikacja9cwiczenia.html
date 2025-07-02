@@ -163,9 +163,11 @@
             border: 2px rgb(27, 251, 23) solid;
             border-radius: 5px;
             height: 80px;
+            font-size: 40px;
         }
         #seria{
-            margin-left: 40px
+            margin-left: 40px;
+            width:250px;
         }
         @media (pointer:none),
         (pointer:coarse) {
@@ -245,7 +247,7 @@
         const lil = document.getElementsByTagName('li');
         const przyciskKopiuj = document.getElementById("kopiuj");
         const przyciskEksport = document.getElementById('eksport');
-        
+        const placeholdery = ["Pompki",'Brzuszki','CzasDeski']
         let i = 0;
 
         function dodajSpacjePo30Znakach(text) {
@@ -266,6 +268,7 @@
                 listaol.appendChild(licznik)
                 licznik.type = "number"
                 licznik.id = "licznik"
+                licznik.placeholder = placeholdery[i]
                 li.textContent = dodajSpacjePo30Znakach(tresc)
                 li.id = "zadanie_" + i;
                 input.value = "";
