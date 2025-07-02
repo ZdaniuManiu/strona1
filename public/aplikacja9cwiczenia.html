@@ -158,18 +158,22 @@
             margin-bottom: 10px;
             margin-top: 5px;
         }
-        #seria,#licznik{
+
+        #seria,
+        #licznik {
             background-color: rgb(228, 242, 229);
             border: 2px rgb(27, 251, 23) solid;
             border-radius: 5px;
             height: 80px;
             font-size: 40px;
         }
-        #seria{
+
+        #seria {
             margin-left: 40px;
-            width:250px;
+            width: 250px;
             margin-top: 15px;
         }
+
         @media (pointer:none),
         (pointer:coarse) {
             body {
@@ -226,13 +230,13 @@
                 <label for="zadanie">Wpisz nowe zadanie: </label>
                 <input type="text" id="zadanie">
                 <button id="dodaj">Dodaj</button>
-                
+
             </div>
             <input id="seria" type="number" style="border: 2px yellowgreen solid;" placeholder="Numer Serii">
             <div class="content-container">
-                
+
                 <ol id="lista"></ol>
-                
+
             </div>
         </div>
     </div>
@@ -248,7 +252,7 @@
         const lil = document.getElementsByTagName('li');
         const przyciskKopiuj = document.getElementById("kopiuj");
         const przyciskEksport = document.getElementById('eksport');
-        const placeholdery = ["Pompki",'Brzuszki','CzasDeski']
+        const placeholdery = ["Pompki", 'Brzuszki', 'CzasDeski']
         let i = 0;
 
         function dodajSpacjePo30Znakach(text) {
@@ -292,7 +296,12 @@
             const wszystkieLi = document.querySelectorAll('#lista li');
             const wszystkieInput = document.querySelectorAll('#lista input')
             const seria = document.getElementById("seria").value.trim()
-            let tekst = seria +' Seria:\n';
+            const dzis = new Date();
+            const miesiac = String(dzis.getMonth() + 1).padStart(2, '0');
+            const dzien = String(dzis.getDate()).padStart(2, '0');
+            let tekst = `DATA: ${miesiac}.${dzien}\n`;
+
+            tekst += seria + ' Seria:\n';
 
 
             wszystkieLi.forEach((li, i) => {
