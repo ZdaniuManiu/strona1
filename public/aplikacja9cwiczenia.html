@@ -252,7 +252,7 @@
         const lil = document.getElementsByTagName('li');
         const przyciskKopiuj = document.getElementById("kopiuj");
         const przyciskEksport = document.getElementById('eksport');
-        const placeholdery = ["Pompki", 'Brzuszki', 'CzasDeski']
+        const placeholdery = ["Pompki", 'Brzuszki', 'CzasDeski','Przysiady']
         let i = 0;
 
         function dodajSpacjePo30Znakach(text) {
@@ -299,9 +299,9 @@
             const dzis = new Date();
             const miesiac = String(dzis.getMonth() + 1).padStart(2, '0');
             const dzien = String(dzis.getDate()).padStart(2, '0');
-            let tekst = `DATA: ${miesiac}.${dzien}\n`;
+            //let tekst = `DATA: ${miesiac}.${dzien}\n`;
 
-            tekst += seria + ' Seria:\n';
+            let tekst = seria + ' Seria:\n';
 
 
             wszystkieLi.forEach((li, i) => {
@@ -336,9 +336,14 @@
             document.getElementById("zadanie").value = "Deska"
             document.getElementById("dodaj").click()
         }
+        function dodajPrzysiad() {
+            document.getElementById("zadanie").value = "Przysiad"
+            document.getElementById("dodaj").click()
+        }
         dodajPompki()
         dodajBrzuszki()
         dodajDeska()
+        dodajPrzysiad()
     </script>
 </body>
 
