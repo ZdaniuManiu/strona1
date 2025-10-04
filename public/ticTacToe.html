@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kółko krzyżyk</title>
+    <style>
+        :root {
+            --kolor-tla: rgb(13, 161, 146);
+            --kolor-tla-dimmed: rgba(11, 116, 105, 0.32);
+            --kolor-aktywnego: rgb(95, 230, 10);
+            --kolor-not-aktywnego: rgb(204, 31, 31);
+            --kolor-tekstu: #ecf0f1;
+            --kolor-akcentu-glowny: #1abc9c;
+            /* Turkusowy */
+            --kolor-akcentu-drugi: #01adf7;
+            /* Niebieski */
+            --kolor-sukcesu: #2ecc71;
+            --kolor-bledu: #e74c3c;
+            --kolor-input-tlo: #2b3a4a;
+        }
+
+        body {
+            height: 100%;
+            background-color: var(--kolor-tla);
+        }
+
+        .tabela_container {
+            text-align: center;
+            margin: 250px auto;
+        }
+
+        .start_button {
+            margin-bottom: 20px;
+        }
+
+
+        table {
+            background-image: url(TicTac/tictac.png);
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0 auto;
+            cursor: not-allowed;
+            border-collapse: separate;
+            border-spacing: 20px;
+            margin-top: 50px;
+        }
+
+        td {
+            text-align: center;
+            font-size: 250%;
+            width: 100px;
+            height: 100px;
+            padding: 0px;
+            transition: 0.2 ease-in;
+        }
+
+        td.active-cell:hover {
+            background-color: var(--kolor-tla-dimmed);
+            cursor: not-allowed;
+        }
+
+        .cell {
+            margin: 60px;
+            border-radius: 6px;
+            background-position: center;
+            background-Size: 100%;
+        }
+
+        .start_button {
+            padding: 10px 15px 10px 15px;
+            border-radius: 20px;
+            width: 270px;
+            height: 60px;
+            background-color: var(--kolor-sukcesu);
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+        }
+
+        button.start_button:disabled {
+            cursor: not-allowed;
+        }
+
+        button.player_select {
+            padding: 10px 15px 10px 15px;
+            border-radius: 15px;
+            border: unset;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        button.player_select:disabled {
+            cursor: not-allowed;
+        }
+
+        button.player_select:hover {
+            background-color: lightgray;
+        }
+
+        #pick_player_kolko {
+            margin-left: 25px;
+        }
+
+        .wybor_container {
+            margin: 0 auto;
+            width: 300px;
+
+        }
+        .linia_wygranej_poziom{
+            position: absolute;
+            width: 333px;
+            background-color: #01adf7;
+            height: 10px;
+        }
+        .linia_wygranej_poziom_animacja{
+            animation: fadeIn 2s ease forwards; 
+        }
+        .linia_wygranej_pion{
+            background-color: #01adf7;
+            position: absolute;
+            width: 10px;
+            height: 333px;
+        }
+        .linia_wygranej_pion_animacja{
+            animation: fadeInPion 2s ease forwards; 
+        }
+        .linia_wygranej_skos{
+            position: absolute;
+        } 
+        .linia_wygranej_skos_animacja{
+            animation: fadeInSkos 2s ease forwards; 
+        } 
+        .a123 {
+            top: 60px;
+            left: 23px ;
+        }
+        .a456 {
+            top: 185px;
+            left: 23px ;
+        }
+        .a789 {
+            top: 307px;
+            left: 23px ;
+        }
+        .a147 {
+            top: 23px;
+            left: 67px ;
+            transform-origin: center;
+        }  
+        .a258 {
+            top: 23px;
+            left: 185px ;
+            transform-origin: center;
+
+        } 
+        .a369 {
+            top: 23px;
+            left: 300px ;
+            transform-origin: center;
+        } 
+        .krzyzowka_container{
+            margin: 0 auto;
+            position: relative;
+            width: fit-content;
+        }
+        @keyframes fadeIn {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 300px;
+            }
+        }
+        @keyframes fadeInPion {
+        
+            from{height: 0;}
+            to{
+                height: 333px;
+            }    
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tabela_container">
+        <button id="startButton" class="start_button">Rozpocznij Gre</button><br />
+        <div id="wybor_container" class="wybor_container">
+            <h3 id="wyborText" style="visibility: hidden;margin: 0 0 25px;">Wybierz Gracza:</h3>
+            <button id="pick_player_krzyzyk" class="player_select" disabled>Krzyżyk</button>
+            <button id="pick_player_kolko" class="player_select" disabled>Kółko</button>
+        </div>
+        <div class="krzyzowka_container">
+            <table id="tabela">
+                <tbody id="bodyTabela">
+                    <div id="linia" class=""></div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        let wygrane = [[1, 2, 3], [4, 5, 6], [7, 8, 9], // poziome
+        [1, 4, 7], [2, 5, 8], [3, 6, 9], // pionowe
+        [1, 5, 9], [3, 5, 7]]         // skos
+        const tabela = document.getElementById("tabela")
+        const bodyTabela = document.getElementById("bodyTabela")
+        const startButton = document.getElementById("startButton")
+        const wyborText = document.getElementById("wyborText")
+        const wyborcont = document.getElementById("wybor_container")
+
+        const pickKrzyzyk = document.getElementById("pick_player_krzyzyk");
+        const pickKolko = document.getElementById("pick_player_kolko")
+        let gracz
+        let StanGry
+        let polaKolka = []
+        let polaKrzyzyka = []
+
+        startButton.addEventListener('click', function () { // przycisk 'rozpocznij gre'
+            StanGry = 'PickingPlayer'
+            wyborText.style.visibility = "visible"
+            wyborcont.style.border = "2px solid black"
+            wyborcont.style.borderRadius = "15px"
+            wyborcont.style.marginBottom = '0'
+            pickPlayer() // przechodzi do funkcji wyboru gracza
+        })
+
+        function pickPlayer() {
+
+            startButton.cursor = 'not-allowed' //ustawia kursor przycisku 'rozpocznij gre' na nieaktywny
+            startButton.disabled = true // oraz go wylacza
+
+            playerPicked(0)
+
+        }
+
+        pickKrzyzyk.addEventListener('click', function () { // przycisk 'krzyzyk'
+            gracz = 'krzyzyk' // ustawia gracza
+            currentPlayer()
+            playerPicked(1) // wylacza obydwa przyciski
+            startGame() // rozpoczyna gre
+        })
+
+        pickKolko.addEventListener('click', function () { // przycisk 'kolko'
+            gracz = 'kolko' // to samo co powyzej
+            currentPlayer()
+            playerPicked(1)
+            startGame()
+        })
+
+        function playerPicked(stan) { // w(y)lacza przyciski
+            if (stan == 1) { // 1 = wyłączone, 0 = włączone
+                pickKrzyzyk.disabled = true
+                pickKolko.disabled = true
+            } else {
+                pickKrzyzyk.disabled = false
+                pickKolko.disabled = false
+            }
+        }
+
+        function startGame() {
+            wyborText.style.visibility = "hidden"
+            wyborcont.style.border = ""
+            StanGry = 'Rozpoczeta' // ustawia stan gry na rozpoczeta
+            tabela.style.cursor = "unset" // odblokowuje kursor
+            document.querySelectorAll("td").forEach(element => { // zmienia dla kazdego 'td'
+                element.style.cursor = 'pointer' // ustawia kursor po starcie gry
+                element.className += ' active-cell' // dodaje klase po starcie gry
+            })
+        }
+
+        function restart() {
+            polaKolka = []
+            polaKrzyzyka = []
+            startButton.disabled = false
+            gracz = 'brak'
+            currentPlayer()
+            document.querySelectorAll("td").forEach(element => { // zmienia dla kazdego 'td'
+                element.dataset.gracz = "brak"
+                element.dataset.klikniete = 'nie'
+                element.style.cursor = 'unset'
+                element.style.backgroundImage = 'url()'
+                element.classList.remove('active-cell')
+            })
+        }
+
+        function currentPlayer() {
+            if (gracz == 'kolko') {
+                pickKolko.style.backgroundColor = "var(--kolor-aktywnego)" // zielony
+                pickKolko.style.color = 'black'
+                pickKrzyzyk.style.color = 'red'
+                pickKrzyzyk.style.backgroundColor = "var(--kolor-not-aktywnego)"
+            } else {
+                pickKolko.style.backgroundColor = "var(--kolor-not-aktywnego)"
+                pickKolko.style.color = 'red'
+                pickKrzyzyk.style.color = 'black'
+                pickKrzyzyk.style.backgroundColor = "var(--kolor-aktywnego)"
+            }
+            if (gracz == "brak") {
+                pickKolko.style.backgroundColor = ""
+                pickKrzyzyk.style.backgroundColor = ""
+                pickKolko.style.color = ''
+                pickKrzyzyk.style.color = ''
+            }
+        }
+
+        for (let i = 1; i <= 3; i++) { // tworzenie planszy
+            const row = document.createElement("tr") // tworzy rzad
+
+            for (let ii = 1; ii <= 3; ii++) {
+                const cell = document.createElement("td") // tworzy komorki
+                cell.className = "cell"
+                row.appendChild(cell); // dodaje komorki do rzedow
+                cell.dataset.klikniete = "nie" // ustawia ze pole podstawowo nie jest klikniete 
+
+                cell.addEventListener('click', function () { // nasluchuje na klikniecia na kazda komorke td
+
+                    if (StanGry == "Rozpoczeta") {
+                        // STAN GRY - ROZPOCZETY
+                        if (cell.dataset.klikniete == "nie") { // sprawdza czy pole jest klikniete
+                            cell.dataset.klikniete = "tak" // ustawia pole na klikniete
+
+                            // SPRAWDZENIE GRACZA I DODANIE MU POLA 
+                            //KOLKO
+                            if (gracz == "kolko") { // jezeli gracz jest kolkiem
+                                cell.style.backgroundImage = "url(TicTac/kolko.png)"
+                                cell.dataset.gracz = "kolko" // ustawia ze pole nalezy do kolka
+                                polaKolka.push(+cell.id) //dodaje pole dla kolka
+                                console.log("Kolko: " + polaKolka)
+                                gracz = 'krzyzyk'  // zmienia gracza na przeciwnego
+                                currentPlayer()
+                                //KRZYZYK
+                            } else { // jezeli gracz nie jest kolkiem, czyli jest krzyzykiem
+                                cell.dataset.gracz = "krzyzyk" // ustawia ze pole nalezy do krzyzyka
+                                cell.style.backgroundImage = "url(TicTac/krzyzyk.png)"
+                                polaKrzyzyka.push(+cell.id) // dodaje pole dla krzyzyka
+                                console.log("Krzyzyk: " + polaKrzyzyka)
+                                gracz = 'kolko' // zmienia gracza na przeciwnego
+                                currentPlayer()
+                            }
+
+
+                        } else { // jezeli pole jest juz klikniete
+                            alert("Pole jest już zajęte")
+                        }
+
+                        // STAN GRY - NIE ROZPOCZETE
+                    } else {
+                        if (StanGry == 'PickingPlayer') { // jezeli stan gry jest na wyborze gracza
+                            alert("Pierw wybierz gracza!")
+                        } else { // jezeli nie jest na wyborze gracza to znaczy ze nie jest zaczeta
+                            alert("Pierw rozpocznij gre!");
+                        }
+                    }
+                    //sprawdzanie wygranej przy kazdym kliknieciu
+                    //wygrana kolka
+                    const wygranaKombinacjaKolka = wygrane.find(kombinacja => kombinacja.every(nr => polaKolka.includes(nr)))
+                    const wygranaKombinacjaKrzyzyka = wygrane.find(kombinacja => kombinacja.every(nr => polaKrzyzyka.includes(nr)))
+
+                    if (wygranaKombinacjaKolka) {
+                        setTimeout(() => {wynikWygranej(wygranaKombinacjaKolka); restart(); }, 50);
+                        //wygrana krzyzyka
+                    } else if (wygranaKombinacjaKrzyzyka) {
+                        setTimeout(() => {wynikWygranej(wygranaKombinacjaKrzyzyka); restart(); }, 50);
+                        //remis
+                    } else if (polaKrzyzyka.length == 5 && polaKolka.length == 4 || polaKrzyzyka.length == 4 && polaKolka.length == 5) {
+                        setTimeout(() => { alert("REMIS!"); restart(); }, 250);
+                    }
+
+                });
+
+            }
+            bodyTabela.appendChild(row) // dodaje wszystkie rzedy do body tabeli
+        }
+
+        
+        function wynikWygranej(kombinacja) {
+            // console.log("kombinacja " + kombinacja)
+            const kombinacjaFloat = kombinacja.join('')
+            const linia = document.getElementById("linia")
+            let wygranePion = [[1, 4, 7], [2, 5, 8], [3, 6, 9]];
+            let wygranePoziom = [[1,2,3],[4,5,6],[7,8,9]];
+            let wygraneSkos = [[1, 5, 9], [3, 5, 7]];
+            if(wygranePion.find(kombinacja1 => kombinacja1.every(nr => kombinacja.includes(nr)))){
+                console.log('pion')
+                linia.className += ' linia_wygranej_pion linia_wygranej_pion_animacja '
+            }else if(wygranePoziom.find(kombinacja2 => kombinacja2.every(nr => kombinacja.includes(nr)))){
+                linia.className +=  ' linia_wygranej_poziom linia_wygranej_poziom_animacja  ' 
+                console.log("poziom")
+            }else if(wygraneSkos.find(kombinacja3 => kombinacja3.every(nr => kombinacja.includes(nr)))){
+                linia.className +=  ' linia_wygranej_skos linia_wygranej_skos_animacja  ' 
+                console.log("skos")}
+
+            linia.className += ' a' + kombinacjaFloat
+        }
+
+        const allCell = document.querySelectorAll("td");
+        allCell.forEach((element, index) => { //nadawanie ID dla komórek
+            element.id = index + 1
+        });
+
+        const rows = ['FirstRow', 'SecondRow', 'ThirdRow'];
+        const allRow = document.querySelectorAll("tr")
+        allRow.forEach((element, index) => { //nadawanie ID dla rzędów
+            element.id = rows[index];
+        });
+
+
+    </script>
+</body>
+
+</html>
