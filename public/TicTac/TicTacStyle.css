@@ -18,7 +18,16 @@ body {
     size: 50%;
     background-color: var(--kolor-tla);
 }
-
+a{
+    text-decoration: none;
+    position: absolute;
+    float: left;
+    top: 10px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 5px;
+}
 .tabela_container {
     text-align: center;
     margin: 50px auto;
