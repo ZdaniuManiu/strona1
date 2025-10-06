@@ -1,0 +1,242 @@
+:root {
+    --kolor-tla: rgb(13, 161, 146);
+    --kolor-tla-dimmed: rgba(11, 116, 105, 0.32);
+    --kolor-aktywnego: rgb(95, 230, 10);
+    --kolor-not-aktywnego: rgb(204, 31, 31);
+    --kolor-tekstu: #ecf0f1;
+    --kolor-akcentu-glowny: #1abc9c;
+    /* Turkusowy */
+    --kolor-akcentu-drugi: #01adf7;
+    /* Niebieski */
+    --kolor-sukcesu: #2ecc71;
+    --kolor-bledu: #e74c3c;
+    --kolor-input-tlo: #2b3a4a;
+}
+
+body {
+    height: 100%;
+    size: 50%;
+    background-color: var(--kolor-tla);
+}
+
+.tabela_container {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.start_button {
+    margin-bottom: 20px;
+}
+
+
+table {
+    background-image: url(tictac.png);
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    cursor: not-allowed;
+    border-collapse: separate;
+    border-spacing: 20px;
+    margin-top: 50px;
+}
+
+td {
+    text-align: center;
+    font-size: 250%;
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+}
+
+td.active-cell:hover {
+    background-color: var(--kolor-tla-dimmed);
+    cursor: not-allowed;
+}
+
+.cell {
+    margin: 60px;
+    border-radius: 6px;
+    background-position: center;
+    background-Size: 100%;
+}
+
+.start_button {
+    padding: 10px 15px 10px 15px;
+    border-radius: 20px;
+    width: 270px;
+    height: 60px;
+    background-color: var(--kolor-sukcesu);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+button.start_button:disabled {
+    cursor: not-allowed;
+}
+
+button.player_select {
+    padding: 10px 15px 10px 15px;
+    border-radius: 15px;
+    border: unset;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button.player_select:disabled {
+    cursor: not-allowed;
+}
+
+button.player_select:hover {
+    background-color: lightgray;
+}
+
+#pick_player_kolko {
+    margin-left: 25px;
+}
+
+.wybor_container {
+    margin: 0 auto;
+    width: 300px;
+
+}
+
+.linia_wygranej_poziom {
+    position: absolute;
+    width: 333px;
+    background-color: #01adf7;
+    height: 10px;
+}
+
+.linia_wygranej_poziom_animacja {
+    animation: fadeIn 2s ease forwards;
+}
+
+.linia_wygranej_pion {
+    background-color: #01adf7;
+    position: absolute;
+    width: 10px;
+    height: 333px;
+}
+
+.linia_wygranej_pion_animacja {
+    animation: fadeInPion 2s ease forwards;
+}
+
+.linia_wygranej_skos {
+    position: absolute;
+    width: 10px;
+    height: 400px;
+    background: linear-gradient(0deg, #01adf7 49.9%, #ffffff0f 50.1%);
+    background-size: 300% 300%;
+        animation: fadeInSkos 2s ease forwards;
+}
+
+
+.a123 {
+    top: 64px;
+    left: 39px;
+}
+
+.a456 {
+    top: 185px;
+    left: 39px;
+}
+
+.a789 {
+    top: 306px;
+    left: 39px;
+}
+
+.a147 {
+    top: 23px;
+    left: 64px;
+    transform-origin: center;
+}
+
+.a258 {
+    top: 23px;
+    left: 184px;
+    transform-origin: center;
+
+}
+
+.a369 {
+    top: 22px;
+    left: 304px;
+    transform-origin: center;
+}
+
+.a357 {
+    transform-origin: right;
+    rotate: 45deg;
+    top: -7px;
+    left: 183px;
+
+}
+
+.a159 {
+    transform-origin: right;
+    rotate: -45deg;
+    width: 4px;
+    top: -15px;
+    left: 183px;
+
+}
+
+.krzyzowka_container {
+    margin: 0 auto;
+    position: relative;
+    width: fit-content;
+}
+.wygrane_pola{
+    animation: winColor 2s ease forwards;
+}
+@keyframes winColor {
+    0%{
+        background-color: #ff000000;
+    }
+    100%{
+        border-radius: 50px;
+        background-color: rgba(0, 128, 255, 0.291);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        width: 0;
+    }
+
+    to {
+        border: 1px solid black;
+        width: 300px;
+    }
+}
+
+@keyframes fadeInPion {
+
+    from {
+        height: 0;
+    }
+
+    to {
+        border: 1px solid black;
+        height: 333px;
+    }
+}
+
+@keyframes fadeInSkos {
+    0% {
+        background-position: 0% 0%;
+        width: 4px;
+    }
+
+    100% {
+        border: 1px solid black;
+        background-color: #01adf7;
+        background-position: 100% 100%;
+        width: 10px;
+    }
+
+
+}
