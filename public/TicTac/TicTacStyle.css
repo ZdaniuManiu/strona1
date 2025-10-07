@@ -11,6 +11,7 @@
     --kolor-sukcesu: #2ecc71;
     --kolor-bledu: #e74c3c;
     --kolor-input-tlo: #2b3a4a;
+    color-scheme: light only;
 }
 
 body {
