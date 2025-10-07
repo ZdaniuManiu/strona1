@@ -113,9 +113,11 @@ function startGame() {
 
 //FUNKCJA ODPOWIEDZIALNA ZA RESTART STANU GRY
 function restart() {
+
     polaKolka = []
     polaKrzyzyka = []
     startButton.disabled = false
+    startButton.textContent = "Zresetuj gre"
     gracz = 'brak'
     StanGry = 'GameEnded'
     currentPlayer()
@@ -252,7 +254,6 @@ for (let i = 1; i <= 3; i++) {
 
 function wynikWygranej(kombinacja) {
     const kombinacjaFloat = kombinacja.join('')
-    console.log("Wygrana kombinacja: " + kombinacja)
 
     
     let wygranePion = [[1, 4, 7], [2, 5, 8], [3, 6, 9]];
@@ -271,7 +272,6 @@ function wynikWygranej(kombinacja) {
     } else if (wygraneSkos.find(kombinacja3 => kombinacja3.every(nr => kombinacja.includes(nr)))) { // wygrane skos
         lastClassWin += ' linia_wygranej_skos'
         linia.className += lastClassWin.trim()
-        console.log("skos")
     }
 
     linia.className += ' a' + kombinacjaFloat
