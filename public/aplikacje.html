@@ -25,241 +25,40 @@ body{
     background-position: 0% 50%;
   }
 }
+body{
+    display: flex;
+    justify-content: center;
+}
 .page-div{
-    text-align: center;
-    width: 100%  ;
+    display: flex;
+    width: fit-content;
+    height: 100dvh;
+    flex-direction: column;
+    gap: 20px;
+}
+#back{
+    margin-bottom: 50px;
 }
 .page-div a{
-    font-weight:normal;
-    font-size: 25px;
-    float: left;
-    margin-top: -1.3rem;
-    margin-left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    background-color: #0d9fe8;
+    height: 3%;
+    width: 70dvw;
     text-decoration: none;
+    text-align: center;
+    justify-content: center; 
+    align-items: center;
+    border-radius: 20px;
     color: black;
-    background-color: rgb(92, 255, 151);
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 25px 55px 25px 55px;  
-    transition: 0.4s;
-}
-.page-div a:hover{
-    background-color: rgb(83, 187, 174);
-    transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.567) 5px 5px 10px;
-}
-.page-header{
-    width: 640px;
-    margin: 0 auto;
-    text-align: center;
-    justify-items: center;
-}   
-.page-header ul{
-    background: radial-gradient(circle, transparent,rgb(76, 158, 185),transparent);
-    border: 2px solid black;
-    border-radius: 25px;
-    list-style: none;
-    display:inline-flex;
-    justify-content: center;
-    gap: 160px;
-    width: 800px;
-    padding: 15px 15px;
-}
-.page-header p{
-    width: 50vw;
-    height: 5vh;
-    font-size: 30px;
-    margin-bottom: 7vh;
-}
-
-#PierwszaAplikacja ,#DrugaAplikacja ,#TrzeciaAplikacja {
-    text-align: center;
-    display: none;
-    margin-top:0px;
-    border: 3px solid black;
-    border-radius: 25px;
-    background: linear-gradient(to right,rgb(101, 203, 120),rgb(22, 232, 208),rgb(22, 183, 232),rgb(22, 232, 208),rgb(157, 176, 90));
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-#PierwszaAplikacja hr,#DrugaAplikacja hr,#TrzeciaAplikacja hr{
-    height: 20px;
-    background: linear-gradient(to right,rgba(8, 16, 235, 0.453)10%,transparent 30%,rgba(8, 16, 235, 0.453)60%,transparent 90%,rgba(8, 16, 235, 0.453)100%);
-    border: 2px solid rgb(10, 146, 231) ;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    margin: 0;
-}
-#PierwszaAplikacja p,#DrugaAplikacja p,#TrzeciaAplikacja p{
-    margin: 0;
-    padding: 0;
-}
-
-#PierwszaAplikacja table { /* ustawianie stylu dla tabeli */
-     margin: 20px 0px 0px 0px; /* w tym przypadku poszerza obszar tabeli o 20 pikseli w dół oraz automatycznie ją środkuje  */
-     width: 100%; /* powoduje że tabela bedzie rozciągnieta po całości elementu */
-     border-collapse: collapse; /* usuwa przestrzenie między komórkami*/
-     
-    }
-#PierwszaAplikacja h1,h2{
-        margin-top: 0px;
-        text-align:center;
-    }
-#PierwszaAplikacja th, td { /* ustawia styl dla nagłówków i komórek w tabeli */
-     border: 1px solid #ddd; /* dodaje obramowania do tabeli */
-     padding: 15px; /* dodaje 15pikseli z każdej strony (gora dol prawo lewo) dla komórek powodując że są one wieksze */
-     text-align: center; /*środkuje tekst*/
-    }
-    /* Styl dla nagłówków tabeli */
-#PierwszaAplikacja th {
-     background-color: rgb(100, 132, 192); /* ustawia kolor tła dla nagłówków w tabeli */
-    }
-#PierwszaAplikacja td{
-     background-color:rgb(121, 189, 201) ; /* ustawia kolor tła dla komórek w tabeli */
-}
-#DrugaAplikacja,#TrzeciaAplikacja{
-    text-align: center;
-    font-size: 35px;
-    margin-top: 30px;
-}
-#przyciski1 button{
-    background:  rgb(210, 49, 17);
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 25px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-}
-#przyciski11.aktywny{
-    background: rgb(106, 255, 0);
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 25px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-}
-#przyciski button:hover{
-    transform: scale(1.1);
-}
-
-#przyciski2 button{
-    background:  rgb(210, 49, 17);
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 25px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-}
-#przyciski22.aktywny{
-    background: rgb(106, 255, 0);
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 25px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-}
-
-#przyciski3 button{
-    background:  rgb(210, 49, 17);
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 25px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-}
-#przyciski33.aktywny{
-    background: rgb(106, 255, 0);
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 25px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-}
-@media (max-width:1000px) {
-    body{/**/
-        background: linear-gradient(135deg,#2d9ed6, #3b508f,  #4182539b);/**/
-        background-size: 400% 400%; /* zostaje*/
-        animation:unset; /*  POMOC  */ /**/
-    }
-    .page-div{
-        display: inline-block;
-        width: 800px;
-        margin-top: 20px;
-    }
-     .page-header{/**/
-        flex-direction: column;/*dodane*/
-        margin-left: 0;/*dodane*/
-        width: 25em;/**/
-        height: 25em;/**/
-        position: relative;/*dodane*/
-        top: 1em;/**/
-        left: 0.3em;/**/
-}   
-    .page-header p{/**/
-        width: 13em;/**/
-        height: 4em;/**/
-        font-size: 30px;/**/
-        margin-bottom: 0;/**/
-    }
-    .page-header ul{
-        justify-content: left;/*zmienione*/
-        gap: 3em;/**/
-        width: 20em;/**/
-        padding: 15px 5px;/**/
-        margin-top: 4em;/*dodane*/
-}
-    #przyciski1 button{
-        margin-left: 1.4em;/**/
-        padding: 0.5em 1em;/**/
-}
-    #przyciski11.aktywny{
-        margin-left: 1.4em;/**/
-        padding: 0.5em 1em;/**/
-}
-    #przyciski2 button{
-        padding: 0.5em 1em;/**/
-}
-    #przyciski22.aktywny{
-        padding: 0.5em 1em;/**/
-}
-
-    #przyciski3 button{
-        padding: 0.5em 1em;/**/
-}
-    #przyciski33.aktywny{
-        padding: 0.5em 1em;/**/
-}
-    #DrugaAplikacja,#TrzeciaAplikacja{
-        margin-top: 1em;
-    }
-    #PierwszaAplikacja p,#DrugaAplikacja p,#TrzeciaAplikacja p{
-        margin: 0;
-        padding: 0;
-    }
-
-    #PierwszaAplikacja table { 
-        margin: 0.1em; 
-        width: 99%; 
-        overflow-x: auto;
-        display: block;
-    }
-
-    #PierwszaAplikacja th, td { 
-        padding: 1em; 
-        font-size: 3vw;
-    }
+    border: 2px solid rgb(23, 232, 187);
 }
     </style>
 </head>
 <body>
     <div class="page-div">
-        <a href="index.html">Powrót</a>
+        <a href="index.html" id="back">Powrót</a>
         <a href="aplikacja2.html">Kółko krzyżyk</a>
         <a href="tabela.html">Plan Lekcji</a>
         <a href="aplikacja3quiz.html">Apka - Quiz</a>
@@ -267,73 +66,9 @@ body{
         <a href="aplikacja8porownanie.html">Kalkulator Cen</a>
         <a href="aplikacja9cwiczenia.html">Licznik cwiczen</a>
         <a href="ticTacToe.html">Kółko Krzyżyk V2</a>
+        <a href="kalkulatorCen.html">Kalkulator Cen V2</a>
     </div>
             
-       <header class="page-header">
-        <p style="padding-top: 100px;padding-bottom: 30px;"> Poniżej znajdują sie przyciski które wyświetlają aplikacje jakie wykonałem do tej pory.</p>
-        <ul>
-            <li id="przyciski1"><button id="przyciski11" onclick="setTimeout (SprawdzPierwszyPrzycisk,150)">1</button></li>
-            <li id="przyciski2"><button id="przyciski22" onclick="setTimeout (SprawdzDrugiPrzycisk,150)">2</button></li>
-            <li id="przyciski3"><button id="przyciski33" onclick="setTimeout (SprawdzTrzeciPrzycisk,150)">3</button></li>
-        </ul>   
-    
-    </header>
-<div id="PierwszaAplikacja">
-    <p> <hr/></p>
-    <div>
-        <h1>Zespół Szkół Licealnych i Zawodowych</h1>
-        <h6>Jakub Z. 3INF</h6>
-        <h2> PLAN LEKCJI</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Dni tygodnia</th>
-                    <th>1</th><th>2</th><th>3</th><th>4</th>
-                    <th>5</th><th>6</th><th>7</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Poniedziałek</th>
-                    <td>Matematyka</td><td>Polski</td><td>Polski</td><td>Angielski</td>
-                    <td>Niemiecki</td><td>Biologia</td><td>Historia</td>
-                </tr>
-                <tr>
-                    <th>Wtorek</th>
-                    <td>Polski</td><td>Angielski</td><td>Polski</td><td>Matematyka</td>
-                    <td>Religia</td><td></td><td></td>
-                </tr>
-                <tr>
-                    <th>Środa</th>
-                    <td>Historia</td><td>Matematyka</td><td>Polski</td><td>Angielski</td>
-                    <td>Historia</td><td></td><td></td>
-                </tr>
-                <tr>
-                    <th>Czwartek</th>
-                    <td>Matematyka</td><td>Historia</td><td>Religia</td><td>Polski</td>
-                    <td>Polski</td><td>Angielski</td><td>Historia</td>
-                </tr>
-                <tr>
-                    <th>Piątek</th>
-                    <td>Biologia</td><td>Polski</td><td>Niemiecki</td><td>Angielski</td>
-                    <td>Angielski</td><td>Historia</td><td></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
- </div>    
-<div id="DrugaAplikacja">
-    <p><hr/> DRUGA APLIKACJA </p>
-    <div>
-
-    </div>
- </div>
-<div id="TrzeciaAplikacja">
-    <p><hr/> TRZECIA APLIKACJA</p>
-    <div>
-        
-    </div>
- </div>
 </body>
 </html>
 

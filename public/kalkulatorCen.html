@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator ceny</title>
+    <link rel="stylesheet" href="KalkulatorCen/style.css">
+</head>
+
+<body>
+   
+        <a href="aplikacje.html" id="powrot">Powrót</a>
+        <div class="main">
+            <div class="add-cont">
+                <h5 style="margin: 0;">Pojemność/ilość kapsułek/itp... podawaj z jednego opakowania</h5>
+                 <a id="instrukcja" href="instrukcja.html">JAK TO DZIAŁA?</a>
+            </div>
+            <div class="content-container">
+                <ul>
+                    <div class="select-section">
+                        <label for="typ" class="typ-label">Produkt: </label>
+                        <select name="typ" id="typ" class="typ-select">
+                            <option value="0" disabled >-- WYBIERZ PRODUKT -- </option>
+                            <option value="1" selected>Papier toaletowy</option>
+                            <option value="2">Jajka</option>
+                            <option value="3">Kapsułki do prania</option>
+                            <option value="4">Mleko</option>
+                            <option value="5">Mięso(np.Karkówka) </option>
+                            <option value="6">Mięso(PLASTRY) </option>
+                            <option value="7">Ser(NIEKROJONY)</option>
+                            <option value="8">Ser(PLASTRY)</option>
+                            <option value="9">Masło</option>
+                            <option value="10">Inne - rzecz</option>
+                            <option value="11">Inne - płyn/napój</option>
+                        </select>
+                    </div>
+                    <ul id="lista" class="lista">
+                        
+                        
+                    </ul>
+                </ul>
+            </div>
+            <div class="oblicz-cont">
+                <button id="oblicz" class="oblicz-button oblicz-button-animacja">Oblicz</button>
+                <button id="dodaj" class="dodaj-button dodaj-button-animacja"> Dodaj przedmiot</button> 
+            </div>
+        </div>
+        <div class="wynik-cont" id="wynik-cont">
+            
+        </div>
+   
+    <script src="KalkulatorCen/script.js"></script>
+
+
+</body>
+
+</html>

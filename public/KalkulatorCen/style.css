@@ -1,0 +1,326 @@
+ :root {
+     --tlo: #1a1a1a;
+     --tlo1: rgb(50, 234, 218);
+     --tlo2: #372828;
+     --produkt: #b6c0db;
+     --produkt-hover:#ff7f7f6f;
+     --tanszy: #78df0c4d;
+     --glowne-tlo: linear-gradient(135deg, #efeff1 0%, #dadee4 100%);
+ }
+
+ * {
+     margin: 0;
+     padding: 0;
+     font-family: "Segoe UI", Tahoma, sans-serif;
+ }
+ .dodaj{
+    overflow: hidden;
+    animation: dodaj 1s ease-in-out forwards;
+ }
+ @keyframes dodaj{
+    0%{
+        display: block;
+        height: 0px;
+        padding: 0px;
+        border-width:0px ;
+        margin-bottom: 0px;
+    }
+    
+    82%{
+        background-color: rgba(16, 242, 8, 0.488);
+    }
+    100%{
+        
+        height: 180px;
+        padding: 10px;
+        border-width: 2px;
+        margin-bottom: 20px;
+    }
+ }
+ .delete{
+    animation: usun 1.5s ease-out forwards;
+    overflow: hidden;
+ }
+@keyframes usun {
+    0%{
+        margin-bottom: 20px;
+        height: 180px;
+        padding: 10px;
+        border-width: 2px;
+    }
+    70%{
+        height: 6px;
+        padding: 3px;
+        border-width:0.5px ;
+    }
+    90%{
+        height: 2px;
+        padding: 1px;
+        border-width: 0.2px;
+    }
+    100%{
+        display: none;
+        height: 0px;
+        padding: 0px;
+        border-width:0px ;
+        margin-bottom: 0px;
+    }
+    
+}
+ /*PRZYCISK POWRÓTU*/
+ #powrot {
+     text-decoration: none;
+     color: rgb(15, 15, 15);
+     background-color: #529e7f;
+     border: 2px solid black;
+     border-radius: 5px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 70px;
+     height: 30px;
+     position: fixed;
+     top: 1rem;
+     transition: 0.2s ease-in-out;
+ }
+
+ #powrot:hover {
+     transform: scale(1.1);
+ }
+
+a#instrukcja:hover{
+    border: 1px solid blue;
+}
+html, body {
+     min-height:calc(100vh + 100px);
+     margin: 1px;
+    }
+    html{
+        zoom: 1.3;
+        background: linear-gradient(160deg, #2acde696,#dcdee2, #2acde696);
+
+    }
+ .main {
+     background: linear-gradient(135deg, #efeff1 0%, #dadee4 100%);
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     margin: 0 auto;
+     width: 70%;
+     height: fit-content;
+     backdrop-filter: blur(10px);
+     box-shadow: 0 0 25px rgba(20, 177, 221, 0.729);
+     border-radius: 20px;
+     padding: 20px;
+     margin-bottom: 50px;
+     align-items: center;
+ }
+ .add-cont{
+    text-align: center;
+    width: fit-content;
+    border: 1.2px solid blue;
+    border-radius: 10px;
+    padding: 3px;    
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    background-color: rgba(0, 225, 255, 0.66);
+    border-radius: 5px;
+}
+.select-section{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+.typ-label{
+    margin-right: 5px;
+}
+
+.content-container{
+    width: 80%;
+}
+.lista{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ .produkt {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     height: 180px;
+     margin-bottom: 20px;
+    width: 100%;
+    gap: 3px;
+     color: rgb(0, 0, 0);
+     border: 2px solid rgba(37, 200, 37, 0.413);
+     border-radius: 10px;
+     padding: 10px;
+     transition: 0.5s ease-out;
+     /* background-color: var(--produkt); */
+ }
+ .produkt:has(.delete_button:hover) {
+  background: var(--produkt-hover);
+}
+.produkt_input{
+    padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 12px;
+     outline: none;
+     background: rgba(255, 255, 255, 0.6);
+     font-size: 1rem;
+     transition: 0.3s;
+}
+.typ-select{
+    outline: none;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 2px;
+    transition: 0.3s;
+}
+ select{
+    width: fit-content;
+ }
+
+ select:focus,
+ input:focus {
+     border-color: #3b82f6;
+     box-shadow: 0 0 10px #3b82f655;
+ }
+ .produkt_dane {
+     display: flex;
+     justify-items: center;
+     justify-content: center;
+     gap: 20px;
+     align-items: center;
+ }
+ .produkt_dane label{
+    text-align: left;
+    width: 20%;
+ }
+ #delete_div{
+    margin-top: 10px;
+    
+ }
+ .delete_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+     background-color: red;
+     color: white;
+     padding: 5px;
+     outline: none;
+     border-radius: 10px;
+     border: 2px solid black;
+     cursor: pointer;
+     transition: 0.2s ease-out;
+ }
+
+ button.delete_button:hover {
+    box-shadow: 0 0 13px rgba(244, 6, 6, 0.632);
+     transform: scale(1.1);
+ }
+ button.delete_button:disabled{
+    color: grey;
+    background-color: #898787;
+ }
+
+ .oblicz-cont{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+ }
+.oblicz-button,.dodaj-button{
+    
+      padding: 6px 10px;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 1px;
+      
+      transition: 1s ease;
+    }
+    .oblicz-button{
+        background: linear-gradient(90deg, #7aa7f0 30%, #0d06d4 70%);
+        background-size: 300% 300%;
+        
+    }
+    .dodaj-button{
+        background: linear-gradient(45deg, #06b6d4 30%, #10d406 70%);
+        background-size: 300% 300%;
+    }
+button.oblicz-button-animacja:hover,
+button.dodaj-button-animacja:hover{
+    
+      transform: translateY(-2px);
+      animation: przyciskiHover  1s ease forwards;
+}
+button.dodaj-button-animacja:not(:hover),
+button.oblicz-button-animacja:not(:hover){
+    animation: zjechanyHover 1s ease forwards;
+}
+button.oblicz-button-disabled:disabled{
+    background: linear-gradient(45deg, #9d9393 30%, #000000 70%);
+    color: grey;
+}
+.dodaj-button-needed{
+    animation: needed 1s ease forwards;
+}
+
+@keyframes needed{
+    0%{
+        transform: translateX(20px);
+        transform: translateY(10px);
+        transform: scale(1.1);
+    }
+    40%{
+        transform: translateX(-20px);
+        transform: translateY(-10px);
+        transform: scale(1);
+    }
+    80%{
+        transform: translateX(20px);
+        transform: translateY(10px);
+        transform: scale(1.1);
+    }
+    100%{
+        transform: translateX(0px);
+        
+    }
+}
+@keyframes zjechanyHover {
+    0%{
+        background-position: 100% 10%;
+    }
+    100%{
+        background-position: 0% 0%;
+    }
+}
+@keyframes przyciskiHover{
+    0%{
+        background-position: 0% 0%;
+    }
+    100%{
+        background-position: 100% 10%;
+    }
+}
+.wynik{
+    display: flex;
+    justify-content: center;
+
+}
+
+@keyframes plusNajechany {
+    0%{
+        width: 116px;
+    }
+    100%{
+        border-radius: 50%;
+    }
+}
