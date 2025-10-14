@@ -334,6 +334,9 @@ button.oblicz-button-disabled:disabled{
             .main{
                 margin-top: 50px;
             }
+            .content-container{
+                width: 100%;
+            }
             #wynik{
                 display: flex;
             }
@@ -356,3 +359,13 @@ button.oblicz-button-disabled:disabled{
                 width: 50px;
             }
         }
+@media (max-width:400px) {
+    select{
+        width: 140px;
+    }
+    .select-section{
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+}
