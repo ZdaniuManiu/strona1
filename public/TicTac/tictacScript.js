@@ -226,15 +226,9 @@ for (let i = 1; i <= 3; i++) {
             //wygrana kolka
             if (wygranaKombinacjaKolka) {
                 setTimeout(() => { wynikWygranej(wygranaKombinacjaKolka); restart() }, 50);
-
-
-
                 //wygrana krzyzyka
             } else if (wygranaKombinacjaKrzyzyka) {
                 setTimeout(() => { wynikWygranej(wygranaKombinacjaKrzyzyka); restart() }, 50);
-
-
-
                 //remis
             } else if (polaKrzyzyka.length == 5 && polaKolka.length == 4 || polaKrzyzyka.length == 4 && polaKolka.length == 5) {
                 setTimeout(() => { alert("REMIS!"); restart(); }, 250);
@@ -276,16 +270,8 @@ function wynikWygranej(kombinacja) {
 
     linia.className += ' a' + kombinacjaFloat
     lastClassWin += ' a' + kombinacjaFloat
-
-
-
     // ZMIANA TŁA POLA PO WYGRANEJ 
-
-
-
     document.querySelectorAll("td").forEach(element => { 
-
-
         for (let i = 0; i < kombinacja.length; i++) {
             if (element.id == kombinacja[i]) {
                 if (element.dataset.gracz == "krzyzyk") {
@@ -301,21 +287,11 @@ function wynikWygranej(kombinacja) {
                         break
                     }else{
                         lastClassWin += ' wygrane_pola_kolo'
-                    }
-                }
-
-            }
-
-        }
-    })
-} 
-
-
+                    }}}}})} 
 const allCell = document.querySelectorAll("td");
 allCell.forEach((element, index) => { //nadawanie ID dla komórek
     element.id = index + 1
 });
-
 const rows = ['FirstRow', 'SecondRow', 'ThirdRow'];
 const allRow = document.querySelectorAll("tr")
 allRow.forEach((element, index) => { //nadawanie ID dla rzędów
